@@ -1,119 +1,52 @@
+import { toast } from 'react-toastify';
 import Config from "../common/Config";
 import axios from 'axios';
 
+
 const axiosAPI = axios.create({
-  baseURL: Config.apiBaseUrl,
-  headers: {
-    'Content-Type': 'application/json',
-  }
+  baseURL: Config.apiURL,
+  headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', 'Authorization': Config.token }
 });
 
 export function apiPostCall(path, params) {
-  let headers = {}
-  if (params.token) {
-    headers.Authorization = params.token
-  }
-  if (params.razorPaySignature) {
-    headers["x-razorpay-signature"] = params.razorPaySignature
-  }
-  return axiosAPI.post(path, params, { headers: headers })
+  return axiosAPI.post(path, params)
     .then((response) => {
-      return response
+      return response?.data?.message
     })
     .catch((error) => {
+      let errors = null
       if (error.response) {
-        return error.response
+        errors = error.response
       } else if (error.request) {
-        return error.request
+        errors = error.request
       } else {
-        return error.message
+        errors = error.message
       }
+      toast.error(errors.statusText);
     });
 }
 
-export function apiPutCall(path, params) {
-  return axiosAPI.put(path, params, { headers: { 'Authorization': params.token } })
+export function fileUpload(file) {
+  let formData = new FormData();
+  formData.append('file', file);
+  formData.append('is_private', '0');
+  formData.append('folder', 'Home/Attachments');
+  formData.append('doctype', 'Web Page');
+  return axiosAPI.post('/api/method/upload_file', formData)
     .then((response) => {
-      return response
+      return response.data
     })
     .catch((error) => {
+      let errors = null
       if (error.response) {
-        return error.response
+        errors = error.response
       } else if (error.request) {
-        return error.request
+        errors = error.request
       } else {
-        return error.message
+        errors = error.message
       }
+      toast.error(errors.statusText);
     });
-}
 
-export function apiGetCall(path, params) {
-  // console.log(path, params)
-  return axiosAPI.get(path, { headers: { 'Authorization': params.token } })
-    .then((response) => {
-      return response
-    })
-    .catch((error) => {
-      if (error.response) {
-        return error.response
-      } else if (error.request) {
-        return error.request
-      } else {
-        return error.message
-      }
-    });
-}
 
-export function apiGetSingleCall(path, params) {
-  return axiosAPI.get(path, { headers: { 'Authorization': params.token } })
-    .then((response) => {
-      return response
-    })
-    .catch((error) => {
-      if (error.response) {
-        return error.response
-      } else if (error.request) {
-        return error.request
-      } else {
-        return error.message
-      }
-    });
-}
-
-export function apiDeleteCall(path, params) {
-  return axiosAPI.delete(path, { headers: { 'Authorization': params.token } })
-    .then((response) => {
-      return response
-    })
-    .catch((error) => {
-      if (error.response) {
-        return error.response
-      } else if (error.request) {
-        return error.request
-      } else {
-        return error.message
-      }
-    });
-}
-
-export function uploadImgApi(file, token) {
-  const data = new FormData();
-  data.append('files', file);
-  return fetch(`${Config.apiBaseUrl}/file/upload`, {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      authorization: token,
-    },
-    body: data,
-  })
-    .then(response => response.json())
-    .then(responseJson => {
-      if (responseJson) {
-        return `${responseJson.data[0].url}`
-      }
-      return null
-    }).catch(error => {
-      return error;
-    });
 }

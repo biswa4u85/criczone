@@ -1,15 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, DatePicker, Switch } from 'antd';
 import { useSelector, useDispatch } from 'react-redux'
 import Icon from 'react-web-vector-icons';
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { useTheme } from "../theme/use-theme";
-
+import { getTemplates } from '../store/AuthRedux'
 
 function Home() {
+    const dispatch = useDispatch()
     let navigate = useNavigate();
     const { t } = useTranslation();
+    const templates = useSelector((state) => state.auth.templates)
+    console.log(templates)
+
+
+    useEffect(() => {
+        dispatch(getTemplates('JitoDaily'))
+    }, []);
+
+
     return (
         <>
             <div className="container">
@@ -61,13 +70,13 @@ function Home() {
                                 <img src={'fire'} className="amet" /> <span>NEWS LIST</span>
                                 <div className="adipisicing">
                                     <span> <img src={'india'} className="india_img" /><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do</p></span>
-                                    <span ><a href='#'>Lerarn More</a><i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                                    <span ><a href='#'>Lerarn More</a><i className="fa fa-arrow-right" aria-hidden="true"></i></span>
                                     <div className='eiusmod'></div>
                                     <span> <img src={'image4'} className="india_img" /><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do</p></span>
-                                    <span ><a href='#'>Lerarn More</a><i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                                    <span ><a href='#'>Lerarn More</a><i className="fa fa-arrow-right" aria-hidden="true"></i></span>
                                     <div className='eiusmod'></div>
                                     <span> <img src={'game'} className="india_img" /><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do</p></span>
-                                    <span ><a href='#'>Lerarn More</a><i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                                    <span ><a href='#'>Lerarn More</a><i className="fa fa-arrow-right" aria-hidden="true"></i></span>
                                 </div>
 
                             </div>
@@ -151,13 +160,13 @@ function Home() {
                                     <h5>MATCH PREVIEWS AND PREVIEWS</h5>
                                     <div className="adipisicing">
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                                        <span ><a href='#'>Lerarn More</a><i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                                        <span ><a href='#'>Lerarn More</a><i className="fa fa-arrow-right" aria-hidden="true"></i></span>
                                         <div className='eiusmod'></div>
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                                        <span ><a href='#'>Lerarn More</a><i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                                        <span ><a href='#'>Lerarn More</a><i className="fa fa-arrow-right" aria-hidden="true"></i></span>
                                         <div className='eiusmod'></div>
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                                        <span ><a href='#'>Lerarn More</a><i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                                        <span ><a href='#'>Lerarn More</a><i className="fa fa-arrow-right" aria-hidden="true"></i></span>
 
                                     </div>
                                 </div>

@@ -1,47 +1,23 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { apiGetCall, apiPostCall } from '../utility/site-apis'
+import { apiPostCall, fileUpload } from '../utility/site-apis'
 
 const initialState = {
   isFetching: false,
   error: null,
-  isOptSend: false,
-  phone: 123,
-  user: null,
-  token: null,
-  loginRedirectUrl: null,
+  templates: []
 }
 
-export const otpSend = createAsyncThunk(
-  'auth/otpSend',
+export const getTemplates = createAsyncThunk(
+  'auth/getTemplates',
   async (params, { rejectWithValue }) => {
-    const response = await apiPostCall(`/auth/otp/send`, params)
-    if (response.data.status === 'error') {
-      return rejectWithValue(response.data)
+    let urls = `doctype=Chat+Template&filters=%7B%22brand%22%3A%22${params}%22%7D&limit_page_length=None&fields=%5B%22name%22%2C%22brand%22%2C%22template_message%22%5D&cmd=frappe.client.get_list`;
+    let response = await apiPostCall('/', urls)
+    if (response) {
+      return response
     }
-    response.data.phone = params.phone
-    return response.data
   }
 )
-export const otpReSend = createAsyncThunk(
-  'auth/otpReSend',
-  async (params, { rejectWithValue }) => {
-    const response = await apiPostCall(`/auth/otp/resend`, params)
-    if (response.data.status === 'error') {
-      return rejectWithValue(response.data)
-    }
-    return response.data
-  }
-)
-export const otpValidate = createAsyncThunk(
-  'auth/otpValidate',
-  async (params, { rejectWithValue }) => {
-    const response = await apiPostCall(`/auth/otp/validate`, params)
-    if (response.data.status === 'error') {
-      return rejectWithValue(response.data)
-    }
-    return response.data
-  }
-)
+
 
 export const counterSlice = createSlice({
   name: 'auth',
@@ -56,57 +32,19 @@ export const counterSlice = createSlice({
     },
   },
   extraReducers: {
-    // otpSend
-    [otpSend.pending]: (state, action) => {
+    // Get Templates
+    [getTemplates.pending]: (state, action) => {
       state.isFetching = true
       state.error = null
-      state.isOptSend = false
     },
-    [otpSend.rejected]: (state, action) => {
-      alert(action.payload.message);
+    [getTemplates.rejected]: (state, action) => {
       state.isFetching = false
       state.error = action.payload.message
     },
-    [otpSend.fulfilled]: (state, action) => {
+    [getTemplates.fulfilled]: (state, action) => {
       state.isFetching = false
       state.error = null
-      alert(action.payload.data);
-      state.isOptSend = true
-      state.phone = action.payload.phone
-    },
-    // otpReSend
-    [otpReSend.pending]: (state, action) => {
-      state.isFetching = true
-      state.error = null
-      state.isOptSend = false
-    },
-    [otpReSend.rejected]: (state, action) => {
-      alert(action.payload.message);
-      state.isFetching = false
-      state.error = action.payload.message
-    },
-    [otpReSend.fulfilled]: (state, action) => {
-      state.isFetching = false
-      state.error = null
-      alert(action.payload.data);
-      state.isOptSend = true
-    },
-    // otpValidate
-    [otpValidate.pending]: (state, action) => {
-      state.isFetching = true
-      state.error = null
-      state.isOptSend = false
-    },
-    [otpValidate.rejected]: (state, action) => {
-      alert(action.payload.message);
-      state.isFetching = false
-      state.error = action.payload.message
-    },
-    [otpValidate.fulfilled]: (state, action) => {
-      state.isFetching = false
-      state.error = null
-      state.user = action.payload.data
-      state.token = `Bearer ${action.payload.data.Authorization}`
+      state.templates = action.payload
     },
   }
 

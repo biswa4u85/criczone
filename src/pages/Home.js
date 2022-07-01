@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-import { Button, DatePicker, Switch } from 'antd';
+import { Carousel, DatePicker, Switch } from 'antd';
+import { ArrowRightOutlined } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux'
 import Icon from 'react-web-vector-icons';
 import { Link, useNavigate } from "react-router-dom";
@@ -27,7 +28,14 @@ function Home() {
     useEffect(() => {
         dispatch(getTemplates('JitoDaily'))
     }, []);
-
+    
+    const contentStyle = {
+        height: '160px',
+        color: '#fff',
+        lineHeight: '160px',
+        textAlign: 'center',
+        background: '#364d79',
+    };
 
     return (
         <>
@@ -35,38 +43,137 @@ function Home() {
             <div className="container">
                 <div className="player_img"><img src={players} /></div>
 
-                <div className="trending_news">
-                    <div className="lanka">
-                        <h5>Today At 2:30 PM . <span> 2nd ODI .</span> <span>Pallekele</span></h5>
-                        <div className='srilanka'>
-                            <img src={lk} className="flagimg" /> <span> Sri Lanka</span>
+                <Carousel autoplay>
+                    <div className="trending_news">
+                        <div className="lanka">
+                            <h5>Today At 2:30 PM . <span> 2nd ODI .</span> <span>Pallekele</span></h5>
+                            <div className='srilanka'>
+                                <img src={lk} className="flagimg" /> <span> Sri Lanka</span>
+                            </div>
+                            <div className='srilanka'>
+                                <img src={flag} className="flagimg" /> <span>Australia</span>
+                            </div>
+                            <h6>Match starts in <span>3hrs 30min</span></h6>
                         </div>
-                        <div className='srilanka'>
-                            <img src={flag} className="flagimg" /> <span>Australia</span>
+                        <div className="lanka">
+                            <h4>LIVE . <span>1st semi final .</span> <span> FC . Alur </span></h4>
+                            <div className='srilanka'>
+                                <img src={lk} className="flagimg" /> <span> Sri Lanka</span>
+                            </div>
+                            <div className='srilanka'>
+                                <img src={flag} className="flagimg" /> <span>Australia</span>
+                            </div>
+                            <h6>Match starts in <span>3hrs 30min</span></h6>
                         </div>
-                        <h6>Match starts in <span>3hrs 30min</span></h6>
+                        <div className=" lanka">
+                            <h4>Innings Break . <span>1st semi final .</span> <span> FC . Alur  </span></h4>
+                            <div className='srilanka'>
+                                <img src={lk} className="flagimg" /> <span> Sri Lanka</span>
+                            </div>
+                            <div className='srilanka'>
+                                <img src={flag} className="flagimg" /> <span>Australia</span>
+                            </div>
+                            <h6>Match starts in <span>3hrs 30min</span></h6>
+                        </div>
                     </div>
-                    <div className="lanka">
-                        <h4>LIVE . <span>1st semi final .</span> <span> FC . Alur </span></h4>
-                        <div className='srilanka'>
-                            <img src={lk} className="flagimg" /> <span> Sri Lanka</span>
+                    <div className="trending_news">
+                        <div className="lanka">
+                            <h5>Today At 2:30 PM . <span> 2nd ODI .</span> <span>Pallekele</span></h5>
+                            <div className='srilanka'>
+                                <img src={lk} className="flagimg" /> <span> Sri Lanka</span>
+                            </div>
+                            <div className='srilanka'>
+                                <img src={flag} className="flagimg" /> <span>Australia</span>
+                            </div>
+                            <h6>Match starts in <span>3hrs 30min</span></h6>
                         </div>
-                        <div className='srilanka'>
-                            <img src={flag} className="flagimg" /> <span>Australia</span>
+                        <div className="lanka">
+                            <h4>LIVE . <span>1st semi final .</span> <span> FC . Alur </span></h4>
+                            <div className='srilanka'>
+                                <img src={lk} className="flagimg" /> <span> Sri Lanka</span>
+                            </div>
+                            <div className='srilanka'>
+                                <img src={flag} className="flagimg" /> <span>Australia</span>
+                            </div>
+                            <h6>Match starts in <span>3hrs 30min</span></h6>
                         </div>
-                        <h6>Match starts in <span>3hrs 30min</span></h6>
+                        <div className=" lanka">
+                            <h4>Innings Break . <span>1st semi final .</span> <span> FC . Alur  </span></h4>
+                            <div className='srilanka'>
+                                <img src={lk} className="flagimg" /> <span> Sri Lanka</span>
+                            </div>
+                            <div className='srilanka'>
+                                <img src={flag} className="flagimg" /> <span>Australia</span>
+                            </div>
+                            <h6>Match starts in <span>3hrs 30min</span></h6>
+                        </div>
                     </div>
-                    <div className=" lanka">
-                        <h4>Innings Break . <span>1st semi final .</span> <span> FC . Alur  </span></h4>
-                        <div className='srilanka'>
-                            <img src={lk} className="flagimg" /> <span> Sri Lanka</span>
+                    <div className="trending_news">
+                        <div className="lanka">
+                            <h5>Today At 2:30 PM . <span> 2nd ODI .</span> <span>Pallekele</span></h5>
+                            <div className='srilanka'>
+                                <img src={lk} className="flagimg" /> <span> Sri Lanka</span>
+                            </div>
+                            <div className='srilanka'>
+                                <img src={flag} className="flagimg" /> <span>Australia</span>
+                            </div>
+                            <h6>Match starts in <span>3hrs 30min</span></h6>
                         </div>
-                        <div className='srilanka'>
-                            <img src={flag} className="flagimg" /> <span>Australia</span>
+                        <div className="lanka">
+                            <h4>LIVE . <span>1st semi final .</span> <span> FC . Alur </span></h4>
+                            <div className='srilanka'>
+                                <img src={lk} className="flagimg" /> <span> Sri Lanka</span>
+                            </div>
+                            <div className='srilanka'>
+                                <img src={flag} className="flagimg" /> <span>Australia</span>
+                            </div>
+                            <h6>Match starts in <span>3hrs 30min</span></h6>
                         </div>
-                        <h6>Match starts in <span>3hrs 30min</span></h6>
+                        <div className=" lanka">
+                            <h4>Innings Break . <span>1st semi final .</span> <span> FC . Alur  </span></h4>
+                            <div className='srilanka'>
+                                <img src={lk} className="flagimg" /> <span> Sri Lanka</span>
+                            </div>
+                            <div className='srilanka'>
+                                <img src={flag} className="flagimg" /> <span>Australia</span>
+                            </div>
+                            <h6>Match starts in <span>3hrs 30min</span></h6>
+                        </div>
                     </div>
-                </div>
+                    <div className="trending_news">
+                        <div className="lanka">
+                            <h5>Today At 2:30 PM . <span> 2nd ODI .</span> <span>Pallekele</span></h5>
+                            <div className='srilanka'>
+                                <img src={lk} className="flagimg" /> <span> Sri Lanka</span>
+                            </div>
+                            <div className='srilanka'>
+                                <img src={flag} className="flagimg" /> <span>Australia</span>
+                            </div>
+                            <h6>Match starts in <span>3hrs 30min</span></h6>
+                        </div>
+                        <div className="lanka">
+                            <h4>LIVE . <span>1st semi final .</span> <span> FC . Alur </span></h4>
+                            <div className='srilanka'>
+                                <img src={lk} className="flagimg" /> <span> Sri Lanka</span>
+                            </div>
+                            <div className='srilanka'>
+                                <img src={flag} className="flagimg" /> <span>Australia</span>
+                            </div>
+                            <h6>Match starts in <span>3hrs 30min</span></h6>
+                        </div>
+                        <div className=" lanka">
+                            <h4>Innings Break . <span>1st semi final .</span> <span> FC . Alur  </span></h4>
+                            <div className='srilanka'>
+                                <img src={lk} className="flagimg" /> <span> Sri Lanka</span>
+                            </div>
+                            <div className='srilanka'>
+                                <img src={flag} className="flagimg" /> <span>Australia</span>
+                            </div>
+                            <h6>Match starts in <span>3hrs 30min</span></h6>
+                        </div>
+                    </div>
+                </Carousel>
+
                 <div className='trending'>
                     <div className="row">
                         <div className="col-sm-8">
@@ -81,16 +188,14 @@ function Home() {
                                 <img src={fire} className="amet" /> <span>NEWS LIST</span>
                                 <div className="adipisicing">
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                                    <span ><a href='#'>Lerarn More</a><i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                                    <span ><a href='#'>Lerarn More</a><ArrowRightOutlined /></span>
                                     <div className='eiusmod'></div>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                                    <span ><a href='#'>Lerarn More</a><i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                                    <span ><a href='#'>Lerarn More</a><ArrowRightOutlined /></span>
                                     <div className='eiusmod'></div>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                                    <span ><a href='#'>Lerarn More</a><i class="fa fa-arrow-right" aria-hidden="true"></i></span>
-
+                                    <span ><a href='#'>Lerarn More</a><ArrowRightOutlined /></span>
                                 </div>
-
                             </div>
                         </div>
                         <div className='match'>
@@ -106,7 +211,7 @@ function Home() {
                                             <p>Hardik Pandya to captain India in Ireland T20Is; Rahul Tripathi gets maiden call-up</p>
                                         </div>
                                         <div className="col-sm-6">
-                                            <img src={cricketer} className="cricket" alt="..." />
+                                            <img src={cricketplayer} className="cricket" alt="..." />
                                             <p>Hardik Pandya to captain India in Ireland T20Is; Rahul Tripathi gets maiden call-up</p>
                                         </div>
                                         <div className="col-sm-6">
@@ -121,13 +226,13 @@ function Home() {
                                     <h5>MATCH PREVIEWS AND PREVIEWS</h5>
                                     <div className="adipisicing">
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                                        <span ><a href='#'>Lerarn More</a><i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                                        <span ><a href='#'>Lerarn More</a><ArrowRightOutlined /></span>
                                         <div className='eiusmod'></div>
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                                        <span ><a href='#'>Lerarn More</a><i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                                        <span ><a href='#'>Lerarn More</a><ArrowRightOutlined /></span>
                                         <div className='eiusmod'></div>
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                                        <span ><a href='#'>Lerarn More</a><i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                                        <span ><a href='#'>Lerarn More</a><ArrowRightOutlined /></span>
                                     </div>
                                 </div>
                             </div>
@@ -136,7 +241,8 @@ function Home() {
                 </div>
 
                 <div className="row">
-                    <div className="col-sm-4">
+
+                    <div className="col-sm-3">
                         <h5>RESULT</h5>
                         <div className='srilanka'>
                             <img src={lk} className="flagimg" /> <span> Sri Lanka</span>
@@ -147,9 +253,10 @@ function Home() {
                             <span className='number'>(T:193)19328 & 197/8</span>
                         </div>
                         <h6>Australia <span>won</span>by 3 wickets</h6>
-                        <a href='#'>Preview</a>
+                        <span className="preview" ><a href='#'>Preview</a><ArrowRightOutlined /></span>
                     </div>
-                    <div className="col-sm-4">
+                    <div className="australia"></div>
+                    <div className="col-sm-3">
                         <h5>NOW</h5>
                         <div className='srilanka'>
                             <img src={lk} className="flagimg" /> <span> Sri Lanka</span>
@@ -160,8 +267,9 @@ function Home() {
                             <span className='number'>(T:193)19328 & 197/8</span>
                         </div>
                         <h6>Australia <span>won</span>by 3 wickets</h6>
-                        <a href='#'>Preview</a>
+                        <span className="preview" ><a href='#'>Preview</a><ArrowRightOutlined /></span>
                     </div>
+                    <div className="australia"></div>
                     <div className="col-sm-4">
                         <h5>UPCOMING</h5>
                         <div className='srilanka'>
@@ -173,9 +281,14 @@ function Home() {
                             <span className='number'>(T:193)19328 & 197/8</span>
                         </div>
                         <h6>Australia <span>won</span>by 3 wickets</h6>
-                        <a href='#'>Preview</a>
+                        <span className="preview" ><a href='#'>Preview</a><ArrowRightOutlined /></span>
+
+
                     </div>
+
                 </div>
+
+
             </div>
         </>
 

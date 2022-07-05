@@ -4,13 +4,25 @@ import { apiPostCall, fileUpload } from '../utility/site-apis'
 const initialState = {
   isFetching: false,
   error: null,
-  templates: []
+  newsList: [],
+  newsDetails: {}
 }
 
-export const getTemplates = createAsyncThunk(
-  'auth/getTemplates',
+export const getNewsList = createAsyncThunk(
+  'auth/getNewsList',
   async (params, { rejectWithValue }) => {
-    let urls = `doctype=Chat+Template&filters=%7B%22brand%22%3A%22${params}%22%7D&limit_page_length=None&fields=%5B%22name%22%2C%22brand%22%2C%22template_message%22%5D&cmd=frappe.client.get_list`;
+    let urls = `doctype=Blog+Post&limit_page_length=None&fields=${JSON.stringify(["name", "title", "blog_category", "blog_intro"])}&cmd=frappe.client.get_list`;
+    let response = await apiPostCall('/', urls)
+    if (response) {
+      return response
+    }
+  }
+)
+
+export const getNewsDetails = createAsyncThunk(
+  'auth/getNewsDetails',
+  async (params, { rejectWithValue }) => {
+    let urls = `doctype=Blog+Post&name=${params}&cmd=frappe.client.get_single_value`;
     let response = await apiPostCall('/', urls)
     if (response) {
       return response
@@ -23,32 +35,42 @@ export const counterSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    setLoginRedirectUrl: (state, action) => {
-      state.loginRedirectUrl = action.payload
-    },
-    logout: (state, action) => {
-      state.user = null
-      state.token = null
+    resetNews: (state, action) => {
+      state.newsDetails = {}
     },
   },
   extraReducers: {
-    // Get Templates
-    [getTemplates.pending]: (state, action) => {
+    // News List
+    [getNewsList.pending]: (state, action) => {
       state.isFetching = true
       state.error = null
     },
-    [getTemplates.rejected]: (state, action) => {
+    [getNewsList.rejected]: (state, action) => {
       state.isFetching = false
       state.error = action.payload.message
     },
-    [getTemplates.fulfilled]: (state, action) => {
+    [getNewsList.fulfilled]: (state, action) => {
       state.isFetching = false
       state.error = null
-      state.templates = action.payload
+      state.newsList = action.payload
+    },
+    // News Details
+    [getNewsDetails.pending]: (state, action) => {
+      state.isFetching = true
+      state.error = null
+    },
+    [getNewsDetails.rejected]: (state, action) => {
+      state.isFetching = false
+      state.error = action.payload.message
+    },
+    [getNewsDetails.fulfilled]: (state, action) => {
+      state.isFetching = false
+      state.error = null
+      state.newsDetails = action.payload
     },
   }
 
 })
 
-export const { logout, setLoginRedirectUrl } = counterSlice.actions
+export const { resetNews } = counterSlice.actions
 export default counterSlice.reducer

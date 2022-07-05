@@ -4,7 +4,7 @@ import { ArrowRightOutlined } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux'
 import { NavLink, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { getTemplates } from '../store/AuthRedux'
+import { getNewsList } from '../store/AuthRedux'
 import { Helmet } from "react-helmet";
 
 import Loader from "../components/Loader";
@@ -15,12 +15,14 @@ function Home() {
     const dispatch = useDispatch()
     let navigate = useNavigate();
     const { t } = useTranslation();
-    const templates = useSelector((state) => state.auth.templates)
-    console.log(templates)
+    const newsList = useSelector((state) => state.auth.newsList)
 
     useEffect(() => {
-        dispatch(getTemplates('JitoDaily'))
+        dispatch(getNewsList())
     }, []);
+
+
+    console.log(newsList)
 
     return (
         <>
@@ -130,8 +132,7 @@ function Home() {
                             <aside className="header-aside" data-aos="fade-up">
                                 <h4>Latest News</h4>
                                 <div className="card-list card-counting">
-
-                                    <div className="single-card-list card-border">
+                                    {newsList.map((item, key) => <div key={key} className="single-card-list card-border">
                                         <div className="card-list-img">
                                             <img src="assets/img/newsvolt/card-xs-img/card-xs-1.jpg" alt="image" />
                                         </div>
@@ -141,59 +142,11 @@ function Home() {
                                                 <span>16 Nov, 2020</span>
                                             </div>
                                             <div className="card-list-heading">
-                                                <h6><NavLink to={`details/${'artId'}`}>A collection of textile samples lay
-                                                    spread . . .</NavLink></h6>
+                                                <h6><NavLink to={`details/${item.name}`}>{item.title} . . .</NavLink></h6>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>)}
 
-                                    <div className="single-card-list card-border">
-                                        <div className="card-list-img">
-                                            <img src="assets/img/newsvolt/card-xs-img/card-xs-2.jpg" alt="image" />
-                                        </div>
-                                        <div className="card-list-cont">
-                                            <div className="card-list-discript">
-                                                <span>7:35 AM</span>
-                                                <span>17 dec, 2020</span>
-                                            </div>
-                                            <div className="card-list-heading">
-                                                <h6><a href="single-post-details.html">What a strenuous career it is that I’ve
-                                                    chosen! Travelling day in and day out.</a></h6>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="single-card-list card-border">
-                                        <div className="card-list-img">
-                                            <img src="assets/img/newsvolt/card-xs-img/card-xs-3.jpg" alt="image" />
-                                        </div>
-                                        <div className="card-list-cont">
-                                            <div className="card-list-discript">
-                                                <span>7:35 AM</span>
-                                                <span>26 Nov, 2020</span>
-                                            </div>
-                                            <div className="card-list-heading">
-                                                <h6><a href="single-post-details.html">Doing business like this takes much more
-                                                    effort than doing </a></h6>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="single-card-list card-border">
-                                        <div className="card-list-img">
-                                            <img src="assets/img/newsvolt/card-xs-img/card-xs-3.jpg" alt="image" />
-                                        </div>
-                                        <div className="card-list-cont">
-                                            <div className="card-list-discript">
-                                                <span>7:35 AM</span>
-                                                <span>16 Nov, 2020</span>
-                                            </div>
-                                            <div className="card-list-heading">
-                                                <h6><a href="single-post-details.html">worries about making train connections,
-                                                    bad and irregular food</a></h6>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div className="video-card">
                                     <img src="assets/img/newsvolt/card-mixed/video-card.png" alt="image" />

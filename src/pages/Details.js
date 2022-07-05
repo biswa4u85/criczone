@@ -1,16 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, DatePicker, Switch } from 'antd';
 import { useSelector, useDispatch } from 'react-redux'
 import Icon from 'react-web-vector-icons';
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "../theme/use-theme";
+import { getNewsDetails } from '../store/AuthRedux'
 import { Helmet } from "react-helmet";
 
 
-function Details() {
+function Details(props) {
     let navigate = useNavigate();
+    let { pId } = useParams();
+    const dispatch = useDispatch()
     const { t } = useTranslation();
+    const newsDetails = useSelector((state) => state.auth.newsDetails)
+
+    useEffect(() => {
+        dispatch(getNewsDetails(pId))
+    }, [pId]);
+
+
+    console.log(newsDetails)
+
     return (
         <>
             <Helmet>

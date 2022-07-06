@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { Button, DatePicker, Switch } from 'antd';
 import { useSelector, useDispatch } from 'react-redux'
-import Icon from 'react-web-vector-icons';
-import { Link, useNavigate, useParams } from "react-router-dom";
+import moment from "moment";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "../theme/use-theme";
 import { getNewsDetails } from '../store/AuthRedux'
@@ -14,6 +14,7 @@ function Details(props) {
     let { pId } = useParams();
     const dispatch = useDispatch()
     const { t } = useTranslation();
+    const newsList = useSelector((state) => state.auth.newsList)
     const newsDetails = useSelector((state) => state.auth.newsDetails)
 
     useEffect(() => {
@@ -27,7 +28,7 @@ function Details(props) {
         <>
             <Helmet>
                 <meta charSet="utf-8" />
-                <title>Detail Page</title>
+                <title>{newsDetails.meta_title}</title>
                 <link rel="canonical" href="http://mysite.com/example" />
             </Helmet>
             <section className="single-post-area">
@@ -40,27 +41,11 @@ function Details(props) {
                                     <button className="btn btn-theme">Traveling</button>
                                 </div>
                                 <div className="timeline">
-                                    <span>7:35 AM</span>
-                                    <span>16 Nov, 2020</span>
+                                    <span>{moment.utc(newsDetails.modified).format('hh:mm A')}</span>
+                                    <span>{moment.utc(newsDetails.modified).format('Do MMM YYYY')}</span>
                                 </div>
-                                <h2>A wonderful serenity has taken possession dolor sit  Et harum quidem rerum </h2>
-                                <p>The morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment.</p>
-                                <p>His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me?" he thought. It wasn't a dream. His room, a proper human room although a little too small, lay peacefully between its four familiar walls.</p>
-                                <blockquote>
-                                    <img src="assets/img/cotation.png" alt="image" />
-                                    <p>You will never be happy if you continue to search for what happiness consists and will never live if you are looking for the meaning of life.</p>
-                                </blockquote>
-                                <h3>This is Subheading Title</h3>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country</p>
-                                <div className="list-whit-img">
-                                    <img src="assets/img/post-dtls-pro.jpg" alt="image" />
-                                    <ul>
-                                        <li>Ornare porta viverra. Mollis neque sagittis Etiam. Suscipit.</li>
-                                        <li>Feugiat, dictumst parturient mattis tempus sollicitudin ridiculus Lacus platea rhoncus. Per rutrum molestie.</li>
-                                        <li>Maecenas massa fermentum nibh sit senectus. Aptent torquent ipsum placerat consectetuer felis eleifend tellus morbi senectus nisi dignissim feugiat eget auctor, per accumsan.</li>
-                                    </ul>
-                                </div>
-                                <p><strong>Note :</strong>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. </p>
+                                <h2>{newsDetails.title}</h2>
+                                <div dangerouslySetInnerHTML={{ __html: newsDetails.content }}></div>
                                 <div className="reaction">
                                     <h3>Your Reaction on this post</h3>
                                     <ul>
@@ -79,7 +64,7 @@ function Details(props) {
                                     <h4>Latest News</h4>
                                     <div className="card-list card-counting">
 
-                                        <div className="single-card-list card-border">
+                                        {newsList.map((item, key) => <div key={key} className="single-card-list card-border">
                                             <div className="card-list-img">
                                                 <img src="assets/img/newsvolt/card-xs-img/card-xs-1.jpg" alt="image" />
                                             </div>
@@ -89,55 +74,12 @@ function Details(props) {
                                                     <span>16 Nov, 2020</span>
                                                 </div>
                                                 <div className="card-list-heading">
-                                                    <h6><a href="single-post-details.html#">A collection of textile samples lay spread</a></h6>
+                                                    <h6><NavLink to={`details/${item.name}`}>{item.title} . . .</NavLink></h6>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div>)}
 
-                                        <div className="single-card-list card-border">
-                                            <div className="card-list-img">
-                                                <img src="assets/img/newsvolt/card-xs-img/card-xs-2.jpg" alt="image" />
-                                            </div>
-                                            <div className="card-list-cont">
-                                                <div className="card-list-discript">
-                                                    <span>7:35 AM</span>
-                                                    <span>16 Nov, 2020</span>
-                                                </div>
-                                                <div className="card-list-heading">
-                                                    <h6><a href="single-post-details.html#"> career it is that I’ve chosen! Travelling day in and day out</a></h6>
-                                                </div>
-                                            </div>
-                                        </div>
 
-                                        <div className="single-card-list card-border">
-                                            <div className="card-list-img">
-                                                <img src="assets/img/newsvolt/card-xs-img/card-xs-3.jpg" alt="image" />
-                                            </div>
-                                            <div className="card-list-cont">
-                                                <div className="card-list-discript">
-                                                    <span>7:35 AM</span>
-                                                    <span>16 Nov, 2020</span>
-                                                </div>
-                                                <div className="card-list-heading">
-                                                    <h6><a href="single-post-details.html#">Doing business like this takes much more effort</a></h6>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div className="single-card-list card-border">
-                                            <div className="card-list-img">
-                                                <img src="assets/img/newsvolt/card-xs-img/card-xs-3.jpg" alt="image" />
-                                            </div>
-                                            <div className="card-list-cont">
-                                                <div className="card-list-discript">
-                                                    <span>7:35 AM</span>
-                                                    <span>16 Nov, 2020</span>
-                                                </div>
-                                                <div className="card-list-heading">
-                                                    <h6><a href="single-post-details.html#">Drops of rain could be heard hitting the pane</a></h6>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                     <div className="video-card">
                                         <img src="assets/img/newsvolt/card-mixed/video-card.png" alt="image" />
@@ -155,7 +97,7 @@ function Details(props) {
                                         <h4>Related News</h4>
                                         <div className="card-list card-counting">
 
-                                            <div className="single-card-list card-border">
+                                            {newsList.map((item, key) => <div key={key} className="single-card-list card-border">
                                                 <div className="card-list-img">
                                                     <img src="assets/img/newsvolt/card-xs-img/card-xs-1.jpg" alt="image" />
                                                 </div>
@@ -165,55 +107,11 @@ function Details(props) {
                                                         <span>16 Nov, 2020</span>
                                                     </div>
                                                     <div className="card-list-heading">
-                                                        <h6><a href="single-post-details.html#">Doing business like this takes much more effort</a></h6>
+                                                        <h6><NavLink to={`details/${item.name}`}>{item.title} . . .</NavLink></h6>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div>)}
 
-                                            <div className="single-card-list card-border">
-                                                <div className="card-list-img">
-                                                    <img src="assets/img/newsvolt/card-xs-img/card-xs-2.jpg" alt="image" />
-                                                </div>
-                                                <div className="card-list-cont">
-                                                    <div className="card-list-discript">
-                                                        <span>7:35 AM</span>
-                                                        <span>16 Nov, 2020</span>
-                                                    </div>
-                                                    <div className="card-list-heading">
-                                                        <h6><a href="single-post-details.html#">Drops of rain could be heard hitting the pane</a></h6>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div className="single-card-list card-border">
-                                                <div className="card-list-img">
-                                                    <img src="assets/img/newsvolt/card-xs-img/card-xs-3.jpg" alt="image" />
-                                                </div>
-                                                <div className="card-list-cont">
-                                                    <div className="card-list-discript">
-                                                        <span>7:35 AM</span>
-                                                        <span>16 Nov, 2020</span>
-                                                    </div>
-                                                    <div className="card-list-heading">
-                                                        <h6><a href="single-post-details.html#">contact with different people all the time so that</a></h6>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div className="single-card-list card-border">
-                                                <div className="card-list-img">
-                                                    <img src="assets/img/newsvolt/card-xs-img/card-xs-3.jpg" alt="image" />
-                                                </div>
-                                                <div className="card-list-cont">
-                                                    <div className="card-list-discript">
-                                                        <span>7:35 AM</span>
-                                                        <span>16 Nov, 2020</span>
-                                                    </div>
-                                                    <div className="card-list-heading">
-                                                        <h6><a href="single-post-details.html#">How about if I sleep a little bit longer</a></h6>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
                                     </aside>
                                 </div>
@@ -280,7 +178,7 @@ function Details(props) {
                             <button className="btn btn-theme">Submit Comment</button>
                         </div>
                     </div>
-                    <div className="single-post-carousel-wrapper">
+                    {/* <div className="single-post-carousel-wrapper">
                         <div className="spc-navigation">
                             <button className="prev"><span><i className="icofont-long-arrow-left"></i></span> Previous </button>
                             <button className="next">Next <span><i className="icofont-long-arrow-right"></i></span></button>
@@ -339,7 +237,7 @@ function Details(props) {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
 
             </section>

@@ -20,8 +20,7 @@ function Home() {
     useEffect(() => {
         dispatch(getNewsList())
     }, []);
-
-
+    
     console.log(newsList)
 
     return (

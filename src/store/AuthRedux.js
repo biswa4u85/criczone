@@ -22,10 +22,10 @@ export const getNewsList = createAsyncThunk(
 export const getNewsDetails = createAsyncThunk(
   'auth/getNewsDetails',
   async (params, { rejectWithValue }) => {
-    let urls = `doctype=Blog+Post&name=${params}&cmd=frappe.client.get_single_value`;
+    let urls = `doctype=Blog+Post&fields=${JSON.stringify(["*"])}&filters=${JSON.stringify([["Blog Post", "name", "like", params]])}&cmd=frappe.client.get_list`;
     let response = await apiPostCall('/', urls)
     if (response) {
-      return response
+      return response[0]
     }
   }
 )

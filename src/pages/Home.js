@@ -141,7 +141,7 @@ function Home() {
                                                 <span>16 Nov, 2020</span>
                                             </div>
                                             <div className="card-list-heading">
-                                                <h6><NavLink to={`details/${item.name}`}>{item.title} . . .</NavLink></h6>
+                                                <h6><NavLink to={`/details/${item.name}`}>{item.title} . . .</NavLink></h6>
                                             </div>
                                         </div>
                                     </div>)}

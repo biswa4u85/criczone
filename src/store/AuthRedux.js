@@ -11,7 +11,7 @@ const initialState = {
 export const getNewsList = createAsyncThunk(
   'auth/getNewsList',
   async (params, { rejectWithValue }) => {
-    let urls = `doctype=Blog+Post&limit_page_length=None&fields=${JSON.stringify(["name", "title", "blog_category", "blog_intro"])}&cmd=frappe.client.get_list`;
+    let urls = `doctype=Blog+Post&limit_page_length=None&fields=${JSON.stringify(["name", "title", "blog_category", "blog_intro", "meta_image", "modified"])}&cmd=frappe.client.get_list`;
     let response = await apiPostCall('/', urls)
     if (response) {
       return response
@@ -52,7 +52,7 @@ export const counterSlice = createSlice({
     [getNewsList.fulfilled]: (state, action) => {
       state.isFetching = false
       state.error = null
-      state.newsList = action.payload
+      state.newsList = action.payload ? action.payload : []
     },
     // News Details
     [getNewsDetails.pending]: (state, action) => {

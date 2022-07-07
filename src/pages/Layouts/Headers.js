@@ -12,7 +12,7 @@ function Headers() {
     const { t } = useTranslation();
     return (
         <header className="header-area">
-            <div className="header-top-area">
+            {/* <div className="header-top-area">
                 <div className="container container-md">
                     <div className="header-wrapper">
                         <div className="header-contact">
@@ -47,7 +47,7 @@ function Headers() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
             <div className="main-header bg-primary">
                 <div className="container container-md">
                     <div className="main-header-wrapper">
@@ -703,7 +703,7 @@ function Headers() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="sign-wrapper">
+                            {/* <div className="sign-wrapper">
 
                                 <div className="sign-bar">
                                     <i className="icofont-businessman"></i>
@@ -712,7 +712,7 @@ function Headers() {
                                     <button className="btn-normal sign-in-click">Sign In</button>
                                     <button className="btn btn-theme sign-up-click">Sign Up</button>
                                 </div>
-                            </div>
+                            </div> */}
 
                             <div className="toggle-bar">
                                 <span></span>

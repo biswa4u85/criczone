@@ -6,7 +6,21 @@ import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "../theme/use-theme";
 import { getNewsDetails } from '../store/AuthRedux'
+import Config from "../common/Config";
 import { Helmet } from "react-helmet";
+
+import noData from "../assets/img/nodata.jpg";
+import videoCard from "../assets/img/newsvolt/card-mixed/video-card.png";
+import playBtn from "../assets/img/svg/play-btn.svg";
+import promoAdd from "../assets/img/promo-add.png";
+import rect1 from "../assets/img/reaction/rect1.png";
+import rect2 from "../assets/img/reaction/rect2.png";
+import rect3 from "../assets/img/reaction/rect3.png";
+import rect4 from "../assets/img/reaction/rect4.png";
+import rect5 from "../assets/img/reaction/rect5.png";
+import authorPro from "../assets/img/author-pro.jpg";
+import user from "../assets/img/svg/user.svg";
+import email from "../assets/img/svg/email.svg";
 
 
 function Details(props) {
@@ -28,8 +42,8 @@ function Details(props) {
         <>
             <Helmet>
                 <meta charSet="utf-8" />
-                <title>{newsDetails.meta_title}</title>
-                <link rel="canonical" href="http://mysite.com/example" />
+                <title>{newsDetails?.meta_title}</title>
+                <link rel="canonical" href="#" />
             </Helmet>
             <section className="single-post-area">
                 <div className="container">
@@ -37,23 +51,23 @@ function Details(props) {
                         <div className="col-lg-8">
                             <div className="single-post-content">
                                 <div className="figer-img">
-                                    <img src="assets/img/post-dtls-banner.jpg" alt="image" />
-                                    <button className="btn btn-theme">Traveling</button>
+                                    <img src={newsDetails?.meta_image ? `${Config.apiURL}${newsDetails?.meta_image}` : noData} alt={newsDetails?.title} />
+                                    <button className="btn btn-theme">{newsDetails?.blog_category}</button>
                                 </div>
                                 <div className="timeline">
-                                    <span>{moment.utc(newsDetails.modified).format('hh:mm A')}</span>
-                                    <span>{moment.utc(newsDetails.modified).format('Do MMM YYYY')}</span>
+                                    <span>{moment.utc(newsDetails?.modified).format('hh:mm A')}</span>
+                                    <span>{moment.utc(newsDetails?.modified).format('Do MMM YYYY')}</span>
                                 </div>
-                                <h2>{newsDetails.title}</h2>
-                                <div dangerouslySetInnerHTML={{ __html: newsDetails.content }}></div>
+                                <h2>{newsDetails?.title}</h2>
+                                <div dangerouslySetInnerHTML={{ __html: newsDetails?.content }}></div>
                                 <div className="reaction">
                                     <h3>Your Reaction on this post</h3>
                                     <ul>
-                                        <li><a href="single-post-details.html#"><img src="assets/img/reaction/rect1.png" alt="icon" /><span>45</span></a></li>
-                                        <li><a href="single-post-details.html#"><img src="assets/img/reaction/rect2.png" alt="icon" /></a></li>
-                                        <li><a href="single-post-details.html#"><img src="assets/img/reaction/rect3.png" alt="icon" /><span>01</span></a></li>
-                                        <li><a href="single-post-details.html#"><img src="assets/img/reaction/rect4.png" alt="icon" /></a></li>
-                                        <li><a href="single-post-details.html#"><img src="assets/img/reaction/rect5.png" alt="icon" /><span>25</span></a></li>
+                                        <li><a href="single-post-details.html#"><img src={rect1} alt="icon" /><span>45</span></a></li>
+                                        <li><a href="single-post-details.html#"><img src={rect2} alt="icon" /></a></li>
+                                        <li><a href="single-post-details.html#"><img src={rect3} alt="icon" /><span>01</span></a></li>
+                                        <li><a href="single-post-details.html#"><img src={rect4} alt="icon" /></a></li>
+                                        <li><a href="single-post-details.html#"><img src={rect5} alt="icon" /><span>25</span></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -63,55 +77,50 @@ function Details(props) {
                                 <aside className="header-aside">
                                     <h4>Latest News</h4>
                                     <div className="card-list card-counting">
-
                                         {newsList.map((item, key) => <div key={key} className="single-card-list card-border">
                                             <div className="card-list-img">
-                                                <img src="assets/img/newsvolt/card-xs-img/card-xs-1.jpg" alt="image" />
+                                                <img src={item.meta_image ? `${Config.apiURL}${item.meta_image}` : noData} alt={item.title} />
                                             </div>
                                             <div className="card-list-cont">
                                                 <div className="card-list-discript">
-                                                    <span>7:35 AM</span>
-                                                    <span>16 Nov, 2020</span>
+                                                    <span>{moment.utc(item.modified).format('hh:mm A')}</span>
+                                                    <span>{moment.utc(item.modified).format('Do MMM YYYY')}</span>
                                                 </div>
                                                 <div className="card-list-heading">
                                                     <h6><NavLink to={`/details/${item.name}`}>{item.title} . . .</NavLink></h6>
                                                 </div>
                                             </div>
                                         </div>)}
-
-
                                     </div>
                                     <div className="video-card">
-                                        <img src="assets/img/newsvolt/card-mixed/video-card.png" alt="image" />
-                                        <a href="single-post-details.html#" className="video-icon">
-                                            <img src="assets/img/svg/play-btn.svg" alt="image" />
+                                        <img src={videoCard} alt="image" />
+                                        <a href="#" className="video-icon">
+                                            <img src={playBtn} alt="image" />
                                         </a>
                                     </div>
                                 </aside>
                                 <div className="promo-add">
-                                    <img src="assets/img/promo-add.png" alt="image" />
+                                    <img src={promoAdd} alt="image" />
                                     <button className="btn btn-white-outline">Promotional Ad</button>
                                 </div>
                                 <div className="related-news">
                                     <aside className="header-aside">
                                         <h4>Related News</h4>
                                         <div className="card-list card-counting">
-
                                             {newsList.map((item, key) => <div key={key} className="single-card-list card-border">
                                                 <div className="card-list-img">
-                                                    <img src="assets/img/newsvolt/card-xs-img/card-xs-1.jpg" alt="image" />
+                                                    <img src={item.meta_image ? `${Config.apiURL}${item.meta_image}` : noData} alt={item.title} />
                                                 </div>
                                                 <div className="card-list-cont">
                                                     <div className="card-list-discript">
-                                                        <span>7:35 AM</span>
-                                                        <span>16 Nov, 2020</span>
+                                                        <span>{moment.utc(item.modified).format('hh:mm A')}</span>
+                                                        <span>{moment.utc(item.modified).format('Do MMM YYYY')}</span>
                                                     </div>
                                                     <div className="card-list-heading">
                                                         <h6><NavLink to={`/details/${item.name}`}>{item.title} . . .</NavLink></h6>
                                                     </div>
                                                 </div>
                                             </div>)}
-
                                         </div>
                                     </aside>
                                 </div>
@@ -121,7 +130,7 @@ function Details(props) {
                     <div className="author-wrap">
                         <div className="author-pro">
                             <div className="author-img">
-                                <img src="assets/img/author-pro.jpg" alt="image" />
+                                <img src={authorPro} alt="image" />
                             </div>
                             <div className="author-content">
                                 <h4><a href="single-post-details.html#">Jenny Doe</a></h4>
@@ -155,14 +164,14 @@ function Details(props) {
                                     <label>Full Name <span>*</span></label>
                                     <div className="input-with-icon">
                                         <input type="text" />
-                                        <img src="assets/img/svg/user.svg" alt="icon" />
+                                        <img src={user} alt="icon" />
                                     </div>
                                 </div>
                                 <div className="input-group">
                                     <label>Your e-mail <span>*</span></label>
                                     <div className="input-with-icon">
                                         <input type="email" />
-                                        <img src="assets/img/svg/email.svg" alt="icon" />
+                                        <img src={email} alt="icon" />
                                     </div>
                                 </div>
                             </div>

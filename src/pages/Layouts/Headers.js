@@ -5,8 +5,6 @@ import { Button, DatePicker, Switch, Layout } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import { useTheme } from "../../theme/use-theme";
 
-import logo from "../../assets/img/svg/logo.svg";
-
 function Headers() {
     let navigate = useNavigate();
     const { t } = useTranslation();
@@ -53,12 +51,32 @@ function Headers() {
                     <div className="main-header-wrapper">
                         <div className="header-logo">
                             <NavLink to="/">
-                                <img src={logo} alt="" />
+                                <span>criczone</span>
                             </NavLink>
                         </div>
                         <div className="navbar-wrapper">
                             <nav className="navbar-area">
                                 <ul>
+                                    <li><NavLink to="/">HOME</NavLink></li>
+                                    <li><NavLink to="/">LIVE SCORE</NavLink></li>
+                                    <li className="dropdown"><NavLink to="/">SERIES</NavLink>
+                                        <ul>
+                                            <li><NavLink to="/">ONGOING MATCHES</NavLink></li>
+                                        </ul>
+                                    </li>
+                                    <li className="dropdown"><NavLink to="/">NEWS</NavLink>
+                                        <ul>
+                                            <li><NavLink to="/">Trending News</NavLink></li>
+                                            <li><NavLink to="/">Press Release</NavLink></li>
+                                            <li><NavLink to="/">Previews</NavLink></li>
+                                            <li><NavLink to="/">Reviews</NavLink></li>
+                                            <li><NavLink to="/">On this Day</NavLink></li>
+                                            <li><NavLink to="/">Match Prediction</NavLink></li>
+                                        </ul>
+                                    </li>
+                                    <li><NavLink to="/">FEATURES</NavLink></li>
+                                </ul>
+                                {/* <ul>
                                     <li className="dropdown"><a href="#">Home</a>
                                         <ul>
                                             <li><a href="homepage.html">Newsvolt</a></li>
@@ -678,16 +696,21 @@ function Headers() {
                                     <li><a href="author-one.html">Author</a></li>
                                     <li><a href="shop.html">Shop</a></li>
                                     <li><a href="cart.html">Cart</a></li>
-                                </ul>
+                                </ul> */}
                             </nav>
                         </div>
                         <div className="options-area">
                             <div className="dark-light">
-
                                 <i className="icofont-moon"></i>
                             </div>
+                            <div className="dark-light">
+                                <i className="icofont-flag"></i>
+                            </div>
+                            <div className="dark-light">
+                                <i className="icofont-alarm"></i>
+                            </div>
 
-                            <div className="Search-popup">
+                            {/* <div className="Search-popup">
                                 <div className="Search-icon">
                                     <i className="icofont-search"></i>
                                 </div>
@@ -702,7 +725,7 @@ function Headers() {
                                         <i className="icofont-close-line"></i>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
                             {/* <div className="sign-wrapper">
 
                                 <div className="sign-bar">

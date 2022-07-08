@@ -22,11 +22,21 @@ function Home() {
     const { t } = useTranslation();
     const newsList = useSelector((state) => state.auth.newsList)
 
+    // Headline
+    let headline = newsList.filter(item => item.blog_category === 'news');
+
+    // Latest News
+    let latestNews = newsList.filter(item => item.blog_category === 'news');
+
+    // Latest Vedios
+    let latestVedios = JSON.parse(JSON.stringify(newsList))
+    latestVedios.length = 1
+
     useEffect(() => {
         dispatch(getNewsList())
     }, []);
 
-    console.log(newsList)
+    console.log(latestVedios)
 
     return (
         <>
@@ -47,56 +57,67 @@ function Home() {
                                     <div className="news-slider owl-carousel" data-carousel-loop="true" data-carousel-items="1"
                                         data-carousel-nav="false" data-carousel-dots="false" data-carousel-autoplay="true"
                                         data-carousel-mousedrag="true" data-carousel-animateout="null">
-                                        {newsList.map((item, key) => <div key={key} className="elepse">
+                                        {headline.map((item, key) => <div key={key} className="elepse">
                                             <NavLink to={`/details/${item.name}`}>{item.title}</NavLink>
                                         </div>)}
-
                                     </div>
                                 </div>
                                 <div className="bnr-lft-cnt">
                                     <div className="row">
                                         <div className="col-md-7" data-aos="fade-up" data-aos-delay="50">
-
-                                            <div className="btl-simple-card">
-                                                <img src="assets/img/newsvolt/card-mixed/banner-card1.jpg" alt="image" />
+                                            {newsList[0] && (<div className="btl-simple-card">
+                                                <img src={newsList[0].meta_image ? `${Config.apiURL}${newsList[0].meta_image}` : noData} alt="image" />
                                                 <div className="btlc-content-wrapper">
-                                                    <a href="single-tag-page.html"><span className="btn">Traveling</span></a>
+                                                    <NavLink to={`/details/${newsList[0].name}`}><span className="btn">{newsList[0].blog_category}</span></NavLink>
                                                     <div className="btlc-marking">
                                                         <span className="icofont-star"></span>
                                                     </div>
                                                     <div className="btlc-content">
                                                         <div className="btcl-content-status">
-                                                            <span>7:35 AM</span>
-                                                            <span>16 Nov, 2020</span>
+                                                            <span>{moment.utc(newsList[0].modified).format('hh:mm A')}</span>
+                                                            <span>{moment.utc(newsList[0].modified).format('Do MMM YYYY')}</span>
                                                         </div>
-                                                        <h3><a href="single-post-details.html" className="clr-white">A wonderful
-                                                            serenity has taken possession</a></h3>
+                                                        <h3><NavLink to={`/details/${newsList[0].name}`}>{newsList[0].title}</NavLink></h3>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div>)}
                                         </div>
                                         <div className="col-md-5">
                                             <div className="bnr-lft-cnt-rgt">
-
-                                                {newsList.map((item, key) => <div key={key} href="single-post-details.html" className="btl-simple-card" data-aos="fade-up"
+                                                {newsList[1] && (<div className="btl-simple-card" data-aos="fade-up"
                                                     data-aos-delay="100">
-                                                    <img src={item.meta_image ? `${Config.apiURL}${item.meta_image}` : noData} alt="image" />
+                                                    <img src={newsList[1].meta_image ? `${Config.apiURL}${newsList[1].meta_image}` : noData} alt="image" />
                                                     <div className="btlc-content-wrapper">
-                                                        <a href="single-tag-page.html"><span className="btn">Technology</span></a>
+                                                        <NavLink to={`/details/${newsList[1].name}`}><span className="btn">{newsList[1].blog_category}</span></NavLink>
                                                         <div className="btlc-marking">
                                                             <span className="icofont-star"></span>
                                                         </div>
                                                         <div className="btlc-content">
                                                             <div className="btcl-content-status">
-                                                                <span>{moment.utc(item.modified).format('hh:mm A')}</span>
-                                                                <span>{moment.utc(item.modified).format('Do MMM YYYY')}</span>
+                                                                <span>{moment.utc(newsList[1].modified).format('hh:mm A')}</span>
+                                                                <span>{moment.utc(newsList[1].modified).format('Do MMM YYYY')}</span>
                                                             </div>
-                                                            <h3><NavLink to={`/details/${item.name}`}>{item.title}</NavLink></h3>
+                                                            <h3><NavLink to={`/details/${newsList[1].name}`}>{newsList[1].title}</NavLink></h3>
                                                         </div>
                                                     </div>
                                                 </div>)}
-
-
+                                                {newsList[2] && (<div className="btl-simple-card" data-aos="fade-up"
+                                                    data-aos-delay="100">
+                                                    <img src={newsList[2].meta_image ? `${Config.apiURL}${newsList[2].meta_image}` : noData} alt="image" />
+                                                    <div className="btlc-content-wrapper">
+                                                        <NavLink to={`/details/${newsList[2].name}`}><span className="btn">{newsList[2].blog_category}</span></NavLink>
+                                                        <div className="btlc-marking">
+                                                            <span className="icofont-star"></span>
+                                                        </div>
+                                                        <div className="btlc-content">
+                                                            <div className="btcl-content-status">
+                                                                <span>{moment.utc(newsList[2].modified).format('hh:mm A')}</span>
+                                                                <span>{moment.utc(newsList[2].modified).format('Do MMM YYYY')}</span>
+                                                            </div>
+                                                            <h3><NavLink to={`/details/${newsList[2].name}`}>{newsList[2].title}</NavLink></h3>
+                                                        </div>
+                                                    </div>
+                                                </div>)}
                                             </div>
                                         </div>
                                     </div>
@@ -107,7 +128,7 @@ function Home() {
                             <aside className="header-aside" data-aos="fade-up">
                                 <h4>Latest News</h4>
                                 <div className="card-list card-counting">
-                                    {newsList.map((item, key) => <div key={key} className="single-card-list card-border">
+                                    {latestNews.map((item, key) => <div key={key} className="single-card-list card-border">
                                         <div className="card-list-img">
                                             <img src={item.meta_image ? `${Config.apiURL}${item.meta_image}` : noData} alt={item.title} />
                                         </div>
@@ -122,12 +143,12 @@ function Home() {
                                         </div>
                                     </div>)}
                                 </div>
-                                <div className="video-card">
-                                    <img src={videoCard} alt="image" />
-                                    <a href="#" className="video-icon">
+                                {latestVedios.map((item, key) => <div key={key} className="video-card">
+                                    <img src={item.meta_image ? `${Config.apiURL}${item.meta_image}` : noData} alt={item.title} />
+                                    <a className="video-icon">
                                         <img src={playBtn} alt="image" />
                                     </a>
-                                </div>
+                                </div>)}
                             </aside>
                         </div>
                     </div>

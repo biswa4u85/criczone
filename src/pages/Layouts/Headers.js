@@ -46,7 +46,7 @@ function Headers() {
                     </div>
                 </div>
             </div> */}
-            <div className="main-header bg-primary">
+            <div className="main-header bg-header">
                 <div className="container container-md">
                     <div className="main-header-wrapper">
                         <div className="header-logo">

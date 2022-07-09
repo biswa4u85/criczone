@@ -4,9 +4,21 @@ import { apiPostCall, fileUpload } from '../utility/site-apis'
 const initialState = {
   isFetching: false,
   error: null,
+  headlines: [],
   newsList: [],
   newsDetails: {}
 }
+
+export const getHeadlineList = createAsyncThunk(
+  'auth/getHeadlineList',
+  async (params, { rejectWithValue }) => {
+    let urls = `doctype=Headlines+News&limit_page_length=None&fields=${JSON.stringify(["name", "title"])}&cmd=frappe.client.get_list`;
+    let response = await apiPostCall('/', urls)
+    if (response) {
+      return response
+    }
+  }
+)
 
 export const getNewsList = createAsyncThunk(
   'auth/getNewsList',
@@ -40,6 +52,20 @@ export const counterSlice = createSlice({
     },
   },
   extraReducers: {
+    // Headline List
+    [getHeadlineList.pending]: (state, action) => {
+      state.isFetching = true
+      state.error = null
+    },
+    [getHeadlineList.rejected]: (state, action) => {
+      state.isFetching = false
+      state.error = action.payload.message
+    },
+    [getHeadlineList.fulfilled]: (state, action) => {
+      state.isFetching = false
+      state.error = null
+      state.headlines = action.payload ? action.payload : []
+    },
     // News List
     [getNewsList.pending]: (state, action) => {
       state.isFetching = true

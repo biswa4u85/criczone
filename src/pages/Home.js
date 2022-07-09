@@ -4,7 +4,7 @@ import moment from "moment";
 import { useSelector, useDispatch } from 'react-redux'
 import { NavLink, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { getNewsList } from '../store/AuthRedux'
+import { getHeadlineList, getNewsList } from '../store/AuthRedux'
 import { Helmet } from "react-helmet";
 import Config from "../common/Config";
 
@@ -17,10 +17,9 @@ function Home() {
     let navigate = useNavigate();
     const { t } = useTranslation();
     const liveData = [{}, {}, {}, {}, {}, {}, {}, {}, {}]
+    const headlines = useSelector((state) => state.auth.headlines)
     const newsList = useSelector((state) => state.auth.newsList)
 
-    // Headline
-    let headline = newsList.filter(item => item.blog_category === 'news');
 
     // Latest News
     let latestNews = newsList.filter(item => item.blog_category === 'news');
@@ -30,6 +29,7 @@ function Home() {
     latestVedios.length = 1
 
     useEffect(() => {
+        dispatch(getHeadlineList())
         dispatch(getNewsList())
     }, []);
 
@@ -136,9 +136,9 @@ function Home() {
                                     <div className="news-slider owl-carousel" data-carousel-loop="true" data-carousel-items="1"
                                         data-carousel-nav="false" data-carousel-dots="false" data-carousel-autoplay="true"
                                         data-carousel-mousedrag="true" data-carousel-animateout="null">
-                                        {headline.map((item, key) => <div key={key} className="elepse">
+                                        {headlines ? headlines.map((item, key) => <div key={key} className="elepse">
                                             <NavLink to={`/details/${item.name}`}>{item.title}</NavLink>
-                                        </div>)}
+                                        </div>) : null}
                                     </div>
                                 </div>
                                 <div className="bnr-lft-cnt">

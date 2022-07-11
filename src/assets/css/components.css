@@ -13,6 +13,7 @@
 }
 
 :root {
+    --color-blue: #57a4ed;
     --bold: 800;
     --semi-bold: 700;
     --medium: 500;
@@ -6053,7 +6054,7 @@ input::placeholder {
     top: 50%;
     left: calc(100% + 10px);
     transform: translateY(-50%);
-    background-color: var(--color-primary)
+    background-color: var(--color-blue)
 }
 
 .title-line-shape:before {
@@ -6065,7 +6066,7 @@ input::placeholder {
     top: 50%;
     left: calc(100% + 40px);
     transform: translateY(-50%);
-    background-color: var(--color-primary)
+    background-color: var(--color-blue)
 }
 
 .left-line-shape {
@@ -6095,7 +6096,7 @@ input::placeholder {
     left: 0;
     height: 5px;
     width: 5px;
-    background-color: var(--color-primary);
+    background-color: var(--color-blue);
     border-radius: 50%;
     transform: translateY(-50%);
     transition: var(--ease-in)

@@ -31,6 +31,15 @@ function Details(props) {
     const newsList = useSelector((state) => state.auth.newsList)
     const newsDetails = useSelector((state) => state.auth.newsDetails)
 
+
+    // Latest News
+    let latestNews = newsList.filter(item => item.news_category === 'NC-007 (News)');
+    latestNews.length = 5
+
+    // Related News
+    let relatedNews = newsList.filter(item => item.news_category === 'NC-007 (News)');
+    relatedNews.length = 5
+
     useEffect(() => {
         dispatch(getNewsDetails(pId))
     }, [pId]);
@@ -51,8 +60,8 @@ function Details(props) {
                         <div className="col-lg-8">
                             <div className="single-post-content">
                                 <div className="figer-img">
-                                    <img src={newsDetails?.meta_image ? `${Config.apiURL}${newsDetails?.meta_image}` : noData} alt={newsDetails?.title} />
-                                    <button className="btn btn-theme">{newsDetails?.blog_category}</button>
+                                    {Config.randerImage(newsDetails?.meta_image)}
+                                    <button className="btn btn-theme">{newsDetails?.news_category}</button>
                                 </div>
                                 <div className="timeline">
                                     <span>{moment.utc(newsDetails?.modified).format('hh:mm A')}</span>
@@ -77,9 +86,9 @@ function Details(props) {
                                 <aside className="header-aside">
                                     <h4>Latest News</h4>
                                     <div className="card-list card-counting">
-                                        {newsList.map((item, key) => <div key={key} className="single-card-list card-border">
+                                        {latestNews.map((item, key) => <div key={key} className="single-card-list card-border">
                                             <div className="card-list-img">
-                                                <img src={item.meta_image ? `${Config.apiURL}${item.meta_image}` : noData} alt={item.title} />
+                                                {Config.randerImage(item.meta_image, 100, 70)}
                                             </div>
                                             <div className="card-list-cont">
                                                 <div className="card-list-discript">
@@ -87,16 +96,13 @@ function Details(props) {
                                                     <span>{moment.utc(item.modified).format('Do MMM YYYY')}</span>
                                                 </div>
                                                 <div className="card-list-heading">
-                                                    <h6><NavLink to={`/details/${item.name}`}>{item.title} . . .</NavLink></h6>
+                                                    <h6><NavLink to={`/details/${item.name}`}>{Config.trunCate(item.title, 60, '. . .')}</NavLink></h6>
                                                 </div>
                                             </div>
                                         </div>)}
                                     </div>
                                     <div className="video-card">
-                                        <img src={videoCard} alt="image" />
-                                        <a href="#" className="video-icon">
-                                            <img src={playBtn} alt="image" />
-                                        </a>
+                                        <img src="https://tpc.googlesyndication.com/simgad/14556471411178073418?" width="250" height="250" alt="Advertiser" border="0" />
                                     </div>
                                 </aside>
                                 <div className="promo-add">
@@ -107,9 +113,9 @@ function Details(props) {
                                     <aside className="header-aside">
                                         <h4>Related News</h4>
                                         <div className="card-list card-counting">
-                                            {newsList.map((item, key) => <div key={key} className="single-card-list card-border">
+                                            {relatedNews.map((item, key) => <div key={key} className="single-card-list card-border">
                                                 <div className="card-list-img">
-                                                    <img src={item.meta_image ? `${Config.apiURL}${item.meta_image}` : noData} alt={item.title} />
+                                                    {Config.randerImage(item.meta_image, 100, 70)}
                                                 </div>
                                                 <div className="card-list-cont">
                                                     <div className="card-list-discript">
@@ -117,7 +123,7 @@ function Details(props) {
                                                         <span>{moment.utc(item.modified).format('Do MMM YYYY')}</span>
                                                     </div>
                                                     <div className="card-list-heading">
-                                                        <h6><NavLink to={`/details/${item.name}`}>{item.title} . . .</NavLink></h6>
+                                                        <h6><NavLink to={`/details/${item.name}`}>{Config.trunCate(item.title, 60, '. . .')}</NavLink></h6>
                                                     </div>
                                                 </div>
                                             </div>)}

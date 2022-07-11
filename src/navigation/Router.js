@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux'
 import Layouts from "../pages/Layouts";
 import Home from "../pages/Home";
 import Details from "../pages/Details";
+import Cms from "../pages/Cms";
 
 
 function Routers() {
@@ -20,6 +21,7 @@ function Routers() {
         <Route element={<Layouts />}>
           <Route path="/" element={<Home />} />
           <Route path="/details/:pId" element={<Details />} />
+          <Route path="/cms/:Id" element={<Cms />} />
         </Route>
       </Routes>
     </HashRouter>

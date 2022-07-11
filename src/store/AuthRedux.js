@@ -5,6 +5,8 @@ const initialState = {
   isFetching: false,
   error: null,
   headlines: [],
+  cms: [],
+  categorys: [],
   newsList: [],
   newsDetails: {}
 }
@@ -12,7 +14,18 @@ const initialState = {
 export const getHeadlineList = createAsyncThunk(
   'auth/getHeadlineList',
   async (params, { rejectWithValue }) => {
-    let urls = `doctype=Headlines+News&limit_page_length=None&fields=${JSON.stringify(["name", "title"])}&cmd=frappe.client.get_list`;
+    let urls = `doctype=News+Headlines&limit_page_length=None&fields=${JSON.stringify(["name", "description"])}&cmd=frappe.client.get_list`;
+    let response = await apiPostCall('/', urls)
+    if (response) {
+      return response
+    }
+  }
+)
+
+export const getNewsCategory = createAsyncThunk(
+  'auth/getNewsCategory',
+  async (params, { rejectWithValue }) => {
+    let urls = `doctype=News+Category&limit_page_length=None&fields=${JSON.stringify(["name", "description"])}&cmd=frappe.client.get_list`;
     let response = await apiPostCall('/', urls)
     if (response) {
       return response
@@ -23,7 +36,7 @@ export const getHeadlineList = createAsyncThunk(
 export const getNewsList = createAsyncThunk(
   'auth/getNewsList',
   async (params, { rejectWithValue }) => {
-    let urls = `doctype=Blog+Post&limit_page_length=None&fields=${JSON.stringify(["name", "title", "blog_category", "blog_intro", "meta_image", "modified"])}&cmd=frappe.client.get_list`;
+    let urls = `doctype=Blog+Post&limit_page_length=None&fields=${JSON.stringify(["name", "title", "news_category", "blog_intro", "meta_image", "modified"])}&cmd=frappe.client.get_list`;
     let response = await apiPostCall('/', urls)
     if (response) {
       return response
@@ -35,6 +48,17 @@ export const getNewsDetails = createAsyncThunk(
   'auth/getNewsDetails',
   async (params, { rejectWithValue }) => {
     let urls = `doctype=Blog+Post&fields=${JSON.stringify(["*"])}&filters=${JSON.stringify([["Blog Post", "name", "like", params]])}&cmd=frappe.client.get_list`;
+    let response = await apiPostCall('/', urls)
+    if (response) {
+      return response[0]
+    }
+  }
+)
+
+export const getCmsDetails = createAsyncThunk(
+  'auth/getCmsDetails',
+  async (params, { rejectWithValue }) => {
+    let urls = `doctype=Web+Page&fields=${JSON.stringify(["*"])}&filters=${JSON.stringify([["Web Page", "route", "like", params]])}&cmd=frappe.client.get_list`;
     let response = await apiPostCall('/', urls)
     if (response) {
       return response[0]
@@ -66,6 +90,20 @@ export const counterSlice = createSlice({
       state.error = null
       state.headlines = action.payload ? action.payload : []
     },
+    // News Category
+    [getNewsCategory.pending]: (state, action) => {
+      state.isFetching = true
+      state.error = null
+    },
+    [getNewsCategory.rejected]: (state, action) => {
+      state.isFetching = false
+      state.error = action.payload.message
+    },
+    [getNewsCategory.fulfilled]: (state, action) => {
+      state.isFetching = false
+      state.error = null
+      state.categorys = action.payload ? action.payload : []
+    },
     // News List
     [getNewsList.pending]: (state, action) => {
       state.isFetching = true
@@ -93,6 +131,20 @@ export const counterSlice = createSlice({
       state.isFetching = false
       state.error = null
       state.newsDetails = action.payload
+    },
+    // CMS Details
+    [getCmsDetails.pending]: (state, action) => {
+      state.isFetching = true
+      state.error = null
+    },
+    [getCmsDetails.rejected]: (state, action) => {
+      state.isFetching = false
+      state.error = action.payload.message
+    },
+    [getCmsDetails.fulfilled]: (state, action) => {
+      state.isFetching = false
+      state.error = null
+      state.cms = action.payload
     },
   }
 

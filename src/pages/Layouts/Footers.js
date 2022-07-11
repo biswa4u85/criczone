@@ -52,13 +52,13 @@ function Footers() {
                             <div className="ftr-link">
                                 <h3 className="title-line-shape">Useful Link</h3>
                                 <ul>
-                                    <li><NavLink to="/">DCMA</NavLink></li>
-                                    <li><NavLink to="/">DISCLAIMER</NavLink></li>
-                                    <li><NavLink to="/">COPYRIGHT NOTICE</NavLink></li>
-                                    <li><NavLink to="/">REVIEW</NavLink></li>
-                                    <li><NavLink to="/">FANTASY</NavLink></li>
-                                    <li><NavLink to="/">ABOUT US</NavLink></li>
-                                    <li><NavLink to="/">CONTACT US</NavLink></li>
+                                    <li><NavLink to="/cms/dcma">DCMA</NavLink></li>
+                                    <li><NavLink to="/cms/disclaimer">DISCLAIMER</NavLink></li>
+                                    <li><NavLink to="/cms/copyright-notice">COPYRIGHT NOTICE</NavLink></li>
+                                    <li><NavLink to="/cms/dcma">REVIEW</NavLink></li>
+                                    <li><NavLink to="/cms/dcma">FANTASY</NavLink></li>
+                                    <li><NavLink to="/cms/about-us">ABOUT US</NavLink></li>
+                                    <li><NavLink to="/cms/dcma">CONTACT US</NavLink></li>
                                 </ul>
                             </div>
                         </div>
@@ -81,8 +81,8 @@ function Footers() {
                     <div className="ftr-dtls-wrapper">
                         <p>Copyright © 2022 criczone All Rights Reserved.</p>
                         <ul>
-                            <li><NavLink to="/">Term & Condition</NavLink></li>
-                            <li><NavLink to="/">Privecy</NavLink></li>
+                            <li><NavLink to="/cms/terms-conditions">Term & Condition</NavLink></li>
+                            <li><NavLink to="/cms/privecy">Privecy</NavLink></li>
                         </ul>
                     </div>
                 </div>

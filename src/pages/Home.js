@@ -4,7 +4,7 @@ import moment from "moment";
 import { useSelector, useDispatch } from 'react-redux'
 import { NavLink, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { getHeadlineList, getNewsList } from '../store/AuthRedux'
+import { getHeadlineList, getNewsCategory, getNewsList } from '../store/AuthRedux'
 import { Helmet } from "react-helmet";
 import Config from "../common/Config";
 
@@ -18,11 +18,13 @@ function Home() {
     const { t } = useTranslation();
     const liveData = [{}, {}, {}, {}, {}, {}, {}, {}, {}]
     const headlines = useSelector((state) => state.auth.headlines)
+    const categorys = useSelector((state) => state.auth.categorys)
     const newsList = useSelector((state) => state.auth.newsList)
 
 
     // Latest News
-    let latestNews = newsList.filter(item => item.blog_category === 'news');
+    let latestNews = newsList.filter(item => item.news_category === 'NC-007 (News)');
+    latestNews.length = 5
 
     // Latest Vedios
     let latestVedios = JSON.parse(JSON.stringify(newsList))
@@ -30,10 +32,17 @@ function Home() {
 
     useEffect(() => {
         dispatch(getHeadlineList())
+        dispatch(getNewsCategory())
         dispatch(getNewsList())
     }, []);
 
-    console.log(latestVedios)
+    const filterBtWeek = (cat) => {
+        let dataList = newsList.filter(item => item.news_category === cat);
+        dataList.length = 4
+        return dataList
+    }
+
+    console.log(categorys)
 
     return (
         <>
@@ -137,7 +146,7 @@ function Home() {
                                         data-carousel-nav="false" data-carousel-dots="false" data-carousel-autoplay="true"
                                         data-carousel-mousedrag="true" data-carousel-animateout="null">
                                         {headlines ? headlines.map((item, key) => <div key={key} className="elepse">
-                                            <NavLink to={`/details/${item.name}`}>{item.title}</NavLink>
+                                            {item.description}
                                         </div>) : null}
                                     </div>
                                 </div>
@@ -145,9 +154,9 @@ function Home() {
                                     <div className="row">
                                         <div className="col-md-7" data-aos="fade-up" data-aos-delay="50">
                                             {newsList[0] && (<div className="btl-simple-card">
-                                                <img src={newsList[0].meta_image ? `${Config.apiURL}${newsList[0].meta_image}` : noData} alt="image" />
+                                                {Config.randerImage(newsList[0].meta_image, 600, 740)}
                                                 <div className="btlc-content-wrapper">
-                                                    <NavLink to={`/details/${newsList[0].name}`}><span className="btn">{newsList[0].blog_category}</span></NavLink>
+                                                    <NavLink to={`/details/${newsList[0].name}`}><span className="btn">{newsList[0].news_category}</span></NavLink>
                                                     <div className="btlc-marking">
                                                         <span className="icofont-star"></span>
                                                     </div>
@@ -156,7 +165,7 @@ function Home() {
                                                             <span>{moment.utc(newsList[0].modified).format('hh:mm A')}</span>
                                                             <span>{moment.utc(newsList[0].modified).format('Do MMM YYYY')}</span>
                                                         </div>
-                                                        <h3><NavLink to={`/details/${newsList[0].name}`}>{newsList[0].title}</NavLink></h3>
+                                                        <h3><NavLink to={`/details/${newsList[0].name}`}>{Config.trunCate(newsList[0].title, 40, '. . .')}</NavLink></h3>
                                                     </div>
                                                 </div>
                                             </div>)}
@@ -165,9 +174,9 @@ function Home() {
                                             <div className="bnr-lft-cnt-rgt">
                                                 {newsList[1] && (<div className="btl-simple-card" data-aos="fade-up"
                                                     data-aos-delay="100">
-                                                    <img src={newsList[1].meta_image ? `${Config.apiURL}${newsList[1].meta_image}` : noData} alt="image" />
+                                                    {Config.randerImage(newsList[1].meta_image, 300, 355)}
                                                     <div className="btlc-content-wrapper">
-                                                        <NavLink to={`/details/${newsList[1].name}`}><span className="btn">{newsList[1].blog_category}</span></NavLink>
+                                                        <NavLink to={`/details/${newsList[1].name}`}><span className="btn">{newsList[1].news_category}</span></NavLink>
                                                         <div className="btlc-marking">
                                                             <span className="icofont-star"></span>
                                                         </div>
@@ -176,15 +185,15 @@ function Home() {
                                                                 <span>{moment.utc(newsList[1].modified).format('hh:mm A')}</span>
                                                                 <span>{moment.utc(newsList[1].modified).format('Do MMM YYYY')}</span>
                                                             </div>
-                                                            <h3><NavLink to={`/details/${newsList[1].name}`}>{newsList[1].title}</NavLink></h3>
+                                                            <h3><NavLink to={`/details/${newsList[1].name}`}>{Config.trunCate(newsList[1].title, 40, '. . .')}</NavLink></h3>
                                                         </div>
                                                     </div>
                                                 </div>)}
                                                 {newsList[2] && (<div className="btl-simple-card" data-aos="fade-up"
                                                     data-aos-delay="100">
-                                                    <img src={newsList[2].meta_image ? `${Config.apiURL}${newsList[2].meta_image}` : noData} alt="image" />
+                                                    {Config.randerImage(newsList[2].meta_image, 300, 355)}
                                                     <div className="btlc-content-wrapper">
-                                                        <NavLink to={`/details/${newsList[2].name}`}><span className="btn">{newsList[2].blog_category}</span></NavLink>
+                                                        <NavLink to={`/details/${newsList[2].name}`}><span className="btn">{newsList[2].news_category}</span></NavLink>
                                                         <div className="btlc-marking">
                                                             <span className="icofont-star"></span>
                                                         </div>
@@ -193,7 +202,7 @@ function Home() {
                                                                 <span>{moment.utc(newsList[2].modified).format('hh:mm A')}</span>
                                                                 <span>{moment.utc(newsList[2].modified).format('Do MMM YYYY')}</span>
                                                             </div>
-                                                            <h3><NavLink to={`/details/${newsList[2].name}`}>{newsList[2].title}</NavLink></h3>
+                                                            <h3><NavLink to={`/details/${newsList[2].name}`}>{Config.trunCate(newsList[2].title, 40, '. . .')}</NavLink></h3>
                                                         </div>
                                                     </div>
                                                 </div>)}
@@ -209,7 +218,7 @@ function Home() {
                                 <div className="card-list card-counting">
                                     {latestNews.map((item, key) => <div key={key} className="single-card-list card-border">
                                         <div className="card-list-img">
-                                            <img src={item.meta_image ? `${Config.apiURL}${item.meta_image}` : noData} alt={item.title} />
+                                            {Config.randerImage(item.meta_image, 100, 70)}
                                         </div>
                                         <div className="card-list-cont">
                                             <div className="card-list-discript">
@@ -217,7 +226,7 @@ function Home() {
                                                 <span>{moment.utc(item.modified).format('Do MMM YYYY')}</span>
                                             </div>
                                             <div className="card-list-heading">
-                                                <h6><NavLink to={`/details/${item.name}`}>{item.title} . . .</NavLink></h6>
+                                                <h6><NavLink to={`/details/${item.name}`}>{Config.trunCate(item.title, 60, '. . .')}</NavLink></h6>
                                             </div>
                                         </div>
                                     </div>)}
@@ -241,7 +250,6 @@ function Home() {
                             <div className="news-lft-wrapper">
                                 <div className="news-card-wrapper">
                                     <div className="ns-mini-card">
-
                                         {newsList.map((item, key) => <div key={key} href="single-post-details.html" className="btl-simple-card" data-aos="fade-up">
                                             <img src="assets/img/newsvolt/news-card/card-mini-1.jpg" alt="image" />
                                             <div className="btlc-content-wrapper">
@@ -251,7 +259,7 @@ function Home() {
                                                         <span>{moment.utc(item.modified).format('hh:mm A')}</span>
                                                         <span>{moment.utc(item.modified).format('Do MMM YYYY')}</span>
                                                     </div>
-                                                    <h3>{item.title}</h3>
+                                                    <h3>{Config.trunCate(item.title, 40, '. . .')}</h3>
                                                 </div>
                                             </div>
                                         </div>)}
@@ -288,7 +296,7 @@ function Home() {
                                                 <span>{moment.utc(item.modified).format('hh:mm A')}</span>
                                                 <span>{moment.utc(item.modified).format('Do MMM YYYY')}</span>
                                             </div>
-                                            <h3><NavLink to={`/details/${item.name}`}>{item.title}</NavLink>
+                                            <h3><NavLink to={`/details/${item.name}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink>
                                             </h3>
                                         </div>
                                     </div>)}
@@ -314,7 +322,7 @@ function Home() {
                                             <span>{moment.utc(item.modified).format('hh:mm A')}</span>
                                             <span>{moment.utc(item.modified).format('Do MMM YYYY')}</span>
                                         </div>
-                                        <h3><NavLink to={`/details/${item.name}`}>{item.title}</NavLink>
+                                        <h3><NavLink to={`/details/${item.name}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink>
                                         </h3>
                                     </div>
                                 </div>)}
@@ -359,20 +367,16 @@ function Home() {
                             <div className="tab-pane fade" id="travel" role="tabpanel">
                                 <div className="weekly-list-item">
 
-                                    {newsList.map((item, key) => <div key={key} className="news-vcard-single">
+                                    {filterBtWeek('NC-012 (Women)', 4).map((item, key) => <div key={key} className="news-vcard-single">
                                         <div className="news-vcard-img">
-                                            <img src={item.meta_image ? `${Config.apiURL}${item.meta_image}` : noData} alt="image" />
-                                            <div className="news-vcard-play">
-                                                <a className="vimo1" href="https://vimeo.com/63729905"><img
-                                                    src={playBtn} alt="image" /></a>
-                                            </div>
+                                            {Config.randerImage(item.meta_image, 220)}
                                         </div>
                                         <div className="news-vcard-content">
                                             <div className="news-vcard-title">
                                                 <span>{moment.utc(item.modified).format('hh:mm A')}</span>
                                                 <span>{moment.utc(item.modified).format('Do MMM YYYY')}</span>
                                             </div>
-                                            <h3><NavLink to={`/details/${item.name}`}>{item.title}</NavLink></h3>
+                                            <h3><NavLink to={`/details/${item.name}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
                                         </div>
                                     </div>)}
 
@@ -382,20 +386,16 @@ function Home() {
                             <div className="tab-pane fade show active" id="food" role="tabpanel">
                                 <div className="weekly-list-item">
 
-                                    {newsList.map((item, key) => <div key={key} className="news-vcard-single">
+                                    {filterBtWeek('NC-022 (Domestic)', 4).map((item, key) => <div key={key} className="news-vcard-single">
                                         <div className="news-vcard-img">
-                                            <img src={item.meta_image ? `${Config.apiURL}${item.meta_image}` : noData} alt="image" />
-                                            <div className="news-vcard-play">
-                                                <a className="vimo1" href="https://vimeo.com/63729905"><img
-                                                    src={playBtn} alt="image" /></a>
-                                            </div>
+                                            {Config.randerImage(item.meta_image, 220)}
                                         </div>
                                         <div className="news-vcard-content">
                                             <div className="news-vcard-title">
                                                 <span>{moment.utc(item.modified).format('hh:mm A')}</span>
                                                 <span>{moment.utc(item.modified).format('Do MMM YYYY')}</span>
                                             </div>
-                                            <h3><NavLink to={`/details/${item.name}`}>{item.title}</NavLink></h3>
+                                            <h3><NavLink to={`/details/${item.name}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
                                         </div>
                                     </div>)}
                                 </div>
@@ -403,20 +403,16 @@ function Home() {
                             <div className="tab-pane fade" id="medicare" role="tabpanel">
                                 <div className="weekly-list-item">
 
-                                    {newsList.map((item, key) => <div key={key} className="news-vcard-single">
+                                    {filterBtWeek('NC-023 (International)', 4).map((item, key) => <div key={key} className="news-vcard-single">
                                         <div className="news-vcard-img">
-                                            <img src={item.meta_image ? `${Config.apiURL}${item.meta_image}` : noData} alt="image" />
-                                            <div className="news-vcard-play">
-                                                <a className="vimo1" href="https://vimeo.com/63729905"><img
-                                                    src={playBtn} alt="image" /></a>
-                                            </div>
+                                            {Config.randerImage(item.meta_image, 220)}
                                         </div>
                                         <div className="news-vcard-content">
                                             <div className="news-vcard-title">
                                                 <span>{moment.utc(item.modified).format('hh:mm A')}</span>
                                                 <span>{moment.utc(item.modified).format('Do MMM YYYY')}</span>
                                             </div>
-                                            <h3><NavLink to={`/details/${item.name}`}>{item.title}</NavLink></h3>
+                                            <h3><NavLink to={`/details/${item.name}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
                                         </div>
                                     </div>)}
                                 </div>
@@ -424,20 +420,16 @@ function Home() {
                             <div className="tab-pane fade" id="fashion" role="tabpanel">
                                 <div className="weekly-list-item">
 
-                                    {newsList.map((item, key) => <div key={key} className="news-vcard-single">
+                                    {filterBtWeek("NC-014 (Editor's Pick)", 4).map((item, key) => <div key={key} className="news-vcard-single">
                                         <div className="news-vcard-img">
-                                            <img src={item.meta_image ? `${Config.apiURL}${item.meta_image}` : noData} alt="image" />
-                                            <div className="news-vcard-play">
-                                                <a className="vimo1" href="https://vimeo.com/63729905"><img
-                                                    src={playBtn} alt="image" /></a>
-                                            </div>
+                                            {Config.randerImage(item.meta_image, 220)}
                                         </div>
                                         <div className="news-vcard-content">
                                             <div className="news-vcard-title">
                                                 <span>{moment.utc(item.modified).format('hh:mm A')}</span>
                                                 <span>{moment.utc(item.modified).format('Do MMM YYYY')}</span>
                                             </div>
-                                            <h3><NavLink to={`/details/${item.name}`}>{item.title}</NavLink></h3>
+                                            <h3><NavLink to={`/details/${item.name}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
                                         </div>
                                     </div>)}
                                 </div>
@@ -445,20 +437,16 @@ function Home() {
                             <div className="tab-pane fade" id="fitness" role="tabpanel">
                                 <div className="weekly-list-item">
 
-                                    {newsList.map((item, key) => <div key={key} className="news-vcard-single">
+                                    {filterBtWeek('NC-008 (Match Prediction)', 4).map((item, key) => <div key={key} className="news-vcard-single">
                                         <div className="news-vcard-img">
-                                            <img src={item.meta_image ? `${Config.apiURL}${item.meta_image}` : noData} alt="image" />
-                                            <div className="news-vcard-play">
-                                                <a className="vimo1" href="https://vimeo.com/63729905"><img
-                                                    src={playBtn} alt="image" /></a>
-                                            </div>
+                                            {Config.randerImage(item.meta_image, 220)}
                                         </div>
                                         <div className="news-vcard-content">
                                             <div className="news-vcard-title">
                                                 <span>{moment.utc(item.modified).format('hh:mm A')}</span>
                                                 <span>{moment.utc(item.modified).format('Do MMM YYYY')}</span>
                                             </div>
-                                            <h3><NavLink to={`/details/${item.name}`}>{item.title}</NavLink></h3>
+                                            <h3><NavLink to={`/details/${item.name}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
                                         </div>
                                     </div>)}
                                 </div>
@@ -469,11 +457,10 @@ function Home() {
                     <div className="fd-carousel-wrapper owl-carousel" data-carousel-loop="false" data-carousel-items="3"
                         data-carousel-nav="false" data-carousel-dots="true" data-carousel-md="2" data-carousel-sm="2"
                         data-carousel-lg="3" data-carousel-xl="3" data-aos="fade-up">
-
-                        {newsList.map((item, key) => <div key={key} className="fdc-single-item">
+                        {filterBtWeek('NC-010 (Video)', 12).map((item, key) => <div key={key} className="fdc-single-item">
                             <div className="fdc-img">
                                 <NavLink to={`/details/${item.name}`}>
-                                    <img src={item.meta_image ? `${Config.apiURL}${item.meta_image}` : noData} alt="image" />
+                                    {Config.randerImage(item.meta_image, 220)}
                                 </NavLink>
                             </div>
                             <div className="fdc-content">
@@ -481,7 +468,7 @@ function Home() {
                                     <span>{moment.utc(item.modified).format('hh:mm A')}</span>
                                     <span>{moment.utc(item.modified).format('Do MMM YYYY')}</span>
                                 </div>
-                                <h3><NavLink to={`/details/${item.name}`}>{item.title}</NavLink></h3>
+                                <h3><NavLink to={`/details/${item.name}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
                             </div>
                         </div>)}
                     </div>

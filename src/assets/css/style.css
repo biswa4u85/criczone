@@ -55,7 +55,7 @@
     --black-overlay: rgba(0, 0, 0, 0.8);
     --black-overlay2: rgba(0, 0, 0, 0.6);
     --black-light-overlay: rgba(0, 0, 0, 0.5);
-    --primary-overlay: rgba(246, 60, 37, 0.8);
+    --primary-overlay: rgba(87, 164, 237, 0.8);
     --theme-overlay: linear-gradient(180deg, rgba(246, 60, 37, 0) 43.3%, #F63C25 100%);
     --gradient-primary-overlay: linear-gradient(180deg, rgba(246, 60, 37, 0.29) 43.3%, rgba(246, 60, 37, 0.75) 100%);
     --title-color: rgba(249, 249, 249, 0.7);
@@ -413,7 +413,7 @@
 
 .close-popup:hover {
     border-color: transparent;
-    background-color: var(--color-primary)
+    background-color: var(--color-blue)
 }
 
 .close-popup:hover i {
@@ -1294,7 +1294,7 @@ body.remover {
 }
 
 .btl-simple-card:hover span.btn {
-    background-color: var(--color-primary);
+    background-color: var(--color-blue);
     color: var(--white)
 }
 
@@ -2224,7 +2224,7 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
 
 .mega-list-wrapper .mega-menu-list ul li:hover a {
     color: var(--color-secondary);
-    border-color: var(--color-primary);
+    border-color: var(--color-blue);
     padding-left: 5px
 }
 

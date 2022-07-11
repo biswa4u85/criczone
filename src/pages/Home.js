@@ -28,7 +28,7 @@ function Home() {
     useEffect(() => {
         dispatch(getTemplates('JitoDaily'))
     }, []);
-    
+
     const contentStyle = {
         height: '160px',
         color: '#fff',
@@ -283,11 +283,49 @@ function Home() {
                         <h6>Australia <span>won</span>by 3 wickets</h6>
                         <span className="preview" ><a href='#'>Preview</a><ArrowRightOutlined /></span>
 
-
                     </div>
 
                 </div>
 
+
+
+                <div className="galle">
+                    <h4>LIVE <span>. 2nd TEST .</span> <span>Galle</span></h4>
+                    <div className='session'>
+                        <div class="row">
+                            <div class="col">
+                                <img src={flag} className="aus_img" /> <span>AUS</span>
+                            </div>
+                            <div class="col numberlist">
+                                <h5>364</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='session'>
+                        <div class="row">
+                            <div class="col">
+                                <img src={lk} className="aus_img" /> <span>SL</span>  <span className="report">.</span>
+                            </div>
+                            <div class="col">
+                                <h3>(160.4 ov)<span>466/6</span></h3>
+                            </div>
+                        </div>
+                    </div>
+                    <h6>Day 4 - Session 1:Sri Lanka lead by 102 runs.</h6>
+                    <div className='trail'></div>
+                   
+                    <div class="row ">
+                        <div class="col col-lg-3">
+                            <h2>Schedule</h2>
+                        </div>
+                        <div class="col col-lg-2">
+                        <h2>Report</h2>
+                        </div>
+                    </div>
+
+
+
+                </div>
 
             </div>
         </>

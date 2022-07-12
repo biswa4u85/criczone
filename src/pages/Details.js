@@ -256,21 +256,6 @@ function Details(props) {
                 </div>
 
             </section>
-
-            <section className="subscribe-area">
-                <div className="container">
-                    <div className="row">
-                        <div className="subscribe-wrapper">
-                            <h3>Subscribe Newsletter</h3>
-                            <div className="search-box">
-                                <span><i className="icofont-envelope"></i></span>
-                                <input type="text" placeholder="Enter  your mail" />
-                                <button  >Subscribe</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
         </>
     );
 }

@@ -1,15 +1,29 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { apiPostCall, fileUpload } from '../utility/site-apis'
+import { toast } from 'react-toastify';
 
 const initialState = {
   isFetching: false,
   error: null,
+  homeSettings: {},
   headlines: [],
   cms: [],
   categorys: [],
   newsList: [],
-  newsDetails: {}
+  newsDetails: {},
+  isSubscribe: false,
 }
+
+export const getHomeSettings = createAsyncThunk(
+  'auth/getHomeSettings',
+  async (params, { rejectWithValue }) => {
+    let urls = `doctype=News+Home+Page&fieldname=${JSON.stringify(["meta_title", "meta_description", "left_category_one", "left_category_two", "center_category", "right_category_one", "right_category_two", "bottom_category"])}&cmd=frappe.client.get_value`;
+    let response = await apiPostCall('/', urls)
+    if (response) {
+      return response
+    }
+  }
+)
 
 export const getHeadlineList = createAsyncThunk(
   'auth/getHeadlineList',
@@ -66,6 +80,17 @@ export const getCmsDetails = createAsyncThunk(
   }
 )
 
+export const subscribeEmail = createAsyncThunk(
+  'auth/subscribeEmail',
+  async (params, { rejectWithValue }) => {
+    let urls = `email=${params.email}&cmd=frappe.email.doctype.newsletter.newsletter.subscribe`;
+    let response = await apiPostCall('/', urls)
+    if (response) {
+      return response
+    }
+  }
+)
+
 
 export const counterSlice = createSlice({
   name: 'auth',
@@ -76,6 +101,20 @@ export const counterSlice = createSlice({
     },
   },
   extraReducers: {
+    // Home Settings
+    [getHomeSettings.pending]: (state, action) => {
+      state.isFetching = true
+      state.error = null
+    },
+    [getHomeSettings.rejected]: (state, action) => {
+      state.isFetching = false
+      state.error = action.payload.message
+    },
+    [getHomeSettings.fulfilled]: (state, action) => {
+      state.isFetching = false
+      state.error = null
+      state.homeSettings = action.payload
+    },
     // Headline List
     [getHeadlineList.pending]: (state, action) => {
       state.isFetching = true
@@ -145,6 +184,23 @@ export const counterSlice = createSlice({
       state.isFetching = false
       state.error = null
       state.cms = action.payload
+    },
+    // Subscribe Email
+    [subscribeEmail.pending]: (state, action) => {
+      state.isFetching = true
+      state.error = null
+      state.isSubscribe = true
+    },
+    [subscribeEmail.rejected]: (state, action) => {
+      state.isFetching = false
+      state.isSubscribe = false
+      state.error = action.payload.message
+    },
+    [subscribeEmail.fulfilled]: (state, action) => {
+      toast.success(`Email subscribe successfully`);
+      state.isFetching = false
+      state.error = null
+      state.isSubscribe = false
     },
   }
 

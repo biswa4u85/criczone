@@ -13,6 +13,7 @@ function Footers() {
     const emailInput = useRef(null);
     const [email, setEmail] = useState('')
     const [error, setError] = useState(null)
+    const homeSettings = useSelector((state) => state.auth.homeSettings)
 
     const sendNewsletter = () => {
         if (!email) {
@@ -28,6 +29,9 @@ function Footers() {
         dispatch(subscribeEmail({email}))
         setEmail('')
     }
+
+    console.log(homeSettings)
+    
     return (
         <>
             <section className="subscribe-area" data-aos="fade-up"
@@ -72,6 +76,19 @@ function Footers() {
                             <div className="col-xl-3 col-md-4 ft-order-2 mb-sm-30">
                                 <div className="ftr-category">
                                     <h3 className="title-line-shape">Category</h3>
+                                    <div className="ftr-category-menu">
+                                        <ul className="round-shape">
+                                            <li><NavLink to="/">Trending News</NavLink></li>
+                                            <li><NavLink to="/">Press Release</NavLink></li>
+                                            <li><NavLink to="/">Previews</NavLink></li>
+                                        </ul>
+                                        <ul className="round-shape">
+                                            <li><NavLink to="/">Reviews</NavLink></li>
+                                            <li><NavLink to="/">On this Day</NavLink></li>
+                                            <li><NavLink to="/">Match Prediction</NavLink></li>
+                                        </ul>
+                                    </div>
+                                    <h3 className="title-line-shape">Key Series</h3>
                                     <div className="ftr-category-menu">
                                         <ul className="round-shape">
                                             <li><NavLink to="/">Trending News</NavLink></li>

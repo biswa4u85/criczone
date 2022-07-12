@@ -17,7 +17,7 @@ const initialState = {
 export const getHomeSettings = createAsyncThunk(
   'auth/getHomeSettings',
   async (params, { rejectWithValue }) => {
-    let urls = `doctype=News+Home+Page&fieldname=${JSON.stringify(["meta_title", "meta_description", "left_category_one", "left_category_two", "center_category", "right_category_one", "right_category_two", "bottom_category"])}&cmd=frappe.client.get_value`;
+    let urls = `doctype=News+Home+Page&fieldname=${JSON.stringify(["key_series_footer", "meta_title", "meta_description", "left_category_one", "left_category_two", "center_category", "right_category_one", "right_category_two", "bottom_category"])}&cmd=frappe.client.get_value`;
     let response = await apiPostCall('/', urls)
     if (response) {
       return response
@@ -50,7 +50,7 @@ export const getNewsCategory = createAsyncThunk(
 export const getNewsList = createAsyncThunk(
   'auth/getNewsList',
   async (params, { rejectWithValue }) => {
-    let urls = `doctype=Blog+Post&limit_page_length=None&fields=${JSON.stringify(["name", "title", "news_category", "blog_intro", "meta_image", "modified"])}&cmd=frappe.client.get_list`;
+    let urls = `doctype=Blog+Post&limit_page_length=None&fields=${JSON.stringify(["name", "title", "news_category", "category_description", "blog_intro", "meta_image", "modified"])}&cmd=frappe.client.get_list`;
     let response = await apiPostCall('/', urls)
     if (response) {
       return response

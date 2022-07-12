@@ -5,6 +5,7 @@
 :root {
     --color-black: #252525;
     --color-blue: #57a4ed;
+    --color-red: #ff0000;
     --color-white: #ffffff;
     --Lobster: 'Lobster', cursive;
     --poppins: 'Poppins', sans-serif;
@@ -803,7 +804,7 @@ body.overlay:after {
     display: flex;
     justify-content: center;
     position: relative;
-    padding: 75px 0px;
+    padding: 25px 0px;
     margin-bottom: 50px
 }
 
@@ -815,7 +816,7 @@ body.overlay:after {
     transform: translate(-50%, -50%);
     font-weight: var(--bold);
     font-family: var(--rubik);
-    font-size: 180px;
+    font-size: 120px;
     line-height: 1;
     letter-spacing: -0.07em;
     color: var(--title-color);
@@ -1608,6 +1609,11 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
 .dark-light i {
     font-size: 20px;
     color: var(--color-blue)
+}
+
+.dark-red i {
+    font-size: 20px;
+    color: var(--color-red)
 }
 
 .Search-popup .Search-icon {
@@ -2434,7 +2440,14 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
 
 .carousel-single-cart .carousel-card-img {
     width: 100%;
+    position: relative;
     margin-bottom: 25px
+}
+.carousel-single-cart .carousel-card-img  .btn-theme {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 5px;
 }
 
 .carousel-single-cart .carousel-card-img img {
@@ -2930,7 +2943,7 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
 }
 
 .nvbanner-area {
-    padding: 35px 0px
+    padding: 15px 0px 35px 0px
 }
 
 .bnr-lft {
@@ -3480,7 +3493,7 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
 
 .weekly-tab-wrapper {
     overflow: hidden;
-    margin-bottom: 60px
+    margin-bottom: 20px
 }
 
 .weekly-tab-wrapper .tab-content .tab-pane.active .weekly-list-item .news-vcard-single {
@@ -3707,7 +3720,7 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
 }
 
 .pro-area {
-    padding: 60px 0px
+    padding: 0px 0px
 }
 
 .pro-wrapper {
@@ -3715,7 +3728,7 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
     background-position: center;
     background-repeat: no-repeat;
     text-align: center;
-    padding: 50px 0px
+    padding: 10px 0px
 }
 
 @media screen and (max-width: 991px) {
@@ -4182,10 +4195,10 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding: 100px 0px;
+    padding: 30px 0px;
     position: relative;
     z-index: 1;
-    margin-top: 60px
+    margin-top: 20px
 }
 
 .subscribe-area:after {

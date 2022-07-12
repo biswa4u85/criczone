@@ -52,10 +52,11 @@ function Headers() {
                                                                 data-carousel-lg="3" data-carousel-xl="3"
                                                                 data-carousel-md="2">
 
-                                                                {menNews.map((item, key) => <NavLink  to={`/details/${item.name}`} ke={key}
+                                                                {menNews.map((item, key) => <NavLink to={`/details/${item.name}`} ke={key}
                                                                     className="carousel-single-cart">
                                                                     <div className="carousel-card-img">
                                                                         {Config.randerImage(item.meta_image)}
+                                                                        <span className="btn-theme">{item?.category_description}</span>
                                                                     </div>
                                                                     <div className="carousel-card-content">
                                                                         <div className="post-date-time">
@@ -81,6 +82,7 @@ function Headers() {
                                                                     className="carousel-single-cart">
                                                                     <div className="carousel-card-img">
                                                                         {Config.randerImage(item.meta_image)}
+                                                                        <span className="btn-theme">{item?.category_description}</span>
                                                                     </div>
                                                                     <div className="carousel-card-content">
                                                                         <div className="post-date-time">

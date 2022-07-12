@@ -45,7 +45,7 @@ function Home() {
 
 
     const filterByDay = (filter, number) => {
-        let cat = homeSettings[filter]
+        let cat = (homeSettings && homeSettings[filter])?  homeSettings[filter] : null
         let dataList = newsList.filter(item => item.news_category === cat);
         dataList.length = number
         return dataList
@@ -63,8 +63,8 @@ function Home() {
         <>
             <Helmet>
                 <meta charSet="utf-8" />
-                <title>{homeSettings.meta_title}</title>
-                <meta name="description" content={homeSettings.meta_description} />
+                <title>{homeSettings?.meta_title}</title>
+                <meta name="description" content={homeSettings?.meta_description} />
             </Helmet>
             <div className="nvbanner-area">
                 <div style={{ textAlign: "center", marginBottom: 20 }}>
@@ -171,7 +171,7 @@ function Home() {
                                             {newsList[0] && (<div className="btl-simple-card">
                                                 {Config.randerImage(newsList[0].meta_image, 600, 740)}
                                                 <div className="btlc-content-wrapper">
-                                                    <NavLink to={`/details/${newsList[0].name}`}><span className="btn">{newsList[0].news_category}</span></NavLink>
+                                                    <NavLink to={`/details/${newsList[0].name}`}><span className="btn">{newsList[0].category_description}</span></NavLink>
                                                     <div className="btlc-marking">
                                                         <span className="icofont-star"></span>
                                                     </div>
@@ -191,7 +191,7 @@ function Home() {
                                                     data-aos-delay="100">
                                                     {Config.randerImage(newsList[1].meta_image, 300, 355)}
                                                     <div className="btlc-content-wrapper">
-                                                        <NavLink to={`/details/${newsList[1].name}`}><span className="btn">{newsList[1].news_category}</span></NavLink>
+                                                        <NavLink to={`/details/${newsList[1].name}`}><span className="btn">{newsList[1].category_description}</span></NavLink>
                                                         <div className="btlc-marking">
                                                             <span className="icofont-star"></span>
                                                         </div>
@@ -208,7 +208,7 @@ function Home() {
                                                     data-aos-delay="100">
                                                     {Config.randerImage(newsList[2].meta_image, 300, 355)}
                                                     <div className="btlc-content-wrapper">
-                                                        <NavLink to={`/details/${newsList[2].name}`}><span className="btn">{newsList[2].news_category}</span></NavLink>
+                                                        <NavLink to={`/details/${newsList[2].name}`}><span className="btn">{newsList[2].category_description}</span></NavLink>
                                                         <div className="btlc-marking">
                                                             <span className="icofont-star"></span>
                                                         </div>
@@ -229,7 +229,7 @@ function Home() {
                         </div>
                         <div className="col-xl-4">
                             <aside className="header-aside" data-aos="fade-up">
-                                <h4>Latest News</h4>
+                                <h4>Latest News  <span className="dark-red"><i className="icofont-fire"></i></span></h4>
                                 <div className="card-list card-counting">
                                     {latestNews.map((item, key) => <div key={key} className="single-card-list card-border">
                                         <div className="card-list-img">
@@ -268,7 +268,7 @@ function Home() {
                                         {filterByDay('left_category_one', 1).map((item, key) => <div key={key} className="btl-simple-card" data-aos="fade-up">
                                             {Config.randerImage(item.meta_image, 300)}
                                             <NavLink to={`/details/${item.name}`}><div className="btlc-content-wrapper">
-                                                <span className="btn">{item.news_category}</span>
+                                                <span className="btn">{item.category_description}</span>
                                                 <div className="btlc-content">
                                                     <div className="btcl-content-status">
                                                         <span>{moment.utc(item.modified).format('hh:mm A')}</span>
@@ -281,7 +281,7 @@ function Home() {
                                         {filterByDay('left_category_two', 1).map((item, key) => <div key={key} className="btl-simple-card" data-aos="fade-up">
                                             {Config.randerImage(item.meta_image, 300)}
                                             <NavLink to={`/details/${item.name}`}><div className="btlc-content-wrapper">
-                                                <span className="btn">{item.news_category}</span>
+                                                <span className="btn">{item.category_description}</span>
                                                 <div className="btlc-content">
                                                     <div className="btcl-content-status">
                                                         <span>{moment.utc(item.modified).format('hh:mm A')}</span>
@@ -297,7 +297,7 @@ function Home() {
                                         data-aos-delay="50">
                                         {Config.randerImage(item.meta_image, 640)}
                                         <NavLink to={`/details/${item.name}`}><div className="btlc-content-wrapper">
-                                            <span className="btn btn-red">{item.news_category}</span>
+                                            <span className="btn btn-red">{item.category_description}</span>
                                             <div className="btlc-content">
                                                 <div className="btcl-content-status">
                                                     <span>{moment.utc(item.modified).format('hh:mm A')}</span>
@@ -332,7 +332,7 @@ function Home() {
                             <div className="news-vcard-wrapper">
 
                                 {filterByDay('right_category_one', 1).map((item, key) => <NavLink key={key} to={`/details/${item.name}`}><div class="news-vcard-single aos-init aos-animate" data-aos="fade-up">
-                                    <span class="btn-card btn-red">{item.news_category}</span>
+                                    <span class="btn-card btn-red">{item.category_description}</span>
                                     <div class="news-vcard-img">
                                         {Config.randerImage(item.meta_image, 290)}
                                     </div>
@@ -346,7 +346,7 @@ function Home() {
                                 </div></NavLink>)}
 
                                 {filterByDay('right_category_two', 1).map((item, key) => <NavLink key={key} to={`/details/${item.name}`}><div class="news-vcard-single aos-init aos-animate" data-aos="fade-up">
-                                    <span class="btn-card btn-red">{item.news_category}</span>
+                                    <span class="btn-card btn-red">{item.category_description}</span>
                                     <div class="news-vcard-img">
                                         {Config.randerImage(item.meta_image, 290)}
                                     </div>

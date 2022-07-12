@@ -61,7 +61,7 @@ function Details(props) {
                             <div className="single-post-content">
                                 <div className="figer-img">
                                     {Config.randerImage(newsDetails?.meta_image)}
-                                    <button className="btn btn-theme">{newsDetails?.news_category}</button>
+                                    <button className="btn btn-theme">{newsDetails?.category_description}</button>
                                 </div>
                                 <div className="timeline">
                                     <span>{moment.utc(newsDetails?.modified).format('hh:mm A')}</span>
@@ -84,7 +84,7 @@ function Details(props) {
                         <div className="col-lg-4">
                             <div className="single-post-sidebar">
                                 <aside className="header-aside">
-                                    <h4>Latest News</h4>
+                                    <h4>Latest News  <span className="dark-red"><i className="icofont-fire"></i></span></h4>
                                     <div className="card-list card-counting">
                                         {latestNews.map((item, key) => <div key={key} className="single-card-list card-border">
                                             <div className="card-list-img">

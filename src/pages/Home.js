@@ -41,7 +41,8 @@ function Home() {
         <>
 
             <div className="container">
-                <div className="player_img"><img src={players} /></div>
+                <div>
+                    {/* <div className="player_img"><img src={players} /></div>
 
                 <Carousel autoplay>
                     <div className="trending_news">
@@ -172,8 +173,10 @@ function Home() {
                             <h6>Match starts in <span>3hrs 30min</span></h6>
                         </div>
                     </div>
-                </Carousel>
+                </Carousel> */}
+                </div>
 
+                
                 <div className='trending'>
                     <div className="row">
                         <div className="col-sm-8">
@@ -270,7 +273,8 @@ function Home() {
                         <span className="preview" ><a href='#'>Preview</a><ArrowRightOutlined /></span>
                     </div>
                     <div className="australia"></div>
-                    <div className="col-sm-4">
+
+                    <div className="col-sm-3">
                         <h5>UPCOMING</h5>
                         <div className='srilanka'>
                             <img src={lk} className="flagimg" /> <span> Sri Lanka</span>
@@ -282,13 +286,9 @@ function Home() {
                         </div>
                         <h6>Australia <span>won</span>by 3 wickets</h6>
                         <span className="preview" ><a href='#'>Preview</a><ArrowRightOutlined /></span>
-
                     </div>
 
                 </div>
-
-
-
                 <div className="galle">
                     <h4>LIVE <span>. 2nd TEST .</span> <span>Galle</span></h4>
                     <div className='session'>
@@ -313,13 +313,13 @@ function Home() {
                     </div>
                     <h6>Day 4 - Session 1:Sri Lanka lead by 102 runs.</h6>
                     <div className='trail'></div>
-                   
+
                     <div class="row ">
                         <div class="col col-lg-3">
                             <h2>Schedule</h2>
                         </div>
                         <div class="col col-lg-2">
-                        <h2>Report</h2>
+                            <h2>Report</h2>
                         </div>
                     </div>
 

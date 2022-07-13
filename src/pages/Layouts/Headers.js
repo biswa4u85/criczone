@@ -419,24 +419,24 @@ function Headers() {
                                             </div>
                                         </div>
                                     </li>
-                                    <li className="dropdown"><NavLink to="/cat/news">NEWS</NavLink>
+                                    <li className="dropdown"><NavLink to="/cat/News">NEWS</NavLink>
                                         <ul>
-                                            <li><NavLink to="/cat/trending">Trending News</NavLink></li>
-                                            <li><NavLink to="/cat/editor">Editor's Pick</NavLink></li>
-                                            <li><NavLink to="/cat/featured">Featured Post</NavLink></li>
-                                            <li><NavLink to="/">On this day</NavLink></li>
+                                            <li><NavLink to="/cat/Trending News">Trending News</NavLink></li>
+                                            <li><NavLink to="/cat/Editor's Pick">Editor's Pick</NavLink></li>
+                                            <li><NavLink to="/cat/Featured Post">Featured Post</NavLink></li>
+                                            <li><NavLink to="/cat/On this day">On this day</NavLink></li>
                                         </ul>
                                     </li>
-                                    <li className="dropdown"><NavLink to="/">MATCH PREDICTION</NavLink>
+                                    <li className="dropdown"><NavLink to="/cat/Match Prediction">MATCH PREDICTION</NavLink>
                                         <ul>
-                                            <li><NavLink to="/">Match Review</NavLink></li>
-                                            <li><NavLink to="/">Match Prediction</NavLink></li>
-                                            <li><NavLink to="/">Match Analysis</NavLink></li>
-                                            <li><NavLink to="/">Fantasy Tips</NavLink></li>
+                                            <li><NavLink to="/cat/Match Review">Match Review</NavLink></li>
+                                            <li><NavLink to="/cat/Match Prediction">Match Prediction</NavLink></li>
+                                            <li><NavLink to="/cat/Match Analysis">Match Analysis</NavLink></li>
+                                            <li><NavLink to="/cat/Fantasy Tips">Fantasy Tips</NavLink></li>
                                         </ul>
                                     </li>
-                                    <li><NavLink to="/cat/review">REVIEW ZONE</NavLink></li>
-                                    <li><NavLink to="/cat/video">VIDEO</NavLink></li>
+                                    <li><NavLink to="/cat/Review Zone">REVIEW ZONE</NavLink></li>
+                                    <li><NavLink to="/cat/Video">VIDEO</NavLink></li>
 
                                 </ul>
                                 {/* <ul>

@@ -12,6 +12,7 @@ import Layouts from "../pages/Layouts";
 import Home from "../pages/Home";
 import Details from "../pages/Details";
 import Cms from "../pages/Cms";
+import Category from "../pages/Category";
 
 
 function Routers() {
@@ -22,6 +23,7 @@ function Routers() {
           <Route path="/" element={<Home />} />
           <Route path="/details/:pId" element={<Details />} />
           <Route path="/cms/:Id" element={<Cms />} />
+          <Route path="/cat/:Id" element={<Category />} />
         </Route>
       </Routes>
     </HashRouter>

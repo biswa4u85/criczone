@@ -7,9 +7,10 @@ const initialState = {
   error: null,
   homeSettings: {},
   headlines: [],
-  cms: [],
+  cms: {},
   categorys: [],
   newsList: [],
+  newsListByCat: [],
   newsDetails: {},
   isSubscribe: false,
 }
@@ -58,6 +59,17 @@ export const getNewsList = createAsyncThunk(
   }
 )
 
+export const getNewsListByCat = createAsyncThunk(
+  'auth/getNewsListByCat',
+  async (params, { rejectWithValue }) => {
+    let urls = `doctype=Blog+Post&limit_page_length=None&filters=${JSON.stringify([["Blog Post", "news_category", "like", params]])}&fields=${JSON.stringify(["name", "title", "news_category", "category_description", "blog_intro", "meta_image", "modified"])}&cmd=frappe.client.get_list`;
+    let response = await apiPostCall('/', urls)
+    if (response) {
+      return response
+    }
+  }
+)
+
 export const getNewsDetails = createAsyncThunk(
   'auth/getNewsDetails',
   async (params, { rejectWithValue }) => {
@@ -75,7 +87,7 @@ export const getCmsDetails = createAsyncThunk(
     let urls = `doctype=Web+Page&fields=${JSON.stringify(["*"])}&filters=${JSON.stringify([["Web Page", "route", "like", params]])}&cmd=frappe.client.get_list`;
     let response = await apiPostCall('/', urls)
     if (response) {
-      return response[0]
+      return { name: params, data: response[0] }
     }
   }
 )
@@ -157,6 +169,21 @@ export const counterSlice = createSlice({
       state.error = null
       state.newsList = action.payload ? action.payload : []
     },
+    // News List By CAt
+    [getNewsListByCat.pending]: (state, action) => {
+      state.isFetching = true
+      state.error = null
+      state.newsListByCat = []
+    },
+    [getNewsListByCat.rejected]: (state, action) => {
+      state.isFetching = false
+      state.error = action.payload.message
+    },
+    [getNewsListByCat.fulfilled]: (state, action) => {
+      state.isFetching = false
+      state.error = null
+      state.newsListByCat = action.payload ? action.payload : []
+    },
     // News Details
     [getNewsDetails.pending]: (state, action) => {
       state.isFetching = true
@@ -183,7 +210,7 @@ export const counterSlice = createSlice({
     [getCmsDetails.fulfilled]: (state, action) => {
       state.isFetching = false
       state.error = null
-      state.cms = action.payload
+      state.cms = { ...state.cms, ...{ [action.payload.name]: action.payload.data } }
     },
     // Subscribe Email
     [subscribeEmail.pending]: (state, action) => {

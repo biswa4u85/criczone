@@ -7,7 +7,8 @@ import { useTranslation } from "react-i18next";
 import { getHomeSettings, getHeadlineList, getNewsCategory, getNewsList } from '../store/AuthRedux'
 import { Helmet } from "react-helmet";
 import Config from "../common/Config";
-
+import InstagramEmbed from 'react-instagram-embed';
+import { TwitterTimelineEmbed, TwitterShareButton, TwitterFollowButton, TwitterHashtagButton, TwitterMentionButton, TwitterTweetEmbed, TwitterMomentShare, TwitterDMButton, TwitterVideoEmbed, TwitterOnAirButton } from 'react-twitter-embed';
 import noData from "../assets/img/nodata.jpg";
 import playBtn from "../assets/img/svg/play-btn.svg";
 
@@ -32,7 +33,7 @@ function Home() {
 
     // Latest News
     let latestNews = newsList.filter(item => item.news_category === 'NC-007 (News)');
-    latestNews.length = 5
+    latestNews.length = 4
 
     // Today News
     let todayNews = newsList.filter(item => item.news_category === 'NC-007 (News)');
@@ -45,7 +46,7 @@ function Home() {
 
 
     const filterByDay = (filter, number) => {
-        let cat = (homeSettings && homeSettings[filter])?  homeSettings[filter] : null
+        let cat = (homeSettings && homeSettings[filter]) ? homeSettings[filter] : null
         let dataList = newsList.filter(item => item.news_category === cat);
         dataList.length = number
         return dataList
@@ -57,7 +58,7 @@ function Home() {
         return dataList
     }
 
-    // console.log(homeSettings)
+    // console.log(categorys)
 
     return (
         <>
@@ -246,9 +247,27 @@ function Home() {
                                         </div>
                                     </div>)}
                                 </div>
-                                <div className="video-card">
+                                <TwitterTimelineEmbed
+                                    sourceType="profile"
+                                    screenName="CriczoneN"
+                                    options={{ height: 400 }}
+                                />
+                                {/* <div className="video-card">
                                     <img src="https://tpc.googlesyndication.com/simgad/14556471411178073418?" width="250" height="250" alt="Advertiser" border="0" />
-                                </div>
+                                </div> */}
+                                {/* <InstagramEmbed
+                                    url='https://instagr.am/p/Zw9o4/'
+                                    clientAccessToken='123|456'
+                                    maxWidth={320}
+                                    hideCaption={false}
+                                    containerTagName='div'
+                                    protocol=''
+                                    injectScript
+                                    onLoading={() => { }}
+                                    onSuccess={() => { }}
+                                    onAfterRender={() => { }}
+                                    onFailure={() => { }}
+                                /> */}
                             </aside>
                         </div>
                     </div>

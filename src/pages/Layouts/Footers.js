@@ -1,10 +1,10 @@
-import React, { useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from 'react-redux'
 import ftrBg from "../../assets/img/svg/ftr-bg.svg";
 import FormValidate from "../../common/FormValidate";
-import { subscribeEmail } from '../../store/AuthRedux'
+import { subscribeEmail, getCmsDetails } from '../../store/AuthRedux'
 
 function Footers() {
     let navigate = useNavigate();
@@ -14,6 +14,12 @@ function Footers() {
     const [email, setEmail] = useState('')
     const [error, setError] = useState(null)
     const homeSettings = useSelector((state) => state.auth.homeSettings)
+    const cmsData = useSelector((state) => state.auth.cms)
+    const cms = cmsData['about-us']
+
+    useEffect(() => {
+        dispatch(getCmsDetails('about-us'))
+    }, []);
 
     const sendNewsletter = () => {
         if (!email) {
@@ -26,12 +32,10 @@ function Footers() {
             emailInput.current.focus();
             return
         }
-        dispatch(subscribeEmail({email}))
+        dispatch(subscribeEmail({ email }))
         setEmail('')
     }
 
-    console.log(homeSettings)
-    
     return (
         <>
             <section className="subscribe-area" data-aos="fade-up"
@@ -61,7 +65,7 @@ function Footers() {
                                             <span>criczone</span>
                                         </NavLink>
                                     </div>
-                                    <p>{t("site.footer")}</p>
+                                    <p>{cms?.header}</p>
                                     <div className="footer-social">
                                         <h6>Follow Us</h6>
                                         <ul className="social-icon social-bg-red">
@@ -78,27 +82,27 @@ function Footers() {
                                     <h3 className="title-line-shape">Category</h3>
                                     <div className="ftr-category-menu">
                                         <ul className="round-shape">
-                                            <li><NavLink to="/">Trending News</NavLink></li>
-                                            <li><NavLink to="/">Press Release</NavLink></li>
-                                            <li><NavLink to="/">Previews</NavLink></li>
+                                            <li><NavLink to="/cat/Trending News">Trending News</NavLink></li>
+                                            <li><NavLink to="/cat/Press Release">Press Release</NavLink></li>
+                                            <li><NavLink to="/cat/Previews">Previews</NavLink></li>
                                         </ul>
                                         <ul className="round-shape">
-                                            <li><NavLink to="/">Reviews</NavLink></li>
-                                            <li><NavLink to="/">On this Day</NavLink></li>
-                                            <li><NavLink to="/">Match Prediction</NavLink></li>
+                                            <li><NavLink to="/cat/Review Zone">Reviews</NavLink></li>
+                                            <li><NavLink to="/cat/On this day">On this Day</NavLink></li>
+                                            <li><NavLink to="/cat/Match Prediction">Match Prediction</NavLink></li>
                                         </ul>
                                     </div>
                                     <h3 className="title-line-shape">Key Series</h3>
                                     <div className="ftr-category-menu">
                                         <ul className="round-shape">
-                                            <li><NavLink to="/">Trending News</NavLink></li>
-                                            <li><NavLink to="/">Press Release</NavLink></li>
-                                            <li><NavLink to="/">Previews</NavLink></li>
+                                            <li><NavLink to="/cat/Trending News">Trending News</NavLink></li>
+                                            <li><NavLink to="/cat/Press Release">Press Release</NavLink></li>
+                                            <li><NavLink to="/cat/Previews">Previews</NavLink></li>
                                         </ul>
                                         <ul className="round-shape">
-                                            <li><NavLink to="/">Reviews</NavLink></li>
-                                            <li><NavLink to="/">On this Day</NavLink></li>
-                                            <li><NavLink to="/">Match Prediction</NavLink></li>
+                                            <li><NavLink to="/cat/Review Zone">Reviews</NavLink></li>
+                                            <li><NavLink to="/cat/On this day">On this Day</NavLink></li>
+                                            <li><NavLink to="/cat/Match Prediction">Match Prediction</NavLink></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -110,18 +114,18 @@ function Footers() {
                                         <li><NavLink to="/cms/dcma">DCMA</NavLink></li>
                                         <li><NavLink to="/cms/disclaimer">DISCLAIMER</NavLink></li>
                                         <li><NavLink to="/cms/copyright-notice">COPYRIGHT NOTICE</NavLink></li>
-                                        <li><NavLink to="/cms/dcma">REVIEW</NavLink></li>
-                                        <li><NavLink to="/cms/dcma">FANTASY</NavLink></li>
+                                        <li><NavLink to="/cat/Review Zone">REVIEW</NavLink></li>
+                                        <li><NavLink to="/cat/Fantasy Tips">FANTASY</NavLink></li>
                                         <li><NavLink to="/cms/about-us">ABOUT US</NavLink></li>
-                                        <li><NavLink to="/cms/dcma">CONTACT US</NavLink></li>
+                                        <li><NavLink to="/cms/contact-us">CONTACT US</NavLink></li>
                                     </ul>
                                 </div>
                             </div>
                             <div className="col-xl-3 col-md-4 ft-order-4">
                                 <div className="ftr-contact">
                                     <h3 className="title-line-shape">Contact Us</h3>
-                                    <p>info@criczone.co</p>
-                                    <p>+00 0000000000</p>
+                                    <p><a href="mailto:info@criczone.co">info@criczone.co</a></p>
+                                    <p><a href="callto:+00 0000000000">+00 0000000000</a></p>
                                     <p>ICON BLISS, Opp. Zensar IT Park <span>Kharadi, Pune - 411014</span></p>
                                 </div>
                             </div>

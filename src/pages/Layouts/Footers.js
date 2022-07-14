@@ -141,7 +141,7 @@ function Footers() {
                             <p>Copyright © 2022 criczone All Rights Reserved.</p>
                             <ul>
                                 <li><NavLink to="/cms/terms-conditions">Term & Condition</NavLink></li>
-                                <li><NavLink to="/cms/privecy">Privecy</NavLink></li>
+                                <li><NavLink to="/cms/privacy">Privacy</NavLink></li>
                             </ul>
                         </div>
                     </div>

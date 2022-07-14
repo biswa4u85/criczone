@@ -2897,6 +2897,12 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
     .ftr-bg svg {
         max-width: 180%
     }
+    .btl-simple-card>div{
+        height: inherit!important;
+    }
+    .btl-simple-card>div>img{
+        height: inherit!important;
+    }
 }
 
 @media screen and (max-width: 575px) {

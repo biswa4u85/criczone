@@ -1,26 +1,20 @@
 import React, { useEffect } from "react";
-import { Carousel, DatePicker, Switch } from 'antd';
 import moment from "moment";
 import { useSelector, useDispatch } from 'react-redux'
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { getHomeSettings, getHeadlineList, getNewsCategory, getNewsList } from '../store/AuthRedux'
 import { Helmet } from "react-helmet";
 import Config from "../common/Config";
-import InstagramEmbed from 'react-instagram-embed';
-import { TwitterTimelineEmbed, TwitterShareButton, TwitterFollowButton, TwitterHashtagButton, TwitterMentionButton, TwitterTweetEmbed, TwitterMomentShare, TwitterDMButton, TwitterVideoEmbed, TwitterOnAirButton } from 'react-twitter-embed';
-import noData from "../assets/img/nodata.jpg";
-import playBtn from "../assets/img/svg/play-btn.svg";
+import SideBar from "./SideBar";
 
 
 function Home() {
     const dispatch = useDispatch()
-    let navigate = useNavigate();
     const { t } = useTranslation();
     const liveData = [{}, {}, {}, {}, {}, {}, {}, {}, {}]
     const homeSettings = useSelector((state) => state.auth.homeSettings)
     const headlines = useSelector((state) => state.auth.headlines)
-    const categorys = useSelector((state) => state.auth.categorys)
     const newsList = useSelector((state) => state.auth.newsList)
 
     useEffect(() => {
@@ -229,46 +223,7 @@ function Home() {
                             </div>
                         </div>
                         <div className="col-xl-4">
-                            <aside className="header-aside" data-aos="fade-up">
-                                <h4>Latest News  <span className="dark-red"><i className="icofont-fire"></i></span></h4>
-                                <div className="card-list card-counting">
-                                    {latestNews.map((item, key) => <div key={key} className="single-card-list card-border">
-                                        <div className="card-list-img">
-                                            {Config.randerImage(item.meta_image, 100, 70)}
-                                        </div>
-                                        <div className="card-list-cont">
-                                            <div className="card-list-discript">
-                                                <span>{moment.utc(item.modified).format('hh:mm A')}</span>
-                                                <span>{moment.utc(item.modified).format('Do MMM YYYY')}</span>
-                                            </div>
-                                            <div className="card-list-heading">
-                                                <h6><NavLink to={`/details/${item.name}`}>{Config.trunCate(item.title, 60, '. . .')}</NavLink></h6>
-                                            </div>
-                                        </div>
-                                    </div>)}
-                                </div>
-                                <TwitterTimelineEmbed
-                                    sourceType="profile"
-                                    screenName="CriczoneN"
-                                    options={{ height: 400 }}
-                                />
-                                {/* <div className="video-card">
-                                    <img src="https://tpc.googlesyndication.com/simgad/14556471411178073418?" width="250" height="250" alt="Advertiser" border="0" />
-                                </div> */}
-                                {/* <InstagramEmbed
-                                    url='https://instagr.am/p/Zw9o4/'
-                                    clientAccessToken='123|456'
-                                    maxWidth={320}
-                                    hideCaption={false}
-                                    containerTagName='div'
-                                    protocol=''
-                                    injectScript
-                                    onLoading={() => { }}
-                                    onSuccess={() => { }}
-                                    onAfterRender={() => { }}
-                                    onFailure={() => { }}
-                                /> */}
-                            </aside>
+                            <SideBar />
                         </div>
                     </div>
                 </div>

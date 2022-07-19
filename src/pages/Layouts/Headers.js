@@ -7,7 +7,6 @@ import Config from "../../common/Config";
 
 function Headers() {
     let navigate = useNavigate();
-    const { t } = useTranslation();
     const newsList = useSelector((state) => state.auth.newsList)
 
     // Filter News

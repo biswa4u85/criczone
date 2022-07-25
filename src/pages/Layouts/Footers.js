@@ -69,9 +69,9 @@ function Footers() {
                                     <div className="footer-social">
                                         <h6>Follow Us</h6>
                                         <ul className="social-icon social-bg-red">
-                                            <li><a href="https://www.facebook.com/CricZoneNews" target="_blank"><i className="icofont-facebook"></i></a></li>
+                                            <li><a href="https://www.facebook.com/CriczoneNewsWebsite" target="_blank"><i className="icofont-facebook"></i></a></li>
                                             <li><a href="https://instagram.com/criczonenews?igshid=NmZiMzY2Mjc=" target="_blank"><i className="icofont-instagram"></i></a></li>
-                                            <li><a href="https://telegram.org" target="_blank"><i className="icofont-telegram"></i></a></li>
+                                            {/* <li><a href="https://telegram.org" target="_blank"><i className="icofont-telegram"></i></a></li> */}
                                             <li><a href="https://twitter.com/CriczoneN" target="_blank"><i className="icofont-twitter"></i></a></li>
                                         </ul>
                                     </div>
@@ -125,8 +125,8 @@ function Footers() {
                                 <div className="ftr-contact">
                                     <h3 className="title-line-shape">Contact Us</h3>
                                     <p><a href="mailto:info@criczone.co">info@criczone.co</a></p>
-                                    <p><a href="callto:+00 0000000000">+00 0000000000</a></p>
-                                    <p>ICON BLISS, Opp. Zensar IT Park <span>Kharadi, Pune - 411014</span></p>
+                                    {/* <p><a href="callto:+00 0000000000">+00 0000000000</a></p> */}
+                                    {/* <p>ICON BLISS, Opp. Zensar IT Park <span>Kharadi, Pune - 411014</span></p> */}
                                 </div>
                             </div>
                         </div>

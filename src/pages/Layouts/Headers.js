@@ -4,8 +4,24 @@ import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from 'react-redux'
 import moment from "moment";
 import Config from "../../common/Config";
+// import { useQuery, gql, useMutation } from '@apollo/client';
+
+
+// const GET_TOKEN = gql`
+// query{
+//     mutation {
+//     auth (api_key: "RS5:3b28e1af862fe552f9cade04db1a8705") {
+//       token
+//       expires
+//     }
+//   }
+// }
+// `;
+
 
 function Headers() {
+    // const { loading, error, data } = useQuery(GET_TOKEN);
+    // console.log(loading, error, data)
     let navigate = useNavigate();
     const newsList = useSelector((state) => state.auth.newsList)
 

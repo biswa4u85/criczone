@@ -7,9 +7,27 @@ import { getHomeSettings, getHeadlineList, getNewsCategory, getNewsList } from '
 import { Helmet } from "react-helmet";
 import Config from "../common/Config";
 import SideBar from "./SideBar";
+// import { useQuery, gql, useMutation } from '@apollo/client';
 
+// const FEA_MATCHES = gql`
+// query {
+//     featured_matches {
+//       matches {
+//         key
+//         name
+//         format
+//         startAt
+//         tournament {
+//           key
+//         }
+//       }
+//     }
+//   }
+// `;
 
 function Home() {
+    // const { loading, error, data } = useQuery(FEA_MATCHES);
+    // console.log(loading, error, data)
     const dispatch = useDispatch()
     const { t } = useTranslation();
     const liveData = [{}, {}, {}, {}, {}, {}, {}, {}, {}]
@@ -174,6 +192,7 @@ function Home() {
                                                         <div className="btcl-content-status">
                                                             <span>{moment.utc(newsList[0].modified).format('hh:mm A')}</span>
                                                             <span>{moment.utc(newsList[0].modified).format('Do MMM YYYY')}</span>
+                                                            <span>{newsList[0].blogger}</span>
                                                         </div>
                                                         <h3><NavLink to={`/details/${newsList[0].name}`}>{Config.trunCate(newsList[0].title, 40, '. . .')}</NavLink></h3>
                                                     </div>
@@ -194,6 +213,7 @@ function Home() {
                                                             <div className="btcl-content-status">
                                                                 <span>{moment.utc(newsList[1].modified).format('hh:mm A')}</span>
                                                                 <span>{moment.utc(newsList[1].modified).format('Do MMM YYYY')}</span>
+                                                                <span>{newsList[1].blogger}</span>
                                                             </div>
                                                             <h3><NavLink to={`/details/${newsList[1].name}`}>{Config.trunCate(newsList[1].title, 40, '. . .')}</NavLink></h3>
                                                         </div>
@@ -211,6 +231,7 @@ function Home() {
                                                             <div className="btcl-content-status">
                                                                 <span>{moment.utc(newsList[2].modified).format('hh:mm A')}</span>
                                                                 <span>{moment.utc(newsList[2].modified).format('Do MMM YYYY')}</span>
+                                                                <span>{newsList[2].blogger}</span>
                                                             </div>
                                                             <h3><NavLink to={`/details/${newsList[2].name}`}>{Config.trunCate(newsList[2].title, 40, '. . .')}</NavLink></h3>
                                                         </div>

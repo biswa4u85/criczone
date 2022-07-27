@@ -66,6 +66,7 @@ function Details(props) {
                                 <div className="timeline">
                                     <span>{moment.utc(newsDetails?.modified).format('hh:mm A')}</span>
                                     <span>{moment.utc(newsDetails?.modified).format('Do MMM YYYY')}</span>
+                                    <span>Author: {newsDetails?.blogger}</span>
                                 </div>
                                 <h2>{newsDetails?.title}</h2>
                                 <div dangerouslySetInnerHTML={{ __html: newsDetails?.content_html ? newsDetails?.content_html : newsDetails?.content }}></div>

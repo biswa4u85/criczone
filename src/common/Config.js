@@ -1,6 +1,8 @@
 import noData from "../assets/img/nodata.jpg";
 import playBtn from "../assets/img/svg/play-btn.svg";
 export default {
+    liveScoreApiURL: 'https://api.sports.roanuz.com/v5/core/RS_P_1546828966243995659/graphql',
+    apiKey: 'RS5:3b28e1af862fe552f9cade04db1a8705',
     apiURL: 'https://news.techwizards.io',
     token: 'token 8013775618bd3a7:8fa905e93b04d2b',
     randerImage: (src, height, imgHeight) => {

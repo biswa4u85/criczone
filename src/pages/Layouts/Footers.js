@@ -14,6 +14,7 @@ function Footers() {
     const [email, setEmail] = useState('')
     const [error, setError] = useState(null)
     const homeSettings = useSelector((state) => state.auth.homeSettings)
+    const categorys = useSelector((state) => state.auth.categorys)
     const cmsData = useSelector((state) => state.auth.cms)
     const cms = cmsData['about-us']
 
@@ -81,13 +82,13 @@ function Footers() {
                                 <div className="ftr-link">
                                     <h3 className="title-line-shape">Category</h3>
                                     <ul>
-                                        <li><NavLink to="/cat/Trending News">Trending News</NavLink></li>
-                                        <li><NavLink to="/cat/Press Release">Press Release</NavLink></li>
-                                        <li><NavLink to="/cat/Previews">Previews</NavLink></li>
-                                        <li><NavLink to="/cat/Review Zone">Reviews</NavLink></li>
-                                        <li><NavLink to="/cat/On this day">On this Day</NavLink></li>
-                                        <li><NavLink to="/cat/Match Prediction">Match Prediction</NavLink></li>
-                                        <li><NavLink to="/cat/Women">Women</NavLink></li>
+                                        <li><NavLink to="/cat/trending-news">Trending News</NavLink></li>
+                                        <li><NavLink to="/cat/editors-pick">Editor's Pick</NavLink></li>
+                                        <li><NavLink to="/cat/review-zone">Reviews</NavLink></li>
+                                        <li><NavLink to="/cat/on-this-day">On this Day</NavLink></li>
+                                        <li><NavLink to="/cat/match-prediction">Match Prediction</NavLink></li>
+                                        <li><NavLink to="/cat/men">Men</NavLink></li>
+                                        <li><NavLink to="/cat/women">Women</NavLink></li>
                                     </ul>
                                 </div>
                             </div>
@@ -98,8 +99,8 @@ function Footers() {
                                         <li><NavLink to="/cms/dcma">DCMA</NavLink></li>
                                         <li><NavLink to="/cms/disclaimer">DISCLAIMER</NavLink></li>
                                         <li><NavLink to="/cms/copyright-notice">COPYRIGHT NOTICE</NavLink></li>
-                                        <li><NavLink to="/cat/Review Zone">REVIEW</NavLink></li>
-                                        <li><NavLink to="/cat/Fantasy Tips">FANTASY</NavLink></li>
+                                        <li><NavLink to="/cat/match-analysis">Match Analysis</NavLink></li>
+                                        <li><NavLink to="/cat/fantasy-tips">FANTASY</NavLink></li>
                                         <li><NavLink to="/cms/about-us">ABOUT US</NavLink></li>
                                         <li><NavLink to="/cms/contact-us">CONTACT US</NavLink></li>
                                     </ul>

@@ -44,28 +44,26 @@ function Home() {
 
 
     // Latest News
-    let latestNews = newsList.filter(item => item.news_category === 'NC-007 (News)');
+    let latestNews = newsList.filter(item => item.blog_category === 'news');
     latestNews.length = 4
 
     // Today News
-    let todayNews = newsList.filter(item => item.news_category === 'NC-007 (News)');
+    let todayNews = newsList.filter(item => item.blog_category === 'news');
     todayNews.length = 3
 
     // Latest Vedios
     let latestVedios = JSON.parse(JSON.stringify(newsList))
     latestVedios.length = 1
 
-
-
     const filterByDay = (filter, number) => {
         let cat = (homeSettings && homeSettings[filter]) ? homeSettings[filter] : null
-        let dataList = newsList.filter(item => item.news_category === cat);
+        let dataList = newsList.filter(item => item.blog_category === cat);
         dataList.length = number
         return dataList
     }
 
     const filterByWeek = (cat, number) => {
-        let dataList = newsList.filter(item => item.news_category === cat);
+        let dataList = newsList.filter(item => item.blog_category === cat);
         dataList.length = number
         return dataList
     }
@@ -394,7 +392,7 @@ function Home() {
                             <div className="tab-pane fade" id="travel" role="tabpanel">
                                 <div className="weekly-list-item">
 
-                                    {filterByWeek('NC-012 (Women)', 4).map((item, key) => <div key={key} className="news-vcard-single">
+                                    {filterByWeek('women', 4).map((item, key) => <div key={key} className="news-vcard-single">
                                         <div className="news-vcard-img">
                                             {Config.randerImage(item.meta_image, 220)}
                                         </div>
@@ -413,7 +411,7 @@ function Home() {
                             <div className="tab-pane fade show active" id="food" role="tabpanel">
                                 <div className="weekly-list-item">
 
-                                    {filterByWeek('NC-022 (Domestic)', 4).map((item, key) => <div key={key} className="news-vcard-single">
+                                    {filterByWeek('domestic', 4).map((item, key) => <div key={key} className="news-vcard-single">
                                         <div className="news-vcard-img">
                                             {Config.randerImage(item.meta_image, 220)}
                                         </div>
@@ -430,7 +428,7 @@ function Home() {
                             <div className="tab-pane fade" id="medicare" role="tabpanel">
                                 <div className="weekly-list-item">
 
-                                    {filterByWeek('NC-023 (International)', 4).map((item, key) => <div key={key} className="news-vcard-single">
+                                    {filterByWeek('international', 4).map((item, key) => <div key={key} className="news-vcard-single">
                                         <div className="news-vcard-img">
                                             {Config.randerImage(item.meta_image, 220)}
                                         </div>
@@ -447,7 +445,7 @@ function Home() {
                             <div className="tab-pane fade" id="fashion" role="tabpanel">
                                 <div className="weekly-list-item">
 
-                                    {filterByWeek("NC-014 (Editor's Pick)", 4).map((item, key) => <div key={key} className="news-vcard-single">
+                                    {filterByWeek("editors-pick", 4).map((item, key) => <div key={key} className="news-vcard-single">
                                         <div className="news-vcard-img">
                                             {Config.randerImage(item.meta_image, 220)}
                                         </div>
@@ -464,7 +462,7 @@ function Home() {
                             <div className="tab-pane fade" id="fitness" role="tabpanel">
                                 <div className="weekly-list-item">
 
-                                    {filterByWeek('NC-008 (Match Prediction)', 4).map((item, key) => <div key={key} className="news-vcard-single">
+                                    {filterByWeek('match-prediction', 4).map((item, key) => <div key={key} className="news-vcard-single">
                                         <div className="news-vcard-img">
                                             {Config.randerImage(item.meta_image, 220)}
                                         </div>
@@ -484,7 +482,7 @@ function Home() {
                     <div className="fd-carousel-wrapper owl-carousel" data-carousel-loop="false" data-carousel-items="3"
                         data-carousel-nav="false" data-carousel-dots="true" data-carousel-md="2" data-carousel-sm="2"
                         data-carousel-lg="3" data-carousel-xl="3" data-aos="fade-up">
-                        {filterByWeek('NC-010 (Video)', 12).map((item, key) => <div key={key} className="fdc-single-item">
+                        {filterByWeek('Video', 12).map((item, key) => <div key={key} className="fdc-single-item">
                             <div className="fdc-img">
                                 <NavLink to={`/details/${item.name}`}>
                                     {Config.randerImage(item.meta_image, 220)}

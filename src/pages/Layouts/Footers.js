@@ -99,8 +99,8 @@ function Footers() {
                                         <li><NavLink to="/cms/dcma">DCMA</NavLink></li>
                                         <li><NavLink to="/cms/disclaimer">DISCLAIMER</NavLink></li>
                                         <li><NavLink to="/cms/copyright-notice">COPYRIGHT NOTICE</NavLink></li>
-                                        <li><NavLink to="/cat/match-analysis">Match Analysis</NavLink></li>
-                                        <li><NavLink to="/cat/fantasy-tips">FANTASY</NavLink></li>
+                                        {/* <li><NavLink to="/cat/match-analysis">Match Analysis</NavLink></li> */}
+                                        {/* <li><NavLink to="/cat/fantasy-tips">FANTASY</NavLink></li> */}
                                         <li><NavLink to="/cms/about-us">ABOUT US</NavLink></li>
                                         <li><NavLink to="/cms/contact-us">CONTACT US</NavLink></li>
                                     </ul>

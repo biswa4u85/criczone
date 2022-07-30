@@ -5,7 +5,7 @@ import Config from "../common/Config";
 
 const siteName = 'criczone'
 
-const doctypeNewsHomePage = 'News Home Page'
+const doctypeNewsHomePage = 'News Home Page Criczone'
 const fieldsNewsHomePage = ["meta_title", "meta_description", "left_category_one", "left_category_two", "center_category", "right_category_one", "right_category_two", "bottom_category"]
 
 const doctypeWebPage = 'Web Page'
@@ -18,7 +18,7 @@ const doctypeBlogCategory = 'Blog Category'
 const fieldsBlogCategory = ["name", "title", "status"]
 
 const doctypeBlogPost = 'Blog Post'
-const fieldsBlogPost = ["name", "title", "blog_category", "category_description", "blog_intro", "meta_image", "modified", "blogger"]
+const fieldsBlogPost = ["name", "title", "blog_category", "category_description", "blog_intro", "meta_image", "published_on", "blogger"]
 
 const initialState = {
   isFetching: false,
@@ -92,7 +92,7 @@ export const getNewsListByCat = createAsyncThunk(
 export const getNewsDetails = createAsyncThunk(
   'auth/getNewsDetails',
   async (params, { rejectWithValue }) => {
-    const response = await getAllDataApi({ doctype: doctypeBlogPost, fields: fieldsBlogPost, search: { name: params.pId }, ...params })
+    const response = await getAllDataApi({ doctype: doctypeBlogPost, fields: ["*"], search: { name: params.pId }, ...params })
     if (response.status === 'error') {
       return rejectWithValue(response.data)
     }

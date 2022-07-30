@@ -3,7 +3,7 @@ import moment from "moment";
 import { useSelector, useDispatch } from 'react-redux'
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { getHomeSettings, getHeadlineList, getNewsCategory, getNewsList } from '../store/AuthRedux'
+import { getHomeSettings, getHeadlineList, getNewsCategory, getNewsList } from '../store/MainRedux'
 import { Helmet } from "react-helmet";
 import Config from "../common/Config";
 import SideBar from "./SideBar";
@@ -31,15 +31,16 @@ function Home() {
     const dispatch = useDispatch()
     const { t } = useTranslation();
     const liveData = [{}, {}, {}, {}, {}, {}, {}, {}, {}]
+    const token = useSelector((state) => state.auth.token)
     const homeSettings = useSelector((state) => state.auth.homeSettings)
     const headlines = useSelector((state) => state.auth.headlines)
     const newsList = useSelector((state) => state.auth.newsList)
 
     useEffect(() => {
-        dispatch(getHomeSettings())
-        dispatch(getHeadlineList())
-        dispatch(getNewsCategory())
-        dispatch(getNewsList())
+        dispatch(getHomeSettings({token}))
+        dispatch(getHeadlineList({token}))
+        dispatch(getNewsCategory({token}))
+        dispatch(getNewsList({token}))
     }, []);
 
 

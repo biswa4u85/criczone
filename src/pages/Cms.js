@@ -5,7 +5,7 @@ import moment from "moment";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "../theme/use-theme";
-import { getCmsDetails } from '../store/AuthRedux'
+import { getCmsDetails } from '../store/MainRedux'
 import Config from "../common/Config";
 import { Helmet } from "react-helmet";
 
@@ -15,11 +15,12 @@ function Cms(props) {
     let { Id } = useParams();
     const dispatch = useDispatch()
     const { t } = useTranslation();
+    const token = useSelector((state) => state.auth.token)
     const cmsData = useSelector((state) => state.auth.cms)
     const cms = cmsData[Id]
 
     useEffect(() => {
-        dispatch(getCmsDetails(Id))
+        dispatch(getCmsDetails({token, Id}))
     }, [Id]);
 
     return (

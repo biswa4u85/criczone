@@ -112,7 +112,7 @@ export function getAllDataApi(params) {
     body = body + `&fields=${JSON.stringify(params.fields)}`
   }
   if (params.orderBy) {
-    body = body + `&order_by=${JSON.stringify(params.orderBy)}`
+    body = body + `&order_by=${params.orderBy}`
   }
   if (params.search) {
     let filters = []

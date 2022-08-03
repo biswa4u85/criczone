@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { getAllDataApi, getAllSingleDataApi, postCmdApi } from '../utility/site-apis'
+import { getAllDataApi, getAllSingleDataApi, postCmdApi, postMethodApi } from '../utility/site-apis'
 import { toast } from 'react-toastify';
 import Config from "../common/Config";
 
@@ -18,7 +18,7 @@ const doctypeBlogCategory = 'Blog Category'
 const fieldsBlogCategory = ["name", "title", "status"]
 
 const doctypeBlogPost = 'Blog Post'
-const fieldsBlogPost = ["name", "title", "blog_category", "category_description", "blog_intro", "meta_image", "published_on", "blogger"]
+const fieldsBlogPost = ["name", "title", "blog_category", "category_description", "blog_intro", "meta_image", "published_on", "published_time", "blogger"]
 
 const initialState = {
   isFetching: false,
@@ -115,6 +115,17 @@ export const subscribeEmail = createAsyncThunk(
   'auth/subscribeEmail',
   async (params, { rejectWithValue }) => {
     const response = await postCmdApi({ cmd: 'frappe.email.doctype.newsletter.newsletter.subscribe', ...params })
+    if (response.status === 'error') {
+      return rejectWithValue(response.data)
+    }
+    return response
+  }
+)
+
+export const addComments = createAsyncThunk(
+  'auth/addComments',
+  async (params, { rejectWithValue }) => {
+    const response = await postMethodApi({ method: 'frappe.desk.form.utils.add_comment', reference_doctype: doctypeBlogPost, ...params })
     if (response.status === 'error') {
       return rejectWithValue(response.data)
     }
@@ -246,6 +257,22 @@ export const counterSlice = createSlice({
       state.isFetching = false
       state.error = null
       state.isSubscribe = false
+    },
+    // Add Comments
+    [addComments.pending]: (state, action) => {
+      state.isFetching = true
+      state.error = null
+      state.isAddComment = true
+    },
+    [addComments.rejected]: (state, action) => {
+      state.isFetching = false
+      state.error = action.payload.message
+    },
+    [addComments.fulfilled]: (state, action) => {
+      toast.success(`add Comment successfully`);
+      state.isFetching = false
+      state.error = null
+      state.isAddComment = false
     },
   }
 

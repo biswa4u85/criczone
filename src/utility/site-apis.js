@@ -8,6 +8,7 @@ const axiosAPI = axios.create({
   baseURL: Config.frappe_url,
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+    'Authorization': Config.token
   }
 });
 
@@ -55,6 +56,32 @@ export function postCmdApi(params) {
     }
   }
   return axiosAPI.post('', body, { headers: headers })
+    .then((response) => {
+      return response
+    })
+    .catch((error) => {
+      return handleResponse(error);
+    });
+}
+
+export function postMethodApi(params) {
+  let token = params.token
+  let method = params.method
+  delete params.token
+  delete params.method
+
+  let headers = {}
+  if (token) {
+    headers.Authorization = token
+  }
+
+  let body = ``;
+  for (let key in params) {
+    if (params[key]) {
+      body = body + `${key}=${params[key]}&`
+    }
+  }
+  return axiosAPI.post(`api/method/${method}`, body, { headers: headers })
     .then((response) => {
       return response
     })
@@ -128,7 +155,7 @@ export function getAllDataApi(params) {
   }
   if (params.limit_page_length) {
     body = body + `&limit_page_length=${params.limit_page_length}`
-  }else{
+  } else {
     body = body + `&limit_page_length=None`
   }
   delete params.token

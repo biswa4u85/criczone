@@ -1096,12 +1096,12 @@ function Headers() {
                             <div className="dark-light">
                                 <i className="icofont-moon"></i>
                             </div>
-                            <div className="dark-light">
+                            {/* <div className="dark-light">
                                 <i className="icofont-flag"></i>
                             </div>
                             <div className="dark-light">
                                 <i className="icofont-alarm"></i>
-                            </div>
+                            </div> */}
 
                             {token ? <div className="sign-option">
                                 <button className="btn-normal" onClick={() => dispatch(logout())}><i className="icofont-sign-out"></i></button>

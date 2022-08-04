@@ -1366,6 +1366,7 @@ body.remover {
 .news-vcard-content .news-vcard-title span:nth-child(1) {
     margin-right: 10px
 }
+
 .news-vcard-content .news-vcard-title span:nth-child(2) {
     margin-right: 10px
 }
@@ -1633,12 +1634,14 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
     color: var(--color-secondary)
 }
 
-.sign-option button:nth-child(1) {
-    padding: 0px 15px
+.sign-option i {
+    padding: 0px 15px;
+    font-size: 20px;
+    color: var(--color-blue)
 }
 
 .sign-option button:nth-child(1):hover {
-    color: var(--color-primary)
+    color: var(--color-blue)
 }
 
 .toggle-bar {

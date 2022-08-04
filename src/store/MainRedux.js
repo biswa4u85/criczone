@@ -29,9 +29,10 @@ const initialState = {
   cms: {},
   categorys: [],
   newsList: [],
-  newsListByCat: [],
+  newsListByCat: {},
   newsDetails: {},
   isSubscribe: false,
+  isAddComment: false,
 }
 
 export const getHomeSettings = createAsyncThunk(
@@ -52,7 +53,7 @@ export const getHeadlineList = createAsyncThunk(
     if (response.status === 'error') {
       return rejectWithValue(response.data)
     }
-    return response
+    return response.data
   }
 )
 
@@ -63,7 +64,7 @@ export const getNewsCategory = createAsyncThunk(
     if (response.status === 'error') {
       return rejectWithValue(response.data)
     }
-    return response
+    return response.data
   }
 )
 
@@ -74,7 +75,7 @@ export const getNewsList = createAsyncThunk(
     if (response.status === 'error') {
       return rejectWithValue(response.data)
     }
-    return response
+    return response.data
   }
 )
 
@@ -96,7 +97,7 @@ export const getNewsDetails = createAsyncThunk(
     if (response.status === 'error') {
       return rejectWithValue(response.data)
     }
-    return response[0]
+    return response.data[0]
   }
 )
 
@@ -107,7 +108,7 @@ export const getCmsDetails = createAsyncThunk(
     if (response.status === 'error') {
       return rejectWithValue(response.data)
     }
-    return { name: params.Id, data: response[0] }
+    return { name: params.Id, data: response.data[0] }
   }
 )
 
@@ -196,7 +197,7 @@ export const counterSlice = createSlice({
     [getNewsList.fulfilled]: (state, action) => {
       state.isFetching = false
       state.error = null
-      state.newsList = action.payload ? action.payload : []
+      state.newsList = action.payload
     },
     // News List By CAt
     [getNewsListByCat.pending]: (state, action) => {
@@ -211,7 +212,7 @@ export const counterSlice = createSlice({
     [getNewsListByCat.fulfilled]: (state, action) => {
       state.isFetching = false
       state.error = null
-      state.newsListByCat = action.payload ? action.payload : []
+      state.newsListByCat = action.payload
     },
     // News Details
     [getNewsDetails.pending]: (state, action) => {

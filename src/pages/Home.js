@@ -37,10 +37,10 @@ function Home() {
     const newsList = useSelector((state) => state.auth.newsList)
 
     useEffect(() => {
-        dispatch(getHomeSettings({token}))
-        dispatch(getHeadlineList({token}))
-        dispatch(getNewsCategory({token}))
-        dispatch(getNewsList({token}))
+        dispatch(getHomeSettings({ token }))
+        dispatch(getHeadlineList({ token }))
+        dispatch(getNewsCategory({ token }))
+        dispatch(getNewsList({ page: 1, size: 100, token }))
     }, []);
 
 

@@ -1,9 +1,11 @@
 import React from "react";
-import { Outlet, NavLink, useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import { useSelector, useDispatch } from 'react-redux'
+import { NavLink, useNavigate } from "react-router-dom";
+import { Button, Form, Input } from 'antd';
+import $ from 'jquery';
 import moment from "moment";
 import Config from "../../common/Config";
+import { useSelector, useDispatch } from 'react-redux'
+import { signUpUser, siteLogin, logout } from "../../store/UserRedux";
 // import { useQuery, gql, useMutation } from '@apollo/client';
 
 
@@ -20,15 +22,28 @@ import Config from "../../common/Config";
 
 
 function Headers() {
+    const dispatch = useDispatch()
     // const { loading, error, data } = useQuery(GET_TOKEN);
     // console.log(loading, error, data)
     let navigate = useNavigate();
     const newsList = useSelector((state) => state.auth.newsList)
+    const token = useSelector((state) => state.user.token)
 
     // Filter News
     let menNews = newsList.filter(item => item.blog_category === 'men');
     let wpmenNews = newsList.filter(item => item.blog_category === 'women');
 
+    const onSignIn = (values) => {
+        dispatch(siteLogin(values))
+        $(".signin, .signin-bg, .header-area").removeClass("active");
+        $("body").removeClass("overlay");
+    };
+
+    const onSignUp = (values) => {
+        dispatch(signUpUser(values))
+        $(".signin, .signup-bg, .header-area").removeClass("active");
+        $("body").removeClass("overlay");
+    };
 
     return (
         <header className="header-area">
@@ -1088,6 +1103,13 @@ function Headers() {
                                 <i className="icofont-alarm"></i>
                             </div>
 
+                            {token ? <div className="sign-option">
+                                <button className="btn-normal" onClick={() => dispatch(logout())}><i className="icofont-sign-out"></i></button>
+                            </div> : <div className="sign-option">
+                                <button className="btn-normal sign-in-click"><i className="icofont-sign-in"></i></button>
+                                <button className="btn-normal sign-up-click"><i className="icofont-user"></i></button>
+                            </div>}
+
                             {/* <div className="Search-popup">
                                 <div className="Search-icon">
                                     <i className="icofont-search"></i>
@@ -1105,7 +1127,6 @@ function Headers() {
                                 </div>
                             </div> */}
                             {/* <div className="sign-wrapper">
-
                                 <div className="sign-bar">
                                     <i className="icofont-businessman"></i>
                                 </div>
@@ -1114,7 +1135,6 @@ function Headers() {
                                     <button className="btn btn-theme sign-up-click">Sign Up</button>
                                 </div>
                             </div> */}
-
                             <div className="toggle-bar">
                                 <span></span>
                             </div>
@@ -1125,29 +1145,36 @@ function Headers() {
             <div className="signin-popup-wrapper signin-bg">
                 <div className="sign-in-area">
                     <h2 className="left-line-shape">Sign In</h2>
-                    <form>
-                        <div className="input-group">
-                            <label>Email</label>
-                            <input type="email" />
-                        </div>
-                        <div className="input-group">
-                            <label>Password</label>
-                            <input type="password" />
-                        </div>
-                    </form>
-                    <div className="frc-box">
-                        <label className="checkbox-group">
-                            <input type="checkbox" className="input" />
-                            <span className="checked"></span>
-                            <span className="checked-content">Remember</span>
-                        </label>
-                        <a href="#">Forget Password</a>
-                    </div>
-                    <button className="btn btn-theme">Login</button>
-                    <div className="from-status">
-                        <p>Not have account ?</p>
-                        <a href="#"><span>SignUp with Gmail</span><img src="assets/img/gmail.png" alt="" /></a>
-                    </div>
+                    <Form
+                        className='user-form'
+                        name='basic'
+                        onFinish={onSignIn}
+                    >
+                        <Form.Item
+                            name='usr'
+                            rules={[
+                                { required: true, message: 'Please input your Email!' },
+                            ]}>
+                            <Input placeholder={'Email'} />
+                        </Form.Item>
+
+                        <Form.Item
+                            name='pwd'
+
+                            rules={[
+                                { required: true, message: 'Please input your Password!' },
+                            ]}>
+                            <Input
+                                type='password'
+                                placeholder={'Password'}
+                            />
+                        </Form.Item>
+
+                        <Button type='primary' htmlType='submit'>
+                            Login
+                        </Button>
+
+                    </Form>
                     <div className="close-popup">
                         <i className="icofont-close-line"></i>
                     </div>
@@ -1156,24 +1183,34 @@ function Headers() {
             <div className="signup-popup-wrapper signup-bg">
                 <div className="sign-up-area">
                     <h2 className="left-line-shape">Create Account</h2>
-                    <form>
-                        <div className="input-group">
-                            <label>Full name</label>
-                            <input type="text" />
-                        </div>
-                        <div className="input-group">
-                            <label>Email</label>
-                            <input type="email" placeholder="Enter your email" />
-                        </div>
-                        <div className="input-group">
-                            <label>Password</label>
-                            <input type="password" placeholder="Enter your password" />
-                        </div>
-                    </form>
-                    <button className="btn btn-theme">Login</button>
-                    <div className="login-link-area">
-                        <p>Already Have account <a href="#" className="goto-login">Login</a></p>
-                    </div>
+                    <Form
+                        className='user-form'
+                        name='basic'
+                        onFinish={onSignUp}
+                    >
+                        <Form.Item
+                            name='full_name'
+                            rules={[
+                                { required: true, message: 'Please input your Name!' },
+                            ]}>
+                            <Input placeholder={'Name'} />
+                        </Form.Item>
+
+                        <Form.Item
+                            name='email'
+                            rules={[
+                                { required: true, message: 'Please input your Email!' },
+                            ]}>
+                            <Input
+                                placeholder={'Email'}
+                            />
+                        </Form.Item>
+
+                        <Button type='primary' htmlType='submit'>
+                            Sign Up
+                        </Button>
+
+                    </Form>
                     <div className="close-popup">
                         <i className="icofont-close-line"></i>
                     </div>

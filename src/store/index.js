@@ -2,10 +2,12 @@ import { configureStore } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
 import { loadState } from "../utility/browser-storage";
 
-import AuthRedux from './AuthRedux';
+import UserRedux from './UserRedux';
+import MainRedux from './MainRedux';
 
 const reducers = combineReducers({
-  auth: AuthRedux,
+  user: UserRedux,
+  auth: MainRedux,
 });
 
 export const store = configureStore({

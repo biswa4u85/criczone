@@ -1,38 +1,19 @@
 import React, { useEffect } from "react";
 import moment from "moment";
 import { useSelector, useDispatch } from 'react-redux'
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { getHomeSettings, getHeadlineList, getNewsCategory, getNewsList } from '../store/MainRedux'
 import { Helmet } from "react-helmet";
 import Config from "../common/Config";
 import SideBar from "./SideBar";
 import dallyUpdate from '../assets/img/dallyUpdate.png'
-
-// import { useQuery, gql, useMutation } from '@apollo/client';
-
-// const FEA_MATCHES = gql`
-// query {
-//     featured_matches {
-//       matches {
-//         key
-//         name
-//         format
-//         startAt
-//         tournament {
-//           key
-//         }
-//       }
-//     }
-//   }
-// `;
+import HomeSlider from './Scores/HomeSlider';
 
 function Home() {
-    // const { loading, error, data } = useQuery(FEA_MATCHES);
-    // console.log(loading, error, data)
     const dispatch = useDispatch()
+    let navigate = useNavigate();
     const { t } = useTranslation();
-    const liveData = [{}, {}, {}, {}, {}, {}, {}, {}, {}]
     const token = useSelector((state) => state.auth.token)
     const homeSettings = useSelector((state) => state.auth.homeSettings)
     const headlines = useSelector((state) => state.auth.headlines)
@@ -90,7 +71,8 @@ function Home() {
                 <meta name="description" content={homeSettings?.meta_description} />
             </Helmet>
             <div className="nvbanner-area">
-
+                <HomeSlider />
+                <div className="viewAllMatch"><button onClick={() => navigate('/live-score')}>View all Matches</button></div>
             </div>
             <div className="container">
 

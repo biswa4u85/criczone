@@ -1661,7 +1661,7 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
     content: "";
     height: 2px;
     width: 45%;
-    background-color: var(--color-secondary);
+    background-color: var(--color-white);
     transition: var(--ease-in)
 }
 
@@ -1679,7 +1679,7 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
     display: block;
     height: 2px;
     width: 100%;
-    background-color: var(--color-secondary);
+    background-color: var(--color-white);
     transition: var(--ease-in)
 }
 
@@ -1893,6 +1893,9 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
 }
 
 @media screen and (max-width: 575px) {
+    .sign-option{
+        width: 100px;
+    }
     .container-md {
         padding: 0px 15px
     }
@@ -1902,6 +1905,7 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
     }
 
     .options-area {
+        width: 200px;
         padding: 10px 0px
     }
 
@@ -2686,7 +2690,7 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
 
 .main-footer {
     background-color: var(--search-bg);
-    padding: 50px 0px
+    padding: 30px 0px
 }
 
 .main-footer.transparent-bg {
@@ -2828,7 +2832,7 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
 
 @media screen and (max-width: 767px) {
     .main-footer {
-        padding: 50px 0px
+        padding: 30px 0px
     }
 
     .main-footer h3 {
@@ -2961,9 +2965,10 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
 }
 
 .nvbanner-area {
-    padding: 15px 0px 35px 0px
+    padding: 15px 0px;
+    margin-bottom: 20px;
+    background: #9dccf9;
 }
-
 .bnr-lft {
     height: 100%
 }
@@ -11467,7 +11472,9 @@ body.demo {
         padding-left: 0px
     }
 }
-
+.footerMobile {
+    display: none;
+}
 @media screen and (max-width: 767px) {
     .error-right h5 {
         font-size: 18px
@@ -11475,5 +11482,39 @@ body.demo {
 
     .error-right h6 {
         font-size: 45px
+    }
+    .ftr-link{
+        text-align: center;
+    }
+    .footerMobile {
+        display: block;
+        position: fixed;
+        width: 100%;
+        background-color: #afd2f3;
+        z-index: 99999;
+        bottom: 0;
+    }
+
+    .footerMobile ul {
+        display: flex;
+        justify-content: space-between;
+        margin: 0;
+    }
+
+    .footerMobile li a.active {
+        background-color: var(--color-blue);
+        color: var(--color-white);
+    }
+
+    .footerMobile li a {
+        text-align: center;
+        display: block;
+        font-size: 15px;
+        padding: 10px 20px;
+        color: var(--color-black);
+    }
+
+    .footerMobile li i {
+        display: block;
     }
 }

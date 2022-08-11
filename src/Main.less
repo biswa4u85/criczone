@@ -2,6 +2,7 @@
     .footer-logo {
         margin: 0 auto 20px auto;
         background-image: url('./assets/img/logo-light.png');
+        background-position: 20px 0px;
         background-repeat: no-repeat;
         background-size: 80%;
         width: 350px;
@@ -21,6 +22,7 @@
 
 .header-logo {
     background-image: url('./assets/img/logo-light.png');
+    background-position: 20px 10px;
     background-repeat: no-repeat;
     background-size: 80%;
     width: 350px;
@@ -36,19 +38,22 @@
         display: none;
     }
 }
-.ant-form-item-explain-error{
+
+.ant-form-item-explain-error {
     text-align: left;
 }
-// html[data-theme="dark"] {
-//     .header-logo {
-//         background-image: url('./assets/img/logo-light.png');
-//         background-repeat: no-repeat;
-//         background-size: 80%;
-//         width: 350px;
-//         height: 65px;
 
-//         span {
-//             display: none;
-//         }
-//     }
-// }
+
+.viewAllMatch {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.viewAllMatch button {
+    padding: 15px 30px;
+    font-size: var(--text-16);
+    font-weight: var(--medium);
+    color: var(--white);
+    background-color: var(--color-primary);
+    height: 100%;
+}

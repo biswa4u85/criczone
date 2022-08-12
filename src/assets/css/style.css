@@ -2967,7 +2967,7 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
 .nvbanner-area {
     padding: 15px 0px;
     margin-bottom: 20px;
-    background: #9dccf9;
+    background: #010203;
 }
 .bnr-lft {
     height: 100%
@@ -3221,6 +3221,8 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
 }
 
 @media screen and (max-width: 767px) {
+
+
     .bnr-lft-cnt-rgt {
         display: grid;
         -webkit-box-pack: justify;
@@ -11490,7 +11492,7 @@ body.demo {
         display: block;
         position: fixed;
         width: 100%;
-        background-color: #afd2f3;
+        background-color: #010203;
         z-index: 99999;
         bottom: 0;
     }
@@ -11511,7 +11513,7 @@ body.demo {
         display: block;
         font-size: 15px;
         padding: 10px 20px;
-        color: var(--color-black);
+        color: var(--color-white);
     }
 
     .footerMobile li i {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Tabs, Row, Col, Button, Carousel } from 'antd';
-
+import Config from "../common/Config";
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -17,7 +17,7 @@ function LiveScore(props) {
     const dispatch = useDispatch()
     const { t } = useTranslation();
     const homeSettings = useSelector((state) => state.auth.homeSettings)
-    const token = useSelector((state) => state.auth.token)
+    const token = Config.token
     const [tab, setTab] = useState(1)
     const { TabPane } = Tabs;
     let liveData = [{}, {}, {}, {}, {}, {}]

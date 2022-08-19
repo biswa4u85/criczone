@@ -385,6 +385,7 @@
     display: inline-block;
     padding-right: 20px;
 }
+
 /* demo */
 
 .tab {
@@ -400,19 +401,26 @@
 .tab h3 {
     margin: 30px 0;
     background-color: rgb(221 221 221 / 85%);
-    padding: 19px 10px;
+    padding: 14px 10px;
     text-transform: uppercase;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: bold;
 }
 
 .africa span {
-    color: #9f9f9f;
-    font-size: 16px;
+    color: #525050;
+    font-size: 14px;
+}
+
+.africa h5 {
+    color: #0b0a0a;
+    font-size: 17px;
+    font-weight: 600;
 }
 
 .africa h6 {
-    color: #9f9f9f;
+    color: #615f5f;
+    font-size: 14px;
 }
 
 .match {
@@ -422,9 +430,10 @@
 
 .match h5 {
     margin: 0;
-    color: #4d4d4d;
+    color: #000000;
     padding: 5px 0;
     font-weight: 600;
+    font-size: 15px;
 }
 
 .match h5 span {
@@ -432,9 +441,10 @@
 }
 
 .match h6 {
-    color: #60AEF6;
+    color: #990715;
     font-weight: normal;
     margin-top: 4px;
+    font-size: 15px;
 }
 
 .vl {
@@ -443,20 +453,50 @@
     padding: 10px 12px;
 }
 
-.runs{
+.runs {
     display: flex;
     margin: 20px 0;
 }
 
-.runs h6{
+.runs h6 {
     margin: 0 10px;
-    color: #60AEF6;
+    color: #1866db;
+    font-weight: normal;
 }
 
-.score-border{
-    border-left: 2px solid #4a4b4b;
-    height: 25px;
+.score-border {
+    border-left: 1px solid #4a4b4b;
+    height: 22px;
 }
+
+.month {
+    background: #ecebeb;
+    padding: 4px 17px;
+    margin-top: 22px;
+}
+
+
+.series h6 {
+    color: #666;
+    font-size: 13px;
+    font-weight: normal;
+}
+.series a {
+    color: rgb(0, 0, 0);
+    margin-top: 10px;
+    font-weight: 400;
+}
+.friday h2{
+    background: #ecebeb;
+    padding: 4px 17px;
+    margin-top: 22px;
+    font-size: 16px;
+}
+
+
+
+
+
 
 
 
@@ -498,16 +538,21 @@
     .main-footer .ftr-link ul li {
         list-style-type: none;
     }
+
     .live-tab .evevts {
         width: 100%;
         margin: 0px;
     }
-    .match{
+
+    .match {
         width: 100%;
     }
 
     .runs h6 {
         margin: 1px 5px;
-        font-size: 12px;
+        font-size: 14px;
+        font-weight: normal;
+        margin-left: 11px;
+        margin-right: 17px;
     }
 }

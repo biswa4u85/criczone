@@ -43,9 +43,8 @@ function LiveScore(props) {
                 <meta name="description" content={homeSettings?.meta_description} />
             </Helmet>
             <div className="tab-sec">
-
                 <Row>
-                    <Col xs={{ span: 22, offset: 1 }} lg={{ span: 13, offset: 5 }}>
+                    <Col xs={{ span: 22, offset: 1 }} lg={{ span: 22, offset: 1 }}>
                         {/* <Live data={liveData} /> */}
                         <div className="tab">
                             <Tabs defaultActiveKey="1" onChange={onChange} >
@@ -562,45 +561,12 @@ function LiveScore(props) {
 
                                 </TabPane>
                                 <TabPane tab="Teams" key="4">
-
-
-
                                     <h2>Cricket Teams</h2>
                                     <Button className="tab-btn" type="primary" shape="round" size={size}> International </Button>
                                     <Button className="tab-btn" shape="round" size={size}> Domestic & Others </Button>
                                     <Button className="tab-btn" shape="round" size={size}> T20 Leagues</Button>
                                     <Button className="tab-btn" shape="round" size={size}> Women </Button>
                                     <hr />
-
-                                    {/* <img src={dallyUpdate} alt="Advertiser" border="0" /> */}
-
-
-
-
-                                    {/* <Row>
-                                        <Col span={12}> <img width={100} src={india} />
-
-                                        </Col>
-
-                                        <Col span={12}> <h2>India</h2></Col>
-                                    </Row> */}
-
-                                    {/* <Row>
-                                        <Col span={10} order={4}>
-
-                                            <img width={70} src={afghanistan} />
-                                        </Col>
-                                        <Col span={10} order={2}>
-                                            Afghanistan
-                                        </Col>
-                                        <Col span={1} order={2}>
-                                            India
-                                        </Col>
-                                        <Col span={3} order={1}>
-                                            <img width={70} src={india} />
-                                        </Col>
-                                    </Row> */}
-
                                     <Row>
                                         <Col span={3} order={1}>
                                             <img width={70} src={india} />
@@ -609,11 +575,12 @@ function LiveScore(props) {
                                             India
                                         </Col>
                                         <Col span={6} order={3}>
-                                        <img width={70} src={afghanistan} />
+                                            <img width={70} src={afghanistan} />
                                         </Col>
                                         <Col span={6} order={4}>
-                                           Afghanistan
+                                            Afghanistan
                                         </Col>
+
                                     </Row>
 
 
@@ -643,7 +610,73 @@ function LiveScore(props) {
 
 
                                 </TabPane>
-                                <TabPane tab="Series Archive" key="5"></TabPane>
+                                <TabPane tab="Series Archive" key="5">
+
+                                    {/* <Row>
+                                        <Col span={12}><h2>Cricket Match Archives</h2></Col>
+                                        <Col span={12}><h2>ALL SEASONS</h2></Col>
+                                    </Row> */}
+                                    <Row>
+                                        <div>
+                                            <Col flex="1 1 200px">
+                                                <h2>Cricket Match Archives</h2>
+                                                <h2>2022</h2>
+                                                <hr />
+
+                                                <Row>
+                                                    <Col span={6} pull={18}>
+                                                        <h2>International</h2>
+                                                    </Col>
+
+                                                    <Row>
+                                                        <Col span={18} push={9}>
+                                                            Asia Cup Qualifier 2022 Aug 20 - Aug 24
+                                                        </Col>
+                                                        <Col span={6} pull={22}>
+                                                            International
+                                                        </Col>
+                                                    </Row>
+
+                                                    <Col span={18} push={6}>
+                                                        <a href="#">Asia Cup Qualifier 2022 <span> Aug 20 - Aug 24</span></a>
+                                                    </Col>
+                                                </Row>
+
+
+
+
+
+
+
+
+
+
+
+                                            </Col>
+                                            <div className="season_border"></div>
+                                            <Col flex="0 1 300px"><h2>ALL SEASONS</h2>
+                                                <hr /></Col>
+                                        </div>
+                                    </Row>
+
+
+                                    {/* <h2>Cricket Match Archives</h2>
+                                    <h2>2022</h2> */}
+                                    {/* <hr /> */}
+
+                                    {/* <h2>International</h2>
+                                    <a href="#">Asia Cup Qualifier 2022 <span> Aug 20 - Aug 24</span></a> */}
+
+
+
+
+
+
+
+
+
+
+                                </TabPane>
                             </Tabs>
                         </div>
 

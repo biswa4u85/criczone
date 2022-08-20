@@ -493,6 +493,11 @@
     font-size: 16px;
 }
 
+.season_border {
+    border-left: 1px solid #4a4b4b;
+    height: 22px;
+}
+
 
 
 

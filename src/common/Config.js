@@ -1,14 +1,10 @@
 import noData from "../assets/img/nodata.jpg";
 import playBtn from "../assets/img/svg/play-btn.svg";
 export default {
-    liveScoreApiURL: 'https://api.sports.roanuz.com/v5/core/RS_P_1546828966243995659/graphql',
-    apiKey: 'RS5:3b28e1af862fe552f9cade04db1a8705',
-    frappe_custom_app: 'erp_custom_auth',
+    apiSocketUrl: 'https://news.techwizards.io:3001',
     frappe_url: 'https://news.techwizards.io',
+    frappe_custom_app: 'erp_custom_auth',
     token: 'token 8013775618bd3a7:99fa9ff03295aa8',
-    rapidAPIHost: 'cricket-live-data.p.rapidapi.com',
-    rapidAPIKey: 'ceff4f9011mshb4a79448651b42dp119c71jsn663c2e90ee8a',
-    rapidAPIUrl: 'https://cricket-live-data.p.rapidapi.com',
     randerImage: (src, height, imgHeight) => {
         let imageURL = src ? (String(src).includes('https://') ? src : 'https://news.techwizards.io' + src) : noData
         return <div style={{ textAlign: "center", objectFit: 'cover', height: height }}>

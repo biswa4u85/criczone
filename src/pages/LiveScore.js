@@ -303,24 +303,6 @@ function LiveScore(props) {
                                                 <div class="score-border"></div>
                                                 <h6>News</h6>
                                             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                         </TabPane>
                                     </Tabs>
                                 </TabPane>

@@ -61,27 +61,14 @@ function LiveScore(props) {
                                                 <h6>Today  •  12:45 PM at Harare, Harare Sports Club</h6>
                                             </div>
                                             <div className="match">
-                                                <Carousel afterChange={onAction}>
-                                                    <div class="vl">
-                                                        <h5>ZIM <span>1-0 (0.3 Ovs)</span></h5>
-                                                        <h5>IND</h5>
-                                                        <h6>India opt to bowl</h6>
-                                                    </div>
 
-                                                    <div class="vl">
-                                                        <h5>RSA <span>433 & 183 </span></h5>
-                                                        <h5>ENGA <span>672 </span></h5>
-                                                        <h6>England Lions Won by an innings and 56 runs</h6>
-                                                    </div>
+                                                <div class="vl">
+                                                    <h5>ZIM <span>1-0 (0.3 Ovs)</span></h5>
+                                                    <h5>IND</h5>
+                                                    <h6>India opt to bowl</h6>
+                                                </div>
 
 
-                                                    <div class="vl">
-                                                        <h5>RSA <span>433 & 183 </span></h5>
-                                                        <h5>ENGA <span>672 </span></h5>
-                                                        <h6>England Lions Won by an innings and 56 runs</h6>
-                                                    </div>
-
-                                                </Carousel>
                                             </div>
 
 
@@ -89,7 +76,7 @@ function LiveScore(props) {
                                             <div className="runs">
                                                 <h6>Live Score</h6>
                                                 <div class="score-border"></div>
-                                                <h6>Scorecard</h6>
+                                                <h6 >Scorecard</h6>
                                                 <div class="score-border"></div>
                                                 <h6>Full Commentary</h6>
                                                 <div class="score-border"></div>
@@ -101,25 +88,15 @@ function LiveScore(props) {
                                                 <h6>Aug 17 - Aug 21  •  3:30 PM at London, Lord's</h6>
                                             </div>
                                             <div className="match">
-                                                <Carousel afterChange={onAction}>
-                                                    <div class="vl">
-                                                        <h5>ENG <span>1-0 (0.3 Ovs)</span></h5>
-                                                        <h5>RSA<span>672 </span></h5>
-                                                        <h6>Day 1: Stumps</h6>
-                                                    </div>
 
-                                                    <div class="vl">
-                                                        <h5>ENG <span>1-0 (0.3 Ovs)</span></h5>
-                                                        <h5>RSA<span>672 </span></h5>
-                                                        <h6>Day 1: Stumps</h6>
-                                                    </div>
+                                                <div class="vl">
+                                                    <h5>ENG <span>1-0 (0.3 Ovs)</span></h5>
+                                                    <h5>RSA<span>672 </span></h5>
+                                                    <h6>Day 1: Stumps</h6>
+                                                </div>
 
-                                                    <div class="vl">
-                                                        <h5>ENG <span>1-0 (0.3 Ovs)</span></h5>
-                                                        <h5>RSA<span>672 </span></h5>
-                                                        <h6>Day 1: Stumps</h6>
-                                                    </div>
-                                                </Carousel>
+
+
                                             </div>
 
                                             <div className="runs">
@@ -137,25 +114,14 @@ function LiveScore(props) {
                                                 <h6>Aug 17•  11:30 PM at Bridgetown, Barbados, Kensington Oval</h6>
                                             </div>
                                             <div className="match">
-                                                <Carousel afterChange={onAction}>
-                                                    <div class="vl">
-                                                        <h5>ZIM <span>1-0 (0.3 Ovs)</span></h5>
-                                                        <h5>IND<span>672 </span></h5>
-                                                        <h6>India opt to bowl</h6>
-                                                    </div>
 
-                                                    <div class="vl">
-                                                        <h5>ZIM <span>1-0 (0.3 Ovs)</span></h5>
-                                                        <h5>IND<span>672 </span></h5>
-                                                        <h6>India opt to bowl</h6>
-                                                    </div>
+                                                <div class="vl">
+                                                    <h5>ZIM <span>1-0 (0.3 Ovs)</span></h5>
+                                                    <h5>IND<span>672 </span></h5>
+                                                    <h6>India opt to bowl</h6>
+                                                </div>
 
-                                                    <div class="vl">
-                                                        <h5>ZIM <span>1-0 (0.3 Ovs)</span></h5>
-                                                        <h5>IND<span>672 </span></h5>
-                                                        <h6>India opt to bowl</h6>
-                                                    </div>
-                                                </Carousel>
+
                                             </div>
 
                                             <div className="runs">
@@ -179,8 +145,6 @@ function LiveScore(props) {
                                                 <h5>southu Africa Tour Of England 2022, <span>4-day Practice Match</span></h5>
                                                 <h6>Aug 9 Aug-12 . 3:30 PM at Canterbury, St Lawrence Ground</h6>
                                             </div>
-
-
                                             <div className="match">
                                                 <Carousel afterChange={onAction}>
                                                     <div class="vl">
@@ -208,7 +172,7 @@ function LiveScore(props) {
                                             <div className="runs">
                                                 <h6>Live Score</h6>
                                                 <div class="score-border"></div>
-                                                <h6>Scorecard</h6>
+                                                <h6 onChange={onChange}>Scorecard</h6>
                                                 <div class="score-border"></div>
                                                 <h6>Full Commentary</h6>
                                                 <div class="score-border"></div>

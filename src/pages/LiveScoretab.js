@@ -102,7 +102,7 @@ function LiveScoretab(props) {
             address: '',
         },
     ];
-    const match  = [
+    const match = [
         {
             title: 'Batter',
             dataIndex: 'name',
@@ -116,7 +116,7 @@ function LiveScoretab(props) {
             key: 'age',
             width: 600,
         },
-        
+
 
     ];
     const info = [
@@ -124,38 +124,38 @@ function LiveScoretab(props) {
             key: '1',
             name: 'Match',
             age: 'SIN vs KUW, 5th Match, Asia Cup Qualifier 2022',
-            
+
         },
         {
             key: '2',
             name: 'Date',
             age: 'Wednesday, August 24, 2022',
-           
+
         },
         {
             key: '3',
             name: 'Toss',
             age: 'Singapore won the toss and opt to bat',
-           
+
 
         },
         {
             key: '4',
             name: 'Time',
             age: '5:30 PM',
-           
+
         },
         {
             key: '5',
             name: 'Venue',
             age: 'Al Amerat Cricket Ground (Ministry Turf 1), Al Amerat',
-          
+
         },
         {
             key: '6',
             name: 'Umpires',
             age: 'Harikrishna Pillai, Tabarak Dar',
-          
+
         },
         {
             key: '7',
@@ -195,7 +195,7 @@ function LiveScoretab(props) {
             name: 'Bench',
             age: 'Adnan Idrees, Mohammad Amin, Muhammad Kashif, Haroon Shahid, Nawaf Ahmed, Shahrukh Quddus',
         },
-        
+
     ];
 
     return (

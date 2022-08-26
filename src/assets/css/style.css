@@ -2369,6 +2369,7 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
     clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
     transition: var(--ease-6ms);
     opacity: 0;
+    width: 40%;
     z-index: 99
 }
 
@@ -2391,6 +2392,33 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
 .mega-dropdown:hover .mega-menu {
     clip-path: polygon(0 0, 120% 0, 120% 120%, 0% 120%);
     opacity: 1
+}
+
+.newMega {
+    padding: 15px;
+}
+
+.newMega h3 a {
+    margin: 0;
+    padding: 5px;
+    font-weight: bold;
+    border-bottom: solid 1px var(--color-blue);
+}
+
+.newMega ul {
+    margin: 0;
+    padding: 0;
+    margin-left: 20px;
+}
+.newMega ul>li>a{
+    color: #000;
+}
+.newMega ul>li>ul>li>a{
+    color: var(--color-blue);
+}
+.newMega li {
+    margin: 3px;
+    padding: 0;
 }
 
 .mega-tab-menu {

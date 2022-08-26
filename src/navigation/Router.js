@@ -15,6 +15,7 @@ import Cms from "../pages/Cms";
 import Category from "../pages/Category";
 import Page404 from "../pages/Page404";
 import LiveScore from "../pages/LiveScore";
+import LiveScoretab from "../pages/LiveScoretab";
 
 
 function Routers() {
@@ -27,6 +28,7 @@ function Routers() {
           <Route path="/cms/:Id" element={<Cms />} />
           <Route path="/cat/:Id" element={<Category />} />
           <Route path="/live-score" element={<LiveScore />} />
+          <Route path="/live-scoretab" element={<LiveScoretab />} />
           <Route path="*" element={<Page404 />} />
         </Route>
       </Routes>

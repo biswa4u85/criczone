@@ -235,9 +235,6 @@ function LiveScoretab(props) {
                                         <h5>Match Info</h5>
                                     </div>
                                     <Table columns={match} dataSource={info} />
-
-
-
                                 </div>
                             </TabPane>
                             <TabPane tab="Tab 3" key="3">

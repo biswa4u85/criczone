@@ -406,13 +406,15 @@
     font-size: 17px;
     font-weight: bold;
 }
-.africa h5 a{
+
+.africa h5 a {
     color: #000000;
 }
 
-.africa h5 a:hover{
+.africa h5 a:hover {
     text-decoration: underline;
 }
+
 .africa span {
     color: #525050;
     font-size: 14px;
@@ -427,6 +429,16 @@
 .africa h6 {
     color: #615f5f;
     font-size: 14px;
+}
+
+.africa h4 {
+    position: absolute;
+    right: 47px;
+    background: deeppink;
+    padding: 5px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #ffff;
 }
 
 .match {
@@ -642,11 +654,12 @@
     text-decoration: underline;
 }
 
-.tab-sec .ant-tabs>.ant-tabs-nav, .ant-tabs>div>.ant-tabs-nav{
+.tab-sec .ant-tabs>.ant-tabs-nav,
+.ant-tabs>div>.ant-tabs-nav {
     /* padding: 0 !important; */
 }
 
-.tab-bar .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn{
+.tab-bar .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
     text-shadow: 0 0 0.25px currentcolor;
     border: 1px solid;
     padding: 0 16px;
@@ -655,7 +668,7 @@
     text-decoration: none;
 }
 
-.tab-bar .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn :hover{
+.tab-bar .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn :hover {
     background-color: #1DA57A;
 }
 

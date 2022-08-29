@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 import { getNewsDetails, addComments } from '../store/MainRedux'
 import Config from "../common/Config";
 import { Helmet } from "react-helmet";
+import Tags from '../components/Tags';
 
 const { TextArea } = Input;
 
@@ -78,6 +79,7 @@ function Details(props) {
                                     <span>{moment.utc(newsDetails?.published_on).format('Do MMM YYYY')}</span>
                                 </div>
                                 <h2>{newsDetails?.title}</h2>
+                                <div className="details_tags"><Tags data={newsDetails._user_tags} /></div>
                                 <div dangerouslySetInnerHTML={{ __html: newsDetails?.content_html ? newsDetails?.content_html : newsDetails?.content }}></div>
                                 {/* <div className="reaction">
                                     <h3>Your Reaction on this post</h3>

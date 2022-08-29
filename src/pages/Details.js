@@ -79,7 +79,7 @@ function Details(props) {
                                     <span>{moment.utc(newsDetails?.published_on).format('Do MMM YYYY')}</span>
                                 </div>
                                 <h2>{newsDetails?.title}</h2>
-                                <div className="details_tags"><Tags data={newsDetails._user_tags} /></div>
+                                <div className="details_tags"><Tags data={newsDetails?._user_tags ? newsDetails?._user_tags : ''} /></div>
                                 <div dangerouslySetInnerHTML={{ __html: newsDetails?.content_html ? newsDetails?.content_html : newsDetails?.content }}></div>
                                 {/* <div className="reaction">
                                     <h3>Your Reaction on this post</h3>

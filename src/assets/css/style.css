@@ -226,11 +226,6 @@ x* {
     transition: var(--ease-in)
 }
 
-.social-icon.social-bg-red li {
-    border: 1px solid var(--color-blue);
-    background-color: var(--color-blue)
-}
-
 .social-icon.social-bg-red li a i {
     color: var(--white)
 }

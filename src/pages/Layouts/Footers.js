@@ -1,10 +1,14 @@
 import React, { useEffect, useState, useRef } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import { Image } from 'antd';
 import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from 'react-redux'
 import ftrBg from "../../assets/img/svg/ftr-bg.svg";
 import FormValidate from "../../common/FormValidate";
 import Config from "../../common/Config";
+import instagram from "../../assets/image/instagram.png";
+import facebook from "../../assets/image/facebook.png";
+import twitter from "../../assets/image/twitter.png";
 import { subscribeEmail, getCmsDetails } from '../../store/MainRedux'
 
 function Footers() {
@@ -72,10 +76,11 @@ function Footers() {
                                     <p>{cms?.header}</p>
                                     <div className="footer-social">
                                         <h6>Follow Us</h6>
+                                        {/* <i className="icofont-instagram"></i> */}
                                         <ul className="social-icon social-bg-red">
-                                            <li><a href="https://www.facebook.com/CriczoneNewsWebsite" target="_blank"><i className="icofont-facebook"></i></a></li>
-                                            <li><a href="https://instagram.com/criczonenews?igshid=NmZiMzY2Mjc=" target="_blank"><i className="icofont-instagram"></i></a></li>
-                                            <li><a href="https://twitter.com/CriczoneN" target="_blank"><i className="icofont-twitter"></i></a></li>
+                                            <li><a href="https://www.facebook.com/CriczoneNewsWebsite" target="_blank"><Image preview={false} src={facebook}/></a></li>
+                                            <li><a href="https://instagram.com/criczonenews?igshid=NmZiMzY2Mjc=" target="_blank"><Image preview={false} src={instagram}/></a></li>
+                                            <li><a href="https://twitter.com/CriczoneN" target="_blank"><Image preview={false} src={twitter}/></a></li>
                                         </ul>
                                         <br />
                                         <h6>Contact Us</h6>

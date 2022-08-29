@@ -1,12 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { Tabs, Space, Table, Tag, Tooltip, Row, Col, Button, Carousel } from 'antd';
 import { useSelector, useDispatch } from 'react-redux'
+import { NavLink, useNavigate } from "react-router-dom";
+import { CopyrightOutlined, RightOutlined } from '@ant-design/icons';
 import { Helmet } from "react-helmet";
+import HomeSlider from './Scores/HomeSlider';
 
 
 function LiveScoretab(props) {
     const { TabPane } = Tabs;
+    let navigate = useNavigate();
     const homeSettings = useSelector((state) => state.auth.homeSettings)
+    const contentStyle = {
+        height: '160px',
+        color: '#fff',
+        lineHeight: '160px',
+        textAlign: 'center',
+        background: '#364d79',
+    };
     const onChange = (key) => {
         console.log(key);
     };
@@ -215,8 +226,43 @@ function LiveScoretab(props) {
                         </div>
 
                         <Tabs defaultActiveKey="1" onChange={onChange}>
-                            <TabPane tab="Tab 1" key="1">
-                                Content of Tab Pane 1
+                            <TabPane tab="Commentary" key="1" className="farooqi">
+                                <h5>SL 105 (19.4)</h5>
+                                <h6>AFG 106/2 (10.1)</h6>
+                                <p>Afghanistan won by 8 wkts</p>
+                                <div className="plya">PLAYER OF THE MATCH</div>
+                                <a href="#">Fazalhaq Farooqi</a>
+                                <div className="player-border"></div>
+                                <div className="surprise">
+                                    <h6>Hair Transplant Cost Outside India Might Surprise you </h6>
+                                    <CopyrightOutlined />
+                                </div>
+                                <div className="player-border"></div>
+                                <div className="videosse">
+                                    <h6>Match Videos</h6>
+                                    <p>VIEW ALL <RightOutlined /></p>
+                                </div>
+
+                                {/* <div className="nvbanner-area">
+                                    <HomeSlider />
+                                    <div className="viewAllMatch"><button onClick={() => navigate('/live-score')}>View all Matches</button></div>
+                                </div> */}
+                                <h3>youtube box</h3>
+                                <div>
+                                    <p>That’s all from the presentations. A thumping statement of intent from Afghanistan! Let’s see if they can build on this momentum. Join us now for the big one tomorrow - India vs Pakistan. We’ll be ready nice and early for that one, hopefully the game lives up to that rivalry! See you then, it’s a wrap for now!</p>
+                                    <p><span>Fazalhaq Farooqi, Man of the Match: </span>I was trying to make a breakthrough for my team, that was the simple plan today. With the new ball, I am trying to bowl good deliveries, but I can also bowl at the death. I am comfortable doing both.</p>
+                                </div>
+                                <h3>youtube box</h3>
+                                <div className="crazy">
+                                    <div className="surprise">
+                                        <h6>Hair Transplant Cost Outside India Might Surprise you </h6>
+                                        <CopyrightOutlined />
+                                    </div>
+                                    <div className="player-border"></div>
+                                    <div className=""></div>
+
+                                    <h4>10</h4>
+                                </div>
                             </TabPane>
                             <TabPane tab="Scorecard " key="2">
                                 <h6 className="nether">Netherlands Women opt to bowl</h6>

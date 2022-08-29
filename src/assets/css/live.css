@@ -654,10 +654,7 @@
     text-decoration: underline;
 }
 
-.tab-sec .ant-tabs>.ant-tabs-nav,
-.ant-tabs>div>.ant-tabs-nav {
-    /* padding: 0 !important; */
-}
+
 
 .tab-bar .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
     text-shadow: 0 0 0.25px currentcolor;
@@ -672,7 +669,71 @@
     background-color: #1DA57A;
 }
 
+.farooqi h5 {
+    color: #6b6b6b;
+    font-size: 18px;
+    font-weight: 700;
+}
 
+.farooqi h6 {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.farooqi p {
+    font-size: 14px;
+    color: #3b8aff;
+    margin:  16px  0;
+}
+
+.plya p{
+    color: gray;
+    font-size: 14px;
+}
+
+.farooqi a {
+    color: black;
+    margin-bottom: 20px;
+}
+
+.farooqi a:hover {
+    color: black;
+    text-decoration: underline;
+}
+
+.surprise{
+   display: flex;
+   justify-content: space-between;
+  
+}
+
+.surprise h6{
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+    color: #0067ff;
+}
+
+.player-border {
+    border: 0.3px solid gray;
+}
+
+.videosse{
+    display: flex;
+   justify-content: space-between;
+   margin: 10px 0;
+}
+
+.videosse p{
+    margin: 0;
+    color: gray;
+    cursor: pointer;
+}
+
+.crazy{
+    /* display: flex; */
+    background-color: rgb(221 221 221 / 85%);
+}
 
 
 

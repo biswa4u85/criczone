@@ -67,7 +67,7 @@ function LiveScore(props) {
                                                         <div className="runs">
                                                             <h6>Live Score</h6>
                                                             <div class="score-border"></div>
-                                                            <h6 >Scorecard</h6>
+                                                            <h6 onClick={() => navigate('/live-scoretab')}>Scorecard</h6>
                                                             <div class="score-border"></div>
                                                             <h6>Full Commentary</h6>
                                                             <div class="score-border"></div>
@@ -343,46 +343,7 @@ function LiveScore(props) {
                                         </Tabs>
                                     </div>
                                 </TabPane>
-                                {/* <TabPane tab="" key="3">
-                                    <h2></h2>
-                                    <Button className="tab-btn" type="primary" shape="round" size={size}> International </Button>
-                                    <Button className="tab-btn" shape="round" size={size}> Domestic & Others </Button>
-                                    <Button className="tab-btn" shape="round" size={size}> T20 Leagues</Button>
-                                    <Button className="tab-btn" shape="round" size={size}> Women </Button>
-                                    <Button className="tab-btn" shape="round" size={size}> All Matches </Button>
-                                    
-                                    <div className="nepal">
-                                        <Row>
-                                            <Col span={7}>
-                                                <h5> Nepal tour of Kenya, 2022</h5>
-                                                <br />
-                                                <br />
-                                                <br />
-                                                <br />
-                                                <h5>South Africa tour of England, 2022</h5>
-                                            </Col>
-                                            <Col span={7} offset={2}>
-                                                <h6>Kenya vs Nepal, 1st T20I</h6>
-                                                <p>Gymkhana Club Ground, Nairobi</p>
-                                                <br />
-                                                <br />
-                                                <h6>England vs South Africa, 2nd Test, Day 1</h6>
-                                                <p>Emirates Old Trafford, Manchester</p>
-                                            </Col>
-                                            <Col span={6} offset={2}>
-                                                <h6>3:30 PM</h6>
-                                                <p>10:00 AM GMT / 01:00 PM LOCAL</p>
-                                                <br />
-                                                <br />
-                                                <h6>3:30 PM</h6>
-                                                <p>10:00 AM GMT / 11:00 AM LOCAL</p>
-                                            </Col>
-                                        </Row>
-                                    </div>
-                                    <div className="friday">
-                                        <h2>FRI, AUG 26 2022</h2>
-                                    </div>
-                                </TabPane> */}
+                               
 
                                 <TabPane tab="Matches By Day" key="3">
                                     <h2>Cricket Schedule</h2>

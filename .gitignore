@@ -2,3 +2,5 @@ node_modules/
 build/
 # Local Netlify folder
 .netlify
+src/pages/.DS_Store
+src/.DS_Store

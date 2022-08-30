@@ -9,6 +9,11 @@ import { getNewsDetails, addComments } from '../store/MainRedux'
 import Config from "../common/Config";
 import { Helmet } from "react-helmet";
 import Tags from '../components/Tags';
+import { Image } from 'antd';
+import instagram from "../assets/image/instagram.png";
+import facebook from "../assets/image/facebook.png";
+import twitter from "../assets/image/twitter.png";
+import youtube from "../assets/image/youtube.png";
 
 const { TextArea } = Input;
 
@@ -79,8 +84,8 @@ function Details(props) {
                                     <span>{moment.utc(newsDetails?.published_on).format('Do MMM YYYY')}</span>
                                 </div>
                                 <h2>{newsDetails?.title}</h2>
-                                <div className="details_tags"><Tags data={newsDetails?._user_tags ? newsDetails?._user_tags : ''} /></div>
                                 <div dangerouslySetInnerHTML={{ __html: newsDetails?.content_html ? newsDetails?.content_html : newsDetails?.content }}></div>
+                                <div className="details_tags"><Tags data={newsDetails?._user_tags ? newsDetails?._user_tags : ''} /></div>
                                 {/* <div className="reaction">
                                     <h3>Your Reaction on this post</h3>
                                     <ul>
@@ -150,10 +155,10 @@ function Details(props) {
                         <div className="ath-social">
                             <h3>Share This Post</h3>
                             <ul className="social-icon social-outline-gray">
-                                <li><a href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`} target="_blank"><i className="icofont-facebook"></i></a></li>
-                                <li><a href={`https://www.youtube.com/sharer/sharer.php?u=${window.location.href}`} target="_blank"><i className="icofont-youtube-play"></i></a></li>
-                                <li><a href={`https://twitter.com/sharer/sharer.php?u=${window.location.href}`} target="_blank"><i className="icofont-twitter"></i></a></li>
-                                <li><a href={`https://www.instagram.com/sharer/sharer.php?u=${window.location.href}`} target="_blank"><i className="icofont-instagram"></i></a></li>
+                                <li><a href="https://www.facebook.com/CriczoneNewsWebsite" target="_blank"><Image preview={false} src={facebook}/></a></li>
+                                <li><a href={`https://www.youtube.com/sharer/sharer.php?u=${window.location.href}`} target="_blank"><Image preview={false} src={youtube}/></a></li>
+                                <li><a href="https://twitter.com/CriczoneN" target="_blank"><Image preview={false} src={twitter}/></a></li>
+                                <li><a href="https://instagram.com/criczonenews?igshid=NmZiMzY2Mjc=" target="_blank"><Image preview={false} src={instagram}/></a></li>
                             </ul>
                         </div>
                     </div>

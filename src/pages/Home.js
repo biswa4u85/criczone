@@ -109,7 +109,7 @@ function Home() {
                                                         <span>{home1stNews[0].blogger}</span>
                                                     </div>
                                                     <h3><NavLink to={`/details/${home1stNews[0].name}`}>{Config.trunCate(home1stNews[0].title, 40, '. . .')}</NavLink></h3>
-                                                    <Tags data={home1stNews[0]._user_tags} />
+                                                
                                                 </div>
                                             </div>
                                         </div>)}
@@ -131,7 +131,7 @@ function Home() {
                                                             <span>{home2ndNews[0].blogger}</span>
                                                         </div>
                                                         <h3><NavLink to={`/details/${home2ndNews[0].name}`}>{Config.trunCate(home2ndNews[0].title, 40, '. . .')}</NavLink></h3>
-                                                        <Tags data={home2ndNews[0]._user_tags} />
+                                
                                                     </div>
                                                 </div>
                                             </div>)}
@@ -150,7 +150,6 @@ function Home() {
                                                             <span>{home3rdNews[0].blogger}</span>
                                                         </div>
                                                         <h3><NavLink to={`/details/${home3rdNews[0].name}`}>{Config.trunCate(home3rdNews[0].title, 40, '. . .')}</NavLink></h3>
-                                                        <Tags data={home3rdNews[0]._user_tags} />
                                                     </div>
                                                 </div>
                                             </div>)}
@@ -201,7 +200,7 @@ function Home() {
                                                         <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                                     </div>
                                                     <h3>{Config.trunCate(item.title, 40, '. . .')}</h3>
-                                                    <Tags data={item._user_tags} />
+                                                   
                                                 </div>
                                             </div></NavLink>
                                         </div>)}

@@ -3,6 +3,7 @@ import OwlCarousel from 'react-owl-carousel';
 import moment from "moment";
 import Flags from "../../common/Flags";
 import { useSelector, useDispatch } from 'react-redux'
+import SocketApis from '../../utility/socket-apis'
 import { getHomeFixtures } from "../../store/ScoreRedux";
 
 const responsive = {
@@ -25,8 +26,25 @@ function HomeSlider() {
         dispatch(getHomeFixtures())
     }, []);
 
+    useEffect(() => {
+        for (let item of fixtures) {
+            if (item.status === 'Fixture') {
+                SocketApis.subscribe(item.name)
+            }
+        }
+    }, [fixtures]);
+
+
+    const checkDate = (date) => {
+        const today = new Date();
+        const newDate = new Date(date);
+        if (today.toDateString() === newDate.toDateString()) {
+            return 'Today'
+        } else {
+            return 'Yesterday'
+        }
+    }
     const checkImg = (name) => {
-        console.log(name)
         return <img src={Flags[name] ? Flags[name] : Flags['NoImg']} className="flagimg" />
     }
 
@@ -38,7 +56,7 @@ function HomeSlider() {
         {fixtures.map((item, key) => <div key={key} className='item'>
             <div className="trending_news">
                 <div className="lanka">
-                    <h6>Today At {moment.utc(item.datetime).format('hh:mm A')} . <span> {item.match_subtitle} .</span> {item.status}</h6>
+                    <h6>{checkDate(item.date)} At {moment.utc(item.datetime).format('hh:mm A')} . <span> {item.match_subtitle} .</span> {item.status}</h6>
                     <div className='srilanka'>
                         {checkImg(item?.home?.name)} <span> {item?.home?.name}</span>
                     </div>

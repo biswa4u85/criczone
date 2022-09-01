@@ -2,39 +2,24 @@ import React, { useState, useRef, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Button, Form, Input } from 'antd';
 import $ from 'jquery';
-import moment from "moment";
-import Config from "../../common/Config";
 import { useSelector, useDispatch } from 'react-redux'
 import { signUpUser, siteLogin, logout } from "../../store/UserRedux";
-// import login from '../assets/img/login.png'
-// import signUp from '../assets/img/signUp.png'
-
-// import { useQuery, gql, useMutation } from '@apollo/client';
-
-
-// const GET_TOKEN = gql`
-// query{
-//     mutation {
-//     auth (api_key: "RS5:3b28e1af862fe552f9cade04db1a8705") {
-//       token
-//       expires
-//     }
-//   }
-// }
-// `;
+import Config from "../../common/Config";
+import SocketApis from '../../utility/socket-apis'
 
 
 function Headers() {
     const dispatch = useDispatch()
-    // const { loading, error, data } = useQuery(GET_TOKEN);
-    // console.log(loading, error, data)
     let navigate = useNavigate();
-    const newsList = useSelector((state) => state.auth.newsList)
+    const [search, setSearch] = useState('');
     const token = useSelector((state) => state.user.token)
+    const homeSettings = useSelector((state) => state.auth.homeSettings)
 
-    // Filter News
-    let menNews = newsList.filter(item => item.blog_category === 'men');
-    let wpmenNews = newsList.filter(item => item.blog_category === 'women');
+    useEffect(() => {
+        SocketApis.getSocketData('message', (data) => {
+            console.log(data)
+        });
+    }, []);
 
     const onSignIn = (values) => {
         dispatch(siteLogin(values))
@@ -48,11 +33,6 @@ function Headers() {
         $("body").removeClass("overlay");
     };
 
-    const [search, setSearch] = useState('');
-
-
-
-
     return (
         <header className="header-area">
             <div className="main-header bg-header">
@@ -60,7 +40,7 @@ function Headers() {
                     <div className="main-header-wrapper">
                         <div className="header-logo">
                             <NavLink to="/">
-                                <span>criczone</span>
+                                {Config.randerImage(homeSettings.site_logo)}
                             </NavLink>
                         </div>
                         <div className="navbar-wrapper">

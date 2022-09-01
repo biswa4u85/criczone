@@ -735,7 +735,23 @@
     background-color: rgb(221 221 221 / 85%);
 }
 
+.ant-form-item-explain-error {
+    text-align: left;
+}
+.viewAllMatch {
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 14px;
+}
 
+.viewAllMatch button {
+    padding: 15px 30px;
+    font-size: var(--text-16);
+    font-weight: var(--medium);
+    color: var(--white);
+    background-color: var(--color-primary);
+    height: 100%;
+}
 
 
 
@@ -795,7 +811,7 @@
         margin-right: 17px;
     }
     .trending_news h6{
-        font-size: 11px;
+        font-size: 10px;
     }
     .srilanka span{
         font-size: 11px;

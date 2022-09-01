@@ -446,19 +446,22 @@ x* {
     .search-popup-box .search-box {
         max-width: 85%
     }
+
     .Search-popup .Search-icon {
         margin: 0px 14px !important;
     }
+
     .sign-option i {
         padding: 0px 6px;
     }
+
     .dark-light {
         margin: 0px 6px;
     }
 }
 
 @media screen and (max-width: 610px) {
-    .header-logo{
+    .header-logo {
         width: 200px !important;
     }
 
@@ -1295,12 +1298,13 @@ body.remover {
 .tagsection {
     display: inline-block;
     border: 1px solid var(--border-color);
-    margin: 5px; 
+    margin: 5px;
     color: var(--white);
     padding: 5px 8px;
     border-radius: 15px;
     font-size: 10px;
 }
+
 .details_tags .tagsection {
     color: var(--black);
     border: 1px solid var(--black);
@@ -1920,9 +1924,10 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
 }
 
 @media screen and (max-width: 575px) {
-    .sign-option{
+    .sign-option {
         width: 100px;
     }
+
     .container-md {
         padding: 0px 15px
     }
@@ -2437,12 +2442,15 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
     padding: 0;
     margin-left: 20px;
 }
-.newMega ul>li>a{
+
+.newMega ul>li>a {
     color: #000;
 }
-.newMega ul>li>ul>li>a{
+
+.newMega ul>li>ul>li>a {
     color: var(--color-blue);
 }
+
 .newMega li {
     margin: 3px;
     padding: 0;
@@ -2772,6 +2780,7 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
     padding: 10px 15px;
     color: var(--white);
     transition: var(--ease-in);
+    text-transform: capitalize; 
     display: block
 }
 
@@ -3024,6 +3033,7 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
     margin-bottom: 20px;
     background: #010203;
 }
+
 .bnr-lft {
     height: 100%
 }
@@ -11529,10 +11539,70 @@ body.demo {
         padding-left: 0px
     }
 }
+
 .footerMobile {
     display: none;
 }
+
 @media screen and (max-width: 767px) {
+    .main-header {
+        padding: 0px;
+    }
+
+    .header-logo {
+        height: 45px !important;
+    }
+    .viewAllMatch button{
+        padding: 2px 10px!important;
+    }
+    .options-area {
+        padding: 0;
+    }
+
+    .nvbanner-area {
+        padding: 5px 0px;
+        margin-bottom: 10px;
+    }
+
+    .viewAllMatch button {
+        padding: 0px 10px;
+    }
+
+    .pro-area {
+        padding: 0;
+    }
+
+    .pro-wrapper {
+        padding: 0;
+    }
+
+    .pro-wrapper img {
+        height: 60px;
+        width: auto;
+    }
+
+    .viewAllMatch {
+        margin-top: 5px;
+
+    }
+
+    .bnr-lft-title .news-heading {
+        padding: 5px 50px 5px 10px;
+    }
+
+    .bnr-lft-title .news-heading h5 {
+        font-size: 12px;
+        margin: 0;
+    }
+
+    .bnr-lft-title .news-slider .elepse {
+        font-size: 12px;
+    }
+
+    .btl-simple-card span.btn {
+        background-color: var(--color-blue);
+    }
+
     .error-right h5 {
         font-size: 18px
     }
@@ -11540,14 +11610,36 @@ body.demo {
     .error-right h6 {
         font-size: 45px
     }
-    .ftr-link{
+
+    .header-logo {
+        width: 285px !important;
+        background-position: left center !important;
+    }
+
+    .sign-option {
+        width: 100px;
+    }
+
+    .toggle-bar:before,
+    .toggle-bar:after,
+    .toggle-bar span {
+        background-color: var(--color-blue);
+    }
+
+    .footer-area .footer-logo {
+        background-position: center !important;
+    }
+
+    .ftr-contact,
+    .ftr-link {
         text-align: center;
     }
+
     .footerMobile {
         display: block;
         position: fixed;
         width: 100%;
-        background-color: #010203;
+        background-color: #f2e2c4;
         z-index: 99999;
         bottom: 0;
     }
@@ -11568,10 +11660,39 @@ body.demo {
         display: block;
         font-size: 15px;
         padding: 10px 20px;
-        color: var(--color-white);
+        color: var(--color-black);
     }
 
     .footerMobile li i {
         display: block;
+    }
+
+    .owl-theme .owl-dots {
+        display: none;
+    }
+
+    .bnr-lft-cnt-rgt {
+        margin-top: 10px;
+    }
+
+    .bnr-lft-title {
+        margin-bottom: 10px;
+    }
+
+    .news-card-wrapper,
+    .ns-mini-card,
+    .bnr-lft-cnt-rgt {
+        grid-gap: 10px;
+    }
+    .mb-lg-50,
+    .ftr-drpt p{
+        margin-bottom: 10px;
+    }
+    .footer-social h6{
+        margin: 0;
+        padding-bottom: 10px;
+    }
+    .main-footer .ftr-link ul li a{
+        padding: 2px 15px;
     }
 }

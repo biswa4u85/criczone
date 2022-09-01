@@ -9,7 +9,7 @@ import Config from "../../common/Config";
 import instagram from "../../assets/image/instagram.png";
 import facebook from "../../assets/image/facebook.png";
 import twitter from "../../assets/image/twitter.png";
-import { subscribeEmail, getCmsDetails } from '../../store/MainRedux'
+import { subscribeEmail } from '../../store/MainRedux'
 
 function Footers() {
     let navigate = useNavigate();
@@ -21,13 +21,6 @@ function Footers() {
     const [submenu, setSubmenu] = useState(false)
     const token = Config.token
     const homeSettings = useSelector((state) => state.auth.homeSettings)
-    const categorys = useSelector((state) => state.auth.categorys)
-    const cmsData = useSelector((state) => state.auth.cms)
-    const cms = cmsData['about-us']
-
-    useEffect(() => {
-        dispatch(getCmsDetails({ token, Id: 'about-us' }))
-    }, []);
 
     const sendNewsletter = () => {
         if (!email) {
@@ -70,21 +63,21 @@ function Footers() {
                                 <div className="ftr-drpt">
                                     <div className="footer-logo">
                                         <NavLink to="/">
-                                            <span>criczone</span>
+                                            {Config.randerImage(homeSettings.site_logo)}
                                         </NavLink>
                                     </div>
-                                    <p>{cms?.header}</p>
+                                    <p>{homeSettings?.site_about}</p>
                                     <div className="footer-social">
                                         <h6>Follow Us</h6>
                                         {/* <i className="icofont-instagram"></i> */}
                                         <ul className="social-icon social-bg-red">
-                                            <li><a href="https://www.facebook.com/CriczoneNewsWebsite" target="_blank"><Image preview={false} src={facebook}/></a></li>
-                                            <li><a href="https://instagram.com/criczonenews?igshid=NmZiMzY2Mjc=" target="_blank"><Image preview={false} src={instagram}/></a></li>
-                                            <li><a href="https://twitter.com/CriczoneN" target="_blank"><Image preview={false} src={twitter}/></a></li>
+                                            <li><a href="https://www.facebook.com/CriczoneNewsWebsite" target="_blank"><Image preview={false} src={facebook} /></a></li>
+                                            <li><a href="https://instagram.com/criczonenews?igshid=NmZiMzY2Mjc=" target="_blank"><Image preview={false} src={instagram} /></a></li>
+                                            <li><a href="https://twitter.com/CriczoneN" target="_blank"><Image preview={false} src={twitter} /></a></li>
                                         </ul>
                                         <br />
                                         <h6>Contact Us</h6>
-                                        <a href="mailto:info@criczone.co">info@criczone.co</a>
+                                        <a href={`mailto:${homeSettings?.site_email}`}>{homeSettings?.site_email}</a>
                                     </div>
                                 </div>
                             </div>
@@ -92,13 +85,7 @@ function Footers() {
                                 <div className="ftr-link">
                                     <h3 className="title-line-shape">Category</h3>
                                     <ul>
-                                        <li><NavLink to="/cat/trending-news">Trending News</NavLink></li>
-                                        <li><NavLink to="/cat/editors-pick">Editor's Pick</NavLink></li>
-                                        <li><NavLink to="/cat/review-zone">Reviews</NavLink></li>
-                                        <li><NavLink to="/cat/on-this-day">On this Day</NavLink></li>
-                                        <li><NavLink to="/cat/match-prediction">Match Prediction</NavLink></li>
-                                        <li><NavLink to="/cat/men">Men</NavLink></li>
-                                        <li><NavLink to="/cat/women">Women</NavLink></li>
+                                        {homeSettings?.category ? homeSettings.category.map((item, key) => <li key={key}><NavLink to={`/cat/${item.title}`}>{Config.filterTitle(item.title)}</NavLink></li>) : null}
                                     </ul>
                                 </div>
                             </div>
@@ -106,13 +93,7 @@ function Footers() {
                                 <div className="ftr-link">
                                     <h3 className="title-line-shape">Useful Link</h3>
                                     <ul>
-                                        <li><NavLink to="/cms/dcma">DCMA</NavLink></li>
-                                        <li><NavLink to="/cms/disclaimer">Disclaimer</NavLink></li>
-                                        <li><NavLink to="/cms/copyright-notice">Copyright Notice</NavLink></li>
-                                        <li><NavLink to="/cms/about-us">About Us</NavLink></li>
-                                        <li><NavLink to="/cms/contact-us">Contact Us</NavLink></li>
-                                        <li><NavLink to="/cms/terms-conditions">Term & Condition</NavLink></li>
-                                        <li><NavLink to="/cms/privacy">Privacy</NavLink></li>
+                                        {homeSettings?.usefulLinks ? homeSettings.usefulLinks.map((item, key) => <li key={key}><NavLink to={`/cms/${item.title}`}>{Config.filterTitle(item.title)}</NavLink></li>) : null}
                                     </ul>
                                 </div>
                             </div>

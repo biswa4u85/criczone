@@ -14,13 +14,15 @@ const initialState = {
   series: [],
   fixtures: [],
   scorecard: {},
+  seriesList: [],
 }
 
 export const seriesAllData = createAsyncThunk(
   'score/seriesAllData',
   async (params, { rejectWithValue }) => {
+    
     const response = await getAllDataApi({ doctype: doctypeSeries, fields: ["*"], ...params })
-
+    console.log(response)
     if (response.status === 'error') {
       return rejectWithValue(response.data)
     }
@@ -77,6 +79,20 @@ export const counterSlice = createSlice({
     },
   },
   extraReducers: {
+    // seriesAllData
+    [seriesAllData.pending]: (state, action) => {
+      state.isFetching = true
+      state.error = null
+    },
+    [seriesAllData.rejected]: (state, action) => {
+      state.isFetching = false
+      state.error = action.payload.message
+    },
+    [seriesAllData.fulfilled]: (state, action) => {
+      state.isFetching = false
+      state.error = null
+      state.seriesList = action.payload
+    },
     // Series
     [getSeries.pending]: (state, action) => {
       state.isFetching = true

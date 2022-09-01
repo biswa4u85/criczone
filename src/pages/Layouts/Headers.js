@@ -6,6 +6,7 @@ import moment from "moment";
 import Config from "../../common/Config";
 import { useSelector, useDispatch } from 'react-redux'
 import { signUpUser, siteLogin, logout } from "../../store/UserRedux";
+
 // import login from '../assets/img/login.png'
 // import signUp from '../assets/img/signUp.png'
 
@@ -31,6 +32,7 @@ function Headers() {
     let navigate = useNavigate();
     const newsList = useSelector((state) => state.auth.newsList)
     const token = useSelector((state) => state.user.token)
+    const [search, setSearch] = useState('');
 
     // Filter News
     let menNews = newsList.filter(item => item.blog_category === 'men');
@@ -48,8 +50,7 @@ function Headers() {
         $("body").removeClass("overlay");
     };
 
-    const [search, setSearch] = useState('');
-
+    
 
 
 

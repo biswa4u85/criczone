@@ -1,6 +1,6 @@
 export default {
     NoImg: require("../assets/flags/NOIMG.png"),
-    Italy: require("../assets/flags/ITALY.gif"),
+    Italy: require("../assets/flags/Italy.gif"),
     bangladesh: require("../assets/flags/bangladesh.webp"),
     hampshire: require("../assets/flags/hampshire.webp"),
     khyber: require("../assets/flags/khyber.webp"),

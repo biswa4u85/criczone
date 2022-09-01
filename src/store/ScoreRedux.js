@@ -19,7 +19,6 @@ export const getSeries = createAsyncThunk(
   'score/getSeries',
   async (params, { rejectWithValue }) => {
     const response = await getAllDataApi({ doctype: doctypeSeries, fields: fieldsSeries, ...params })
-
     if (response.status === 'error') {
       return rejectWithValue(response.data)
     }
@@ -51,8 +50,8 @@ export const counterSlice = createSlice({
   name: 'score',
   initialState,
   reducers: {
-    resetNews: (state, action) => {
-      state.newsDetails = {}
+    getScorecard: (state, action) => {
+      state.scorecard = {...state.scorecard, ...action.payload}
     },
   },
   extraReducers: {
@@ -88,5 +87,5 @@ export const counterSlice = createSlice({
 
 })
 
-export const { resetNews } = counterSlice.actions
+export const { getScorecard } = counterSlice.actions
 export default counterSlice.reducer

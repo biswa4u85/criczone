@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet";
 import india from "../assets/image/india.png";
 import afghanistan from "../assets/image/afghanistan.png";
+import { getSeries } from "../store/ScoreRedux";
 
 function LiveScore(props) {
     let navigate = useNavigate();
@@ -15,6 +16,7 @@ function LiveScore(props) {
     const { t } = useTranslation();
     const homeSettings = useSelector((state) => state.auth.homeSettings)
     const token = Config.token
+    const series = useSelector((state) => state.score.series)
     const [tab, setTab] = useState(1)
     const { TabPane } = Tabs;
     let liveData = [{}, {}, {}, {}, {}, {}]
@@ -32,6 +34,12 @@ function LiveScore(props) {
     const onAction = (currentSlide) => {
         console.log(currentSlide);
     };
+
+    // console.log(series)
+    useEffect(() => {
+        dispatch(getSeries({ token }))
+
+    }, []);
 
     return (
         <>
@@ -343,7 +351,7 @@ function LiveScore(props) {
                                         </Tabs>
                                     </div>
                                 </TabPane>
-                               
+
 
                                 <TabPane tab="Matches By Day" key="3">
                                     <h2>Cricket Schedule</h2>
@@ -592,7 +600,7 @@ function LiveScore(props) {
                                 </TabPane>
 
 
-                                
+
                                 <TabPane tab="Series Archive" key="5">
                                     <Row>
                                         <Col span={17}>

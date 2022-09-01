@@ -37,16 +37,14 @@ class SocketApis {
     }
 
     subscribe(id) {
-        this.socket.emit('subscribe', id)
-        // Save Temp Ids
         if (id in this.tempIds === false) {
+            this.socket.emit('subscribe', id)
             this.tempIds[id] = true
         }
     }
 
     unSubscribe(id) {
         this.socket.emit('unSubscribe', id)
-        // Delete Temp Ids
         delete this.tempIds[id]
     }
 

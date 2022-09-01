@@ -301,6 +301,10 @@
 .trending_news h6 {
     font-size: 14px;
 }
+.trending_news .red {
+    font-size: 11px;
+    color: red !important;
+}
 
 .trending_news p {
     font-size: 14px;

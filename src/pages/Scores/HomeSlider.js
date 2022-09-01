@@ -18,7 +18,7 @@ const responsive = {
     }
 }
 
-function HomeSlider(props) {
+function HomeSlider() {
     const dispatch = useDispatch()
     const fixtures = useSelector((state) => state.score.fixtures)
 
@@ -35,7 +35,7 @@ function HomeSlider(props) {
 
     useEffect(() => {
         for (let item of fixtures) {
-            if (item.status === 'Fixture') {
+            if (item.status === 'Fixture' && checkTime(item.datetime)) {
                 SocketApis.subscribe(item.name)
             }
         }
@@ -48,6 +48,18 @@ function HomeSlider(props) {
             return 'Today'
         } else {
             return 'Yesterday'
+        }
+    }
+    const checkTime = (date) => {
+        const now = new Date();
+        const nowTime = now.getTime();
+        const given = new Date(date);
+        const givenTime = given.getTime();
+        let difff = nowTime - givenTime
+        if (difff > 0) {
+            return true
+        } else {
+            return false
         }
     }
 

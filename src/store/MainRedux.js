@@ -33,6 +33,7 @@ const initialState = {
   newsDetails: {},
   isSubscribe: false,
   isAddComment: false,
+  searchValue: [],
 }
 
 export const getHomeSettings = createAsyncThunk(
@@ -83,6 +84,16 @@ export const getNewsListByCat = createAsyncThunk(
   'auth/getNewsListByCat',
   async (params, { rejectWithValue }) => {
     const response = await getAllDataApi({ doctype: doctypeBlogPost, fields: fieldsBlogPost, search: { [siteName]: 1, blog_category: params.Id }, orderBy: 'published_on desc', ...params })
+    if (response.status === 'error') {
+      return rejectWithValue(response.data)
+    }
+    return response
+  }
+)
+export const searchPost = createAsyncThunk(
+  'auth/searchPost',
+  async (params, { rejectWithValue }) => {
+    const response = await getAllDataApi({ doctype: doctypeBlogPost, fields: fieldsBlogPost, search: { [siteName]: 1, title: `%${params.name}%` }, orderBy: 'published_on desc', ...params })
     if (response.status === 'error') {
       return rejectWithValue(response.data)
     }
@@ -213,6 +224,21 @@ export const counterSlice = createSlice({
       state.isFetching = false
       state.error = null
       state.newsListByCat = action.payload
+    },
+    //searchPost
+    [searchPost.pending]: (state, action) => {
+      state.isFetching = true
+      state.error = null
+      state.newsListByCat = []
+    },
+    [searchPost.rejected]: (state, action) => {
+      state.isFetching = false
+      state.error = action.payload.message
+    },
+    [searchPost.fulfilled]: (state, action) => {
+      state.isFetching = false
+      state.error = null
+      state.searchValue = action.payload
     },
     // News Details
     [getNewsDetails.pending]: (state, action) => {

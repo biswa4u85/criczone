@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Button, Form, Input } from 'antd';
 import $ from 'jquery';
@@ -47,6 +47,11 @@ function Headers() {
         $(".signin, .signup-bg, .header-area").removeClass("active");
         $("body").removeClass("overlay");
     };
+
+    const [search, setSearch] = useState('');
+
+
+
 
     return (
         <header className="header-area">
@@ -119,14 +124,40 @@ function Headers() {
                                     <li><NavLink to="/cat/video">VIDEO</NavLink></li>
 
                                 </ul>
-                                
+
                             </nav>
                         </div>
                         <div className="options-area">
                             <div className="dark-light">
                                 <i className="icofont-moon"></i>
                             </div>
-                            
+
+                            <div className="Search-popup">
+                                <div className="Search-icon">
+                                    <i className="icofont-search"></i>
+                                </div>
+                                <div className="search-popup-box">
+
+                                    <div className="search-box">
+                                        <span><i className="icofont-search-1"></i></span>
+                                        <input type="text" placeholder="Type your keyword"
+                                            value={search}
+                                            onChange={(e) => setSearch(e.target.value)}
+                                        />
+                                        <button onClick={() => {
+                                            navigate(`/search/${search}`)
+                                            $(".search-popup-box").removeClass("active");
+                                            $("body").removeClass("overlay");
+                                        }}
+
+                                        >Search</button>
+                                    </div>
+                                    <div className="close-popup">
+                                        <i className="icofont-close-line"></i>
+                                    </div>
+                                </div>
+                            </div>
+
 
                             {token ? <div className="sign-option">
                                 <button className="btn-normal" onClick={() => dispatch(logout())}><i className="icofont-sign-out"></i></button>

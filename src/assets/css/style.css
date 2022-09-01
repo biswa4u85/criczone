@@ -1639,9 +1639,10 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
     cursor: pointer
 }
 
+
 .Search-popup .Search-icon i {
     font-size: 20px;
-    color: var(--color-secondary)
+    color: var(--color-primary);
 }
 
 .sign-option i {

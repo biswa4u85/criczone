@@ -446,6 +446,22 @@ x* {
     .search-popup-box .search-box {
         max-width: 85%
     }
+    .Search-popup .Search-icon {
+        margin: 0px 14px !important;
+    }
+    .sign-option i {
+        padding: 0px 6px;
+    }
+    .dark-light {
+        margin: 0px 6px;
+    }
+}
+
+@media screen and (max-width: 610px) {
+    .header-logo{
+        width: 200px !important;
+    }
+
 }
 
 @media screen and (max-width: 575px) {

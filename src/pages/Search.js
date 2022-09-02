@@ -37,7 +37,7 @@ function Category(props) {
             <section className="single-post-area">
                 <div className="container">
                     <div className="weekly-list-item">
-                        {searchValue ? searchValue.data.map((item, key) => <div key={key} className="news-vcard-single">
+                        {searchValue.data ? searchValue.data.map((item, key) => <div key={key} className="news-vcard-single">
                             <div className="news-vcard-img">
                                 {Config.randerImage(item.meta_image, 220)}
                             </div>

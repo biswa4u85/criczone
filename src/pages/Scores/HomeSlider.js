@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import OwlCarousel from 'react-owl-carousel';
 import moment from "moment";
+import Config from '../../common/Config'
 import Flags from "../../common/Flags";
 import { useSelector, useDispatch } from 'react-redux'
 import SocketApis from '../../utility/socket-apis'
@@ -39,33 +40,12 @@ function HomeSlider() {
 
     useEffect(() => {
         for (let item of fixtures) {
-            if (item.status === 'Fixture' && checkTime(item.datetime)) {
+            if (item.status === 'Fixture' && Config.checkTime(item.datetime)) {
                 SocketApis.subscribe(item.name)
             }
         }
     }, [fixtures]);
 
-    const checkDate = (date) => {
-        const today = new Date();
-        const newDate = new Date(date);
-        if (today.toDateString() === newDate.toDateString()) {
-            return 'Today'
-        } else {
-            return 'Yesterday'
-        }
-    }
-    const checkTime = (date) => {
-        const now = new Date();
-        const nowTime = now.getTime();
-        const given = new Date(date);
-        const givenTime = given.getTime();
-        let difff = nowTime - givenTime
-        if (difff > 0) {
-            return true
-        } else {
-            return false
-        }
-    }
 
     const checkImg = (name) => {
         return <img src={Flags[name] ? Flags[name] : Flags['NoImg']} className="flagimg" />
@@ -81,7 +61,7 @@ function HomeSlider() {
             return <div key={key} id={`live_home_${item.name}`} className='item'>
                 <div className="trending_news">
                     <div className="lanka">
-                        <h6>{checkDate(item.date)} At {moment.utc(item.datetime).format('hh:mm A')} . <span> {item.match_subtitle} .</span> {item.status}</h6>
+                        <h6>{Config.checkDate(item.date)} At {moment.utc(item.datetime).format('hh:mm A')} . <span> {item.match_subtitle} .</span> {item.status}</h6>
                         <div className='srilanka'>
                             {checkImg(item?.home?.name)} <span> {item?.home?.name}</span> <span id="live_home" className="red">{score ? score?.match_summary?.home_scores : ''}</span>
                         </div>

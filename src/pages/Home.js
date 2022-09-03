@@ -38,7 +38,7 @@ function Home() {
     todayNews.length = 3
 
     // Home 1st News
-    let home1stNews = newsList
+    let home1stNews = newsList.filter(item => item.blog_category === 'trending-news');
 
     // Home 2nd News
     let home2ndNews = newsList.filter(item => item.blog_category === 'match-prediction');

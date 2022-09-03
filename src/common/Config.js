@@ -19,6 +19,29 @@ export default {
         return str.length < max ? str : `${str.substr(0, str.substr(0, max - suffix.length).lastIndexOf(' '))} ${suffix}`
     },
     filterTitle: (title) => {
-        return title.replaceAll("-", " ")
+        let res = title.replaceAll("-", " ")
+        return res.replaceAll("lotus", "")
+    },
+    checkDate: (date) => {
+        const today = new Date();
+        const newDate = new Date(date);
+        if (today.toDateString() === newDate.toDateString()) {
+            return 'Today'
+        } else {
+            return ''
+        }
+    },
+    groupBy: (list, key) => {
+        let gropuArray = {}
+        for (let item of list) {
+            if (item[key] in gropuArray === false) {
+                gropuArray[item[key]] = [item]
+            } else {
+                gropuArray[item[key]].push(item);
+            }
+        }
+        // const reversedKeys = Object.keys(gropuArray).reverse();
+        // console.log(reversedKeys)
+        return gropuArray;
     }
 }

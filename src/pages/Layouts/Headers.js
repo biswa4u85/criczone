@@ -22,9 +22,13 @@ function Headers() {
                 let score = data[key] ? data[key].live_details : null
                 if (score) {
                     $(`#live_home_${key} #live_home`).text(score?.match_summary?.home_scores);
+                    $(`#live_inner_${key} #live_home`).text(score?.match_summary?.home_scores);
                     $(`#live_home_${key} #live_away`).text(score?.match_summary?.away_scores);
+                    $(`#live_inner_${key} #live_away`).text(score?.match_summary?.away_scores);
                     $(`#live_home_${key} #live_result`).text(score?.match_summary?.status);
+                    $(`#live_inner_${key} #live_result`).text(score?.match_summary?.status);
                     $(`#live_home_${key} #live_result`).attr("class", 'red');
+                    $(`#live_inner_${key} #live_result`).attr("class", 'red');
                 }
             }
         });

@@ -56,9 +56,9 @@ function Live(props) {
                     </div>
                     <div className="match">
                         <div class="vl">
-                            <h5>{item?.home?.name} <span id="home_score"></span></h5>
-                            <h5>{item?.away?.name} <span id="away_score"></span></h5>
-                            <h6 id="result_score">{item.result}</h6>
+                            <h5>{item?.home?.name} <span id="live_home"></span></h5>
+                            <h5>{item?.away?.name} <span id="live_away"></span></h5>
+                            <h6 id="live_result">{item.result}</h6>
                         </div>
                     </div>
                     <div className="runs">

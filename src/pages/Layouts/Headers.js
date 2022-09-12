@@ -4,6 +4,7 @@ import { Button, Form, Input } from 'antd';
 import $ from 'jquery';
 import { useSelector, useDispatch } from 'react-redux'
 import { signUpUser, siteLogin, logout } from "../../store/UserRedux";
+import { getHomeSettings } from '../../store/MainRedux'
 import { getScorecard } from "../../store/ScoreRedux";
 import Config from "../../common/Config";
 import SocketApis from '../../utility/socket-apis'
@@ -16,15 +17,20 @@ function Headers() {
     const homeSettings = useSelector((state) => state.auth.homeSettings)
 
     useEffect(() => {
+        dispatch(getHomeSettings({ token }))
         SocketApis.getSocketData('message', (data) => {
             dispatch(getScorecard(data))
             for (let key in data) {
                 let score = data[key] ? data[key].live_details : null
                 if (score) {
                     $(`#live_home_${key} #live_home`).text(score?.match_summary?.home_scores);
+                    $(`#live_inner_${key} #live_home`).text(score?.match_summary?.home_scores);
                     $(`#live_home_${key} #live_away`).text(score?.match_summary?.away_scores);
+                    $(`#live_inner_${key} #live_away`).text(score?.match_summary?.away_scores);
                     $(`#live_home_${key} #live_result`).text(score?.match_summary?.status);
+                    $(`#live_inner_${key} #live_result`).text(score?.match_summary?.status);
                     $(`#live_home_${key} #live_result`).attr("class", 'red');
+                    $(`#live_inner_${key} #live_result`).attr("class", 'red');
                 }
             }
         });

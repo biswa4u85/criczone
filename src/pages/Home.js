@@ -20,6 +20,7 @@ function Home() {
     const headlines = useSelector((state) => state.auth.headlines)
     const newsList = useSelector((state) => state.auth.newsList)
 
+   console.log(headlines) 
     useEffect(() => {
         window.scrollTo(0, 0)
         dispatch(getHeadlineList({ token }))

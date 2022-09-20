@@ -82,6 +82,7 @@ function Headers() {
                                                                         <li><NavLink to="/cat/asia-cup">Asia Cup</NavLink></li>
                                                                         <li><NavLink to="/cat/legends-league-cricket">Legends League Cricket</NavLink></li>
                                                                         <li><NavLink to="/cat/road-safety-world-series">Road Safety World Series</NavLink></li>
+                                                                        <li><NavLink to="/cat/t20-world-cup">T20 World Cup</NavLink></li>
                                                                         {/* <li><NavLink to="/cat/ire-vs-nz">Ire Vs Nz</NavLink></li> */}
 
                                                                     </ul></li>

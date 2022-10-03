@@ -3,13 +3,13 @@ import moment from "moment";
 import { useSelector, useDispatch } from 'react-redux'
 import { NavLink, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import OwlCarousel from 'react-owl-carousel';
 import { getHeadlineList, getNewsCategory, getNewsList } from '../store/MainRedux'
 import { Helmet } from "react-helmet";
 import Config from "../common/Config";
 import SideBar from "./SideBar";
 import dallyUpdate from '../assets/img/dallyUpdate.png'
 import HomeSlider from './Scores/HomeSlider';
-import Tags from '../components/Tags';
 
 function Home() {
     const dispatch = useDispatch()
@@ -20,7 +20,6 @@ function Home() {
     const headlines = useSelector((state) => state.auth.headlines)
     const newsList = useSelector((state) => state.auth.newsList)
 
-   console.log(headlines) 
     useEffect(() => {
         window.scrollTo(0, 0)
         dispatch(getHeadlineList({ token }))
@@ -84,13 +83,15 @@ function Home() {
                                 <div className="news-heading">
                                     <h5>Headline</h5>
                                 </div>
-                                <div className="news-slider owl-carousel" data-carousel-loop="true" data-carousel-items="1"
+                                <OwlCarousel className='news-slider owl-theme' items={1} loop margin={10} dots={false} nav={false} autoplay={true} autoplayTimeout={3000}>
+                                    {/* <div className="news-slider owl-carousel" data-carousel-loop="true" data-carousel-items="1"
                                     data-carousel-nav="false" data-carousel-dots="false" data-carousel-autoplay="true"
-                                    data-carousel-mousedrag="true" data-carousel-animateout="null">
+                                    data-carousel-mousedrag="true" data-carousel-animateout="null"> */}
                                     {headlines ? headlines.map((item, key) => <div key={key} className="elepse">
                                         {item.description}
                                     </div>) : null}
-                                </div>
+                                    {/* </div> */}
+                                </OwlCarousel>
                             </div>
                             <div className="bnr-lft-cnt">
                                 <div className="row">
@@ -109,7 +110,7 @@ function Home() {
                                                         <span>{home1stNews[0].blogger}</span>
                                                     </div>
                                                     <h3><NavLink to={`/details/${home1stNews[0].name}`}>{Config.trunCate(home1stNews[0].title, 40, '. . .')}</NavLink></h3>
-                                                
+
                                                 </div>
                                             </div>
                                         </div>)}
@@ -131,7 +132,7 @@ function Home() {
                                                             <span>{home2ndNews[0].blogger}</span>
                                                         </div>
                                                         <h3><NavLink to={`/details/${home2ndNews[0].name}`}>{Config.trunCate(home2ndNews[0].title, 40, '. . .')}</NavLink></h3>
-                                
+
                                                     </div>
                                                 </div>
                                             </div>)}
@@ -200,7 +201,7 @@ function Home() {
                                                         <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                                     </div>
                                                     <h3>{Config.trunCate(item.title, 40, '. . .')}</h3>
-                                                   
+
                                                 </div>
                                             </div></NavLink>
                                         </div>)}

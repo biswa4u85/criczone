@@ -17,6 +17,7 @@ import Page404 from "../pages/Page404";
 import LiveScore from "../pages/LiveScore";
 import LiveScoretab from "../pages/LiveScoretab";
 import Search from "../pages/Search";
+import ScoreBoard from "../pages/ScoreBoard";
 
 
 function Routers() {
@@ -32,6 +33,7 @@ function Routers() {
           <Route path="/live-scoretab" element={<LiveScoretab />} />
           <Route path="*" element={<Page404 />} />
           <Route path="/search/:name" element={<Search />} />
+          <Route path="/scoreboard" element={<ScoreBoard />} />
         </Route>
       </Routes>
     </HashRouter>

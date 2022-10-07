@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Tabs, Row, Col, Table } from 'antd';
 import Config from "../common/Config";
 import { useSelector, useDispatch } from 'react-redux'
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { getSeries } from "../store/ScoreRedux";
+import { getHighlights } from "../store/ScoreRedux";
 import { ShareAltOutlined } from '@ant-design/icons';
 import Live from "./Scores/Live";
 import flag from '../assets/image/flag.png'
@@ -12,8 +12,8 @@ import flag from '../assets/image/flag.png'
 function ScoreBoard(props) {
     let navigate = useNavigate();
     const dispatch = useDispatch()
-    const { t } = useTranslation();
-    const homeSettings = useSelector((state) => state.auth.homeSettings)
+    let { name } = useParams();
+    const highlights = useSelector((state) => state.score.highlights)
     const token = Config.token
     const [tab, setTab] = useState(1)
     const [subtab, setSubTab] = useState(1)
@@ -21,11 +21,8 @@ function ScoreBoard(props) {
 
     useEffect(() => {
         window.scrollTo(0, 0)
-    }, []);
-
-    useEffect(() => {
-        dispatch(getSeries({ token }))
-    }, []);
+        dispatch(getHighlights({ token, name }))
+    }, [name]);
 
 
     const onChange = (key) => {
@@ -113,8 +110,8 @@ function ScoreBoard(props) {
             Balls: 6,
             Mat: 4,
             Runs: 4,
-            HS	: 3,
-            Ave	: 4.00,
+            HS: 3,
+            Ave: 4.00,
 
         },
 
@@ -130,8 +127,8 @@ function ScoreBoard(props) {
             Balls: 6,
             Mat: 4,
             Runs: 4,
-            HS	: 3,
-            Ave	: 4.00,
+            HS: 3,
+            Ave: 4.00,
 
         },
 
@@ -147,8 +144,8 @@ function ScoreBoard(props) {
             Balls: 6,
             Mat: 4,
             Runs: 4,
-            HS	: 3,
-            Ave	: 4.00,
+            HS: 3,
+            Ave: 4.00,
 
         },
 
@@ -164,13 +161,14 @@ function ScoreBoard(props) {
             Balls: 6,
             Mat: 4,
             Runs: 4,
-            HS	: 3,
-            Ave	: 4.00,
+            HS: 3,
+            Ave: 4.00,
 
         },
 
     ];
 
+    console.log(highlights)
 
     return (
         <>

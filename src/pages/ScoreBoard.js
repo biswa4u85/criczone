@@ -20,7 +20,7 @@ function ScoreBoard(props) {
     const { TabPane } = Tabs;
 
     console.log(highlights)
-//   debugger
+    //   debugger
     useEffect(() => {
         window.scrollTo(0, 0)
         dispatch(getHighlights({ token, name }))
@@ -227,7 +227,7 @@ function ScoreBoard(props) {
                         <Tabs defaultActiveKey="1" onChange={setTab} >
 
                             <TabPane tab="Live" key="1">
-                                <Table columns={columns} dataSource={highlights?.live_details?.scorecard?.[0].batting} />
+                                <Table columns={columns} dataSource={highlights?.live_details?.scorecard?.[0]?.batting} />
 
                             </TabPane>
 

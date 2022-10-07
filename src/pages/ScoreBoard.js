@@ -67,12 +67,32 @@ function ScoreBoard(props) {
         },
         {
             title: 'This Bowler',
-            dataIndex: 'This Bowler',
+            dataIndex: 'Bowler',
             width: 30
         },
         {
             title: 'Last 5 Balls',
-            dataIndex: 'This Bowler',
+            dataIndex: 'Balls',
+            width: 30
+        },
+        {
+            title: 'Mat',
+            dataIndex: 'Mat',
+            width: 30
+        },
+        {
+            title: 'Runs',
+            dataIndex: 'Runs',
+            width: 30
+        },
+        {
+            title: 'HS	',
+            dataIndex: 'HS',
+            width: 30
+        },
+        {
+            title: 'Ave	',
+            dataIndex: 'Ave',
             width: 30
         },
 
@@ -89,7 +109,64 @@ function ScoreBoard(props) {
             four: 0,
             six: 0,
             SR: 100.00,
-            
+            Bowler: 6,
+            Balls: 6,
+            Mat: 4,
+            Runs: 4,
+            HS	: 3,
+            Ave	: 4.00,
+
+        },
+
+        {
+            key: '2',
+            name: 'Nattaya Boochatham* (lhb)',
+            run: 3,
+            bull: 3,
+            four: 0,
+            six: 0,
+            SR: 100.00,
+            Bowler: 6,
+            Balls: 6,
+            Mat: 4,
+            Runs: 4,
+            HS	: 3,
+            Ave	: 4.00,
+
+        },
+
+        {
+            key: '3',
+            name: 'Nattaya Boochatham* (lhb)',
+            run: 3,
+            bull: 3,
+            four: 0,
+            six: 0,
+            SR: 100.00,
+            Bowler: 6,
+            Balls: 6,
+            Mat: 4,
+            Runs: 4,
+            HS	: 3,
+            Ave	: 4.00,
+
+        },
+
+        {
+            key: '4',
+            name: 'Nattaya Boochatham* (lhb)',
+            run: 3,
+            bull: 3,
+            four: 0,
+            six: 0,
+            SR: 100.00,
+            Bowler: 6,
+            Balls: 6,
+            Mat: 4,
+            Runs: 4,
+            HS	: 3,
+            Ave	: 4.00,
+
         },
 
     ];
@@ -153,7 +230,9 @@ function ScoreBoard(props) {
 
                             </TabPane>
 
-                            <TabPane tab="Scorecard" key="2"> </TabPane>
+                            <TabPane tab="Scorecard" key="2">
+                                <Table columns={columns} dataSource={data} />
+                            </TabPane>
 
                             <TabPane tab="Report" key="3"></TabPane>
 

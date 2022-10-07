@@ -19,6 +19,8 @@ function ScoreBoard(props) {
     const [subtab, setSubTab] = useState(1)
     const { TabPane } = Tabs;
 
+    console.log(highlights)
+//   debugger
     useEffect(() => {
         window.scrollTo(0, 0)
         dispatch(getHighlights({ token, name }))
@@ -32,66 +34,66 @@ function ScoreBoard(props) {
     const columns = [
         {
             title: 'BATTERS',
-            dataIndex: 'name',
+            dataIndex: 'player_name',
             key: 'name',
             width: 100
 
         },
         {
             title: 'R',
-            dataIndex: 'run',
+            dataIndex: 'runs',
             width: 30
         },
         {
             title: 'B',
-            dataIndex: 'bull',
+            dataIndex: 'balls',
             width: 30
         },
         {
             title: '4s',
-            dataIndex: 'four',
+            dataIndex: 'fours',
             width: 30
         },
         {
             title: '6s',
-            dataIndex: 'six',
+            dataIndex: 'sixes',
             width: 30
         },
         {
             title: 'SR',
-            dataIndex: 'SR',
+            dataIndex: 'strike_rate',
             width: 30
         },
-        {
-            title: 'This Bowler',
-            dataIndex: 'Bowler',
-            width: 30
-        },
-        {
-            title: 'Last 5 Balls',
-            dataIndex: 'Balls',
-            width: 30
-        },
+        // {
+        //     title: 'This Bowler',
+        //     dataIndex: 'Bowler',
+        //     width: 30
+        // },
+        // {
+        //     title: 'Last 5 Balls',
+        //     dataIndex: 'Balls',
+        //     width: 30
+        // },
         {
             title: 'Mat',
-            dataIndex: 'Mat',
+            dataIndex: 'minutes',
             width: 30
         },
-        {
-            title: 'Runs',
-            dataIndex: 'Runs',
-            width: 30
-        },
-        {
-            title: 'HS	',
-            dataIndex: 'HS',
-            width: 30
-        },
-        {
-            title: 'Ave	',
-            dataIndex: 'Ave',
-            width: 30
-        },
+        // {
+        //     title: 'Runs',
+        //     dataIndex: 'Runs',
+        //     width: 30
+        // },
+        // {
+        //     title: 'HS	',
+        //     dataIndex: 'HS',
+        //     width: 30
+        // },
+        // {
+        //     title: 'Ave	',
+        //     dataIndex: 'Ave',
+        //     width: 30
+        // },
 
 
 
@@ -178,7 +180,8 @@ function ScoreBoard(props) {
                     <Row className="scores">
                         <Col span={12} >
                             <h5>RESULT</h5>
-                            <p>10th Match, Sylhet, October 06, 2022, <a href="#">Women's Asia Cup</a></p>
+                            {/* <p>10th Match, Sylhet, October 06, 2022, <a href="#">Women's Asia Cup</a></p> */}
+                            <p>{highlights?.fixture?.start_date},{highlights?.fixture?.venue} <a href="#">{highlights?.fixture?.series?.series_name}</a></p>
                         </Col>
                         <Col span={12} >
                             <ShareAltOutlined className="shree" />
@@ -192,22 +195,22 @@ function ScoreBoard(props) {
                                 <div className="match-board">
                                     <div>
                                         <img src={flag} />
-                                        <a href="#">Pakistan Women</a>
+                                        <a href="#">{highlights?.fixture?.home?.name}</a>
                                     </div>
                                     <div>
-                                        <h6>116/5</h6>
+                                        <h6>{highlights?.live_details?.match_summary?.home_scores}</h6>
                                     </div>
                                 </div>
                                 <div className="match-board">
                                     <div>
                                         <img src={flag} />
-                                        <a href="#">Thailand Women</a>
+                                        <a href="#">{highlights?.fixture?.away?.name}</a>
                                     </div>
                                     <div className="score-number">
-                                        <h6><span>(19.5/20 ov, T:117)</span> 117/6</h6>
+                                        <h6>{highlights?.live_details?.match_summary?.away_scores}</h6>
                                     </div>
                                 </div>
-                                <p >Thai Women won by 4 wickets (with 1 ball remaining)</p>
+                                <p >{highlights?.fixture?.match_title}</p>
                             </div>
                         </Col>
 
@@ -224,27 +227,13 @@ function ScoreBoard(props) {
                         <Tabs defaultActiveKey="1" onChange={setTab} >
 
                             <TabPane tab="Live" key="1">
-                                <Table columns={columns} dataSource={data} />
+                                <Table columns={columns} dataSource={highlights?.live_details?.scorecard?.[0].batting} />
 
                             </TabPane>
 
                             <TabPane tab="Scorecard" key="2">
                                 <Table columns={columns} dataSource={data} />
                             </TabPane>
-
-                            <TabPane tab="Report" key="3"></TabPane>
-
-                            <TabPane tab="Commentary" key="4"></TabPane>
-
-                            <TabPane tab="Statistics" key="5"></TabPane>
-
-                            <TabPane tab="Overs" key="6"></TabPane>
-
-                            <TabPane tab="Table" key="7"></TabPane>
-
-                            <TabPane tab="News" key="8"></TabPane>
-
-                            <TabPane tab="Photos" key="9"></TabPane>
                         </Tabs>
                     </div>
                 </div>

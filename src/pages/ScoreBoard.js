@@ -6,6 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { getHighlights } from "../store/ScoreRedux";
 import { ShareAltOutlined } from '@ant-design/icons';
+import ArchiveSeries from "./Scores/ArchiveSeries";
 import Live from "./Scores/Live";
 import flag from '../assets/image/flag.png'
 
@@ -20,7 +21,7 @@ function ScoreBoard(props) {
     const { TabPane } = Tabs;
 
     console.log(highlights)
-//   debugger
+    //   debugger
     useEffect(() => {
         window.scrollTo(0, 0)
         dispatch(getHighlights({ token, name }))
@@ -170,6 +171,13 @@ function ScoreBoard(props) {
 
     ];
 
+
+
+    
+
+    
+
+
     console.log(highlights)
 
     return (
@@ -232,7 +240,22 @@ function ScoreBoard(props) {
                             </TabPane>
 
                             <TabPane tab="Scorecard" key="2">
-                                <Table columns={columns} dataSource={data} />
+                                <Tabs defaultActiveKey="1" onChange={setTab} >
+
+                                    <TabPane tab="PAK Women Innings" key="1">
+                                    <Table columns={columns} dataSource={data} />
+                                    </TabPane>
+
+                                    <TabPane tab="IND Women Innings" key="2">
+
+                                    </TabPane>
+
+                                    <TabPane tab="Match Details" key="3">
+
+                                    </TabPane>
+                                </Tabs>
+
+
                             </TabPane>
                         </Tabs>
                     </div>

@@ -850,7 +850,27 @@
 
 .match-player p {
     margin: 0;
-    font-size:12px;
+    font-size: 12px;
+}
+
+.total-scre {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    background-color: #ededed;
+    padding: 10px;
+}
+
+.scorecard-tab {
+    border: 0.3px solid #a1a1a1;
+    border-radius: 7px;
+    margin: 10px 0;
+}
+
+.scorecard-tab h5 {
+    background-color: rgba(135, 229, 255, 0.681);
+    padding: 10px;
+    border-radius: 7px 7px 0 0;
 }
 
 

@@ -20,6 +20,7 @@ const responsive = {
 }
 
 function HomeSlider(props) {
+    const { navigate } = props
     const dispatch = useDispatch()
     const fixtures = useSelector((state) => state.score.fixtures)
 
@@ -60,7 +61,7 @@ function HomeSlider(props) {
             let score = null
             return <div key={key} id={`live_home_${item.name}`} className='item'>
                 <div className="trending_news">
-                    <div className="lanka" onClick={() => props.navigate(`match-details/${item.name}`)}>
+                    <div className="lanka" onClick={() => navigate(`/match-details/${item.name}`)}>
                         <h6>{Config.checkDate(item.date)} At {moment.utc(item.datetime).format('hh:mm A')} . <span> {item.match_subtitle} .</span> {item.status}</h6>
                         <div className='srilanka'>
                             {checkImg(item?.home?.name)} <span> {item?.home?.name}</span> <span id="live_home" className="red">{score ? score?.match_summary?.home_scores : ''}</span>

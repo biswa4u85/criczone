@@ -6,7 +6,7 @@ import SocketApis from '../../utility/socket-apis'
 import { getHomeFixtures } from "../../store/ScoreRedux";
 
 function Live(props) {
-    const { type } = props
+    const { type, navigate } = props
     const dispatch = useDispatch()
     const series = useSelector((state) => state.score.series)
     const fixtures = useSelector((state) => state.score.fixtures)
@@ -49,7 +49,7 @@ function Live(props) {
         {Object.keys(grouped).map((name, k) => {
             let latestNews = series.filter(item => item.series_id === name);
             return <div key={k}><h3> {latestNews[0]?.type} - {latestNews[0]?.series_name}</h3>
-                {grouped[name].map((item, key) => <div key={key} id={`live_inner_${item.name}`}>
+                {grouped[name].map((item, key) => <div key={key} id={`live_inner_${item.name}`} onClick={() => navigate(`/match-details/${item.name}`)}>
                     <div className="africa">
                         <h5>{item.match_title}<span> {item.match_subtitle}</span></h5>
                         <h6>{Config.checkDate(item.date)} {moment.utc(item.datetime).format('Do MMM YYYY hh:mm A')} at {item.venue}</h6>

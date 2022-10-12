@@ -356,8 +356,8 @@ function ScoreBoard(props) {
 
 
 
-    let still_to_bat_ins1 = highlights?.live_details?.scorecard[0]?.still_to_bat
-    let still_to_bat_ins2 = highlights?.live_details?.scorecard[1]?.still_to_bat
+    let still_to_bat_ins1 = highlights?.live_details?.scorecard[0]?.still_to_bat ? highlights?.live_details?.scorecard[0]?.still_to_bat : []
+    let still_to_bat_ins2 = highlights?.live_details?.scorecard[1]?.still_to_bat ? highlights?.live_details?.scorecard[1]?.still_to_bat : []
 
 
     return (

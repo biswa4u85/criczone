@@ -8,28 +8,7 @@ import { store } from '../src/store';
 import { Provider } from 'react-redux';
 import { saveState } from "../src/utility/browser-storage";
 import { debounce } from "debounce";
-import Config from "./common/Config";
-// import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink, gql } from '@apollo/client';
-// import { setContext } from '@apollo/client/link/context';
 
-// const httpLink = createHttpLink({
-//   uri: Config.liveScoreApiURL
-// });
-
-// const authLink = setContext((_, { headers }) => {
-//   const token = localStorage.getItem('rs-token');
-//   return {
-//     headers: {
-//       ...headers,
-//       'rs-token': token ? `${token}` : "v5sRS_P_1546828966243995659s1552578803790911827",
-//     }
-//   }
-// });
-
-// const client = new ApolloClient({
-//   link: authLink.concat(httpLink),
-//   cache: new InMemoryCache(),
-// });
 
 store.subscribe(
   debounce(() => {
@@ -40,14 +19,12 @@ store.subscribe(
 function App() {
   return (
     <Provider store={store}>
-      {/* <ApolloProvider client={client}> */}
-        <ThemeProvider>
-          <I18nextProvider i18n={i18n}>
-            <ToastContainer />
-            <Routers />
-          </I18nextProvider>
-        </ThemeProvider>
-      {/* </ApolloProvider> */}
+      <ThemeProvider>
+        <I18nextProvider i18n={i18n}>
+          <ToastContainer />
+          <Routers />
+        </I18nextProvider>
+      </ThemeProvider>
     </Provider>
   );
 }

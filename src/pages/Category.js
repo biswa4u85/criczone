@@ -17,7 +17,7 @@ function Category(props) {
     const categorys = useSelector((state) => state.auth.categorys)
     const newsListByCat = useSelector((state) => state.auth.newsListByCat.data)
     const newsListByCatCount = useSelector((state) => state.auth.newsListByCat.count)
-    const category = categorys.find((x) => x.name == Id)
+    const category = categorys.find((x) => x.route == Id)
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -49,7 +49,7 @@ function Category(props) {
                                     <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                                     <span>{item.blogger}</span>
                                 </div>
-                                <h3><NavLink to={`/details/${item.name}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
+                                <h3><NavLink to={`/news/${item.route}`}>{Config.trunCate(item.title, 40, '. . .')}</NavLink></h3>
                             </div>
                         </div>) : null}
                     </div>

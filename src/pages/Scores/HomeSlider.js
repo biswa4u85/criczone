@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import OwlCarousel from 'react-owl-carousel';
+import OwlCarousel from "react-owl-carousel";
 import moment from "moment";
 import Config from '../../common/Config'
 import Flags from "../../common/Flags";
@@ -55,13 +55,14 @@ function HomeSlider(props) {
     if (fixtures.length === 0) {
         return null
     }
+   
 
     return (<OwlCarousel className='owl-theme' responsive={responsive} margin={9} autoplay={true} nav={false}>
         {fixtures.map((item, key) => {
             let score = null
             return <div key={key} id={`live_home_${item.name}`} className='item'>
                 <div className="trending_news">
-                    <div className="lanka" onClick={() => navigate(`/match-details/${item.name}`)}>
+                    <div className="lanka" onClick={() => navigate(`/match-news/${item.name}`)}>
                         <h6>{Config.checkDate(item.date)} At {moment.utc(item.datetime).format('hh:mm A')} . <span> {item.match_subtitle} .</span> {item.status}</h6>
                         <div className='srilanka'>
                             {checkImg(item?.home?.name)} <span> {item?.home?.name}</span> <span id="live_home" className="red">{score ? score?.match_summary?.home_scores : ''}</span>

@@ -18,7 +18,7 @@ const doctypeBlogCategory = 'Blog Category'
 const fieldsBlogCategory = ["name", "title", "status", "meta_title", "meta_description"]
 
 const doctypeBlogPost = 'Blog Post'
-const fieldsBlogPost = ["name", "title", "blog_category", "category_description", "blog_intro", "meta_image", "published_on", "published_time", "blogger", "meta_title", "meta_description", "_user_tags"]
+const fieldsBlogPost = ["name", 'route', "title", "blog_category", "category_description", "blog_intro", "meta_image", "published_on", "published_time", "blogger", "meta_title", "meta_description", "_user_tags"]
 
 const initialState = {
   isFetching: false,
@@ -109,7 +109,7 @@ export const searchPost = createAsyncThunk(
 export const getNewsDetails = createAsyncThunk(
   'auth/getNewsDetails',
   async (params, { rejectWithValue }) => {
-    const response = await getAllDataApi({ doctype: doctypeBlogPost, fields: ["*"], filters: [[doctypeBlogPost, "name", "=", params.pId]], ...params })
+    const response = await getAllDataApi({ doctype: doctypeBlogPost, fields: ["*"], filters: [[doctypeBlogPost, "route", "=", params.pId]], ...params })
     if (response.status === 'error') {
       return rejectWithValue(response.data)
     }

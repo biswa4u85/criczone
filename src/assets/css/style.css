@@ -11696,3 +11696,7 @@ body.demo {
         padding: 2px 15px;
     }
 }
+.owl-theme .owl-dots,
+.owl-theme .owl-nav{
+    display: none!important;
+}

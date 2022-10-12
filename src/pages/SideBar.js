@@ -27,7 +27,7 @@ function SideBar(props) {
                             <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                         </div>
                         <div className="card-list-heading">
-                            <h6><NavLink to={`/details/${item.name}`}>{Config.trunCate(item.title, 60, '. . .')}</NavLink></h6>
+                            <h6><NavLink to={`/news/${item.name}`}>{Config.trunCate(item.title, 60, '. . .')}</NavLink></h6>
                         </div>
                     </div>
                 </div>)}

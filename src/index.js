@@ -6,7 +6,6 @@ import './assets/css/style.css';
 import './assets/css/live.css';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
-import './Main.less';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 

@@ -23,7 +23,7 @@ function SideBar(props) {
                     </div>
                     <div className="card-list-cont">
                         <div className="card-list-discript">
-                            <span>{moment.utc(item.published_time).format('hh:mm A')}</span>
+                            <span><NavLink to={`/category/${item.blog_category}`}>{item.category_description}</NavLink></span>
                             <span>{moment.utc(item.published_on).format('Do MMM YYYY')}</span>
                         </div>
                         <div className="card-list-heading">

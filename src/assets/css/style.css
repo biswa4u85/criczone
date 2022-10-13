@@ -930,7 +930,7 @@ body.overlay:after {
 }
 
 body {
-    overflow: hidden
+    overflow: visible
 }
 
 body.remover {

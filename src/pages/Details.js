@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { useSelector, useDispatch } from 'react-redux'
-import { Button, Breadcrumb, Form, Row, Col, Input, Space, Select, Radio } from 'antd';
+import { Button, Form, Input } from 'antd';
 import moment from "moment";
 import $ from 'jquery';
 import { NavLink, useNavigate, useParams } from "react-router-dom";
@@ -35,7 +35,7 @@ function Details(props) {
         window.scrollTo(0, 0)
         dispatch(getNewsDetails({ token, pId }))
     }, [pId]);
-    
+
     // Latest News
     let latestNews = newsList.filter(item => item.blog_category === 'news');
     latestNews.length = 5
@@ -44,9 +44,9 @@ function Details(props) {
     let relatedNews = newsList.filter(item => item.blog_category === 'news');
     relatedNews.length = 5
 
-    
 
-    let comments = newsDetails._comments ? JSON.parse(newsDetails._comments) : []
+
+    let comments = newsDetails?._comments ? JSON.parse(newsDetails._comments) : []
 
 
     const onFinish = (values) => {
@@ -155,10 +155,10 @@ function Details(props) {
                         <div className="ath-social">
                             <h3>Share This Post</h3>
                             <ul className="social-icon social-outline-gray">
-                                <li><a href="https://www.facebook.com/CriczoneNewsWebsite" target="_blank"><Image preview={false} src={facebook}/></a></li>
-                                <li><a href={`https://www.youtube.com/sharer/sharer.php?u=${window.location.href}`} target="_blank"><Image preview={false} src={youtube}/></a></li>
-                                <li><a href="https://twitter.com/CriczoneN" target="_blank"><Image preview={false} src={twitter}/></a></li>
-                                <li><a href="https://instagram.com/criczonenews?igshid=NmZiMzY2Mjc=" target="_blank"><Image preview={false} src={instagram}/></a></li>
+                                <li><a href="https://www.facebook.com/CriczoneNewsWebsite" target="_blank"><Image preview={false} src={facebook} /></a></li>
+                                <li><a href={`https://www.youtube.com/sharer/sharer.php?u=${window.location.href}`} target="_blank"><Image preview={false} src={youtube} /></a></li>
+                                <li><a href="https://twitter.com/CriczoneN" target="_blank"><Image preview={false} src={twitter} /></a></li>
+                                <li><a href="https://instagram.com/criczonenews?igshid=NmZiMzY2Mjc=" target="_blank"><Image preview={false} src={instagram} /></a></li>
                             </ul>
                         </div>
                     </div>

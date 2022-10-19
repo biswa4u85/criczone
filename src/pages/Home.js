@@ -296,7 +296,7 @@ function Home() {
                         <ul className="nav" role="tablist" data-aos="fade-up" data-aos-delay="100">
                             <li className="nav-item" role="presentation">
                                 <button className="nav-link active" data-bs-toggle="pill" data-bs-target="#travel" role="tab"
-                                    aria-selected="true">Asia Cup</button>
+                                    aria-selected="true">T20 World Cup</button>
                             </li>
                             <li className="nav-item" role="presentation">
                                 <button className="nav-link" data-bs-toggle="pill" data-bs-target="#food" role="tab"
@@ -319,7 +319,7 @@ function Home() {
                             <div className="tab-pane fade show active" id="travel" role="tabpanel">
                                 <div className="weekly-list-item">
 
-                                    {filterByWeek('asia-cup', 4).map((item, key) => <div key={key} className="news-vcard-single">
+                                    {filterByWeek('t20-world-cup', 4).map((item, key) => <div key={key} className="news-vcard-single">
                                         <div className="news-vcard-img">
                                             {Config.randerImage(item.meta_image, 220)}
                                         </div>

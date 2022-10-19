@@ -7,6 +7,7 @@ import { signUpUser, siteLogin, logout } from "../../store/UserRedux";
 import { getHomeSettings } from '../../store/MainRedux'
 import { getScorecard } from "../../store/ScoreRedux";
 import Config from "../../common/Config";
+import Loader from '../../components/Loader';
 import SocketApis from '../../utility/socket-apis'
 
 function Headers() {
@@ -14,6 +15,7 @@ function Headers() {
     let navigate = useNavigate();
     const [search, setSearch] = useState('');
     const token = useSelector((state) => state.user.token)
+    const isFetching = useSelector((state) => state.auth.isFetching)
     const homeSettings = useSelector((state) => state.auth.homeSettings)
 
     useEffect(() => {
@@ -50,6 +52,7 @@ function Headers() {
 
     return (
         <header className="header-area">
+            {!isFetching &&(<Loader />)}
             <div className="main-header bg-header">
                 <div className="container container-md">
                     <div className="main-header-wrapper">

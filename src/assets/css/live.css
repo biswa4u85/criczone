@@ -1,9 +1,19 @@
 .lanka {
-    background-color: white;
+    padding: 10px;
+}
+
+.finshed {
+    background-color: #FFF;
     border-radius: 10px;
     box-shadow: 0px 0px 6px rgba(96, 174, 246, 0.4);
-    padding: 10px;
     margin: 0 7px;
+}
+
+.false-zealand {
+    background-color: gainsboro !important;
+    border-radius: 0 0 10px 10px;
+    padding: 10px 10px 0;
+
 }
 
 .ipsum {
@@ -33,10 +43,37 @@
     margin: 20px 0;
 }
 
+.false {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+
+.false h6 {
+    margin: 5px 10px;
+}
+
+.false h6 span {
+    color: #4a4b4b;
+    font-size: 14px;
+}
+
+.lanka h5 {
+    color: rgb(255 136 0);
+    font-size: 15px;
+}
+
+.false-series {
+    background-color: #0b0a0a;
+    padding: 0 !important;
+}
+
 .dolor h1 {
     font-size: 25px;
     font-weight: bold;
 }
+
+
 
 .dolor p {
     font-size: 12px;
@@ -755,8 +792,10 @@
     font-size: var(--text-16);
     font-weight: var(--medium);
     color: var(--white);
-    background-color: var(--color-primary);
+  background-color: rgb(255 136 0);
     height: 100%;
+    border-radius: 12px;
+    border: 1px solid;
 }
 
 .score-board {

@@ -52,7 +52,7 @@ function Headers() {
 
     return (
         <header className="header-area">
-            {!isFetching &&(<Loader />)}
+            {isFetching &&(<Loader />)}
             <div className="main-header bg-header">
                 <div className="container container-md">
                     <div className="main-header-wrapper">

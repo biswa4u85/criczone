@@ -233,7 +233,7 @@ function Home() {
                                 <div className="news-card-wrapper">
                                     <div className="ns-mini-card">
                                         {filterByDay('left_category_one', 1).map((item, key) => <div key={key} className="btl-simple-card" data-aos="fade-up">
-                                            {Config.randerImage(item, 300)}
+                                            {Config.randerImage(item, 190)}
                                             <div className="btlc-content-wrapper">
                                                 <NavLink to={`/category/${item.blog_category}`}><span className="btn">{item.category_description}</span></NavLink>
                                                 <div className="btlc-content">
@@ -246,7 +246,7 @@ function Home() {
                                             </div>
                                         </div>)}
                                         {filterByDay('left_category_two', 1).map((item, key) => <div key={key} className="btl-simple-card" data-aos="fade-up">
-                                            {Config.randerImage(item, 300)}
+                                            {Config.randerImage(item, 190)}
                                             <div className="btlc-content-wrapper">
                                                 <NavLink to={`/category/${item.blog_category}`}><span className="btn">{item.category_description}</span></NavLink>
                                                 <div className="btlc-content">
@@ -262,7 +262,7 @@ function Home() {
 
                                     {filterByDay('center_category', 1).map((item, key) => <div key={key} className="btl-simple-card" data-aos="fade-up"
                                         data-aos-delay="50">
-                                        {Config.randerImage(item, 640)}
+                                        {Config.randerImage(item, 200, 500)}
                                         <div className="btlc-content-wrapper">
                                             <NavLink to={`/category/${item.blog_category}`}><span className="btn-card btn-red">{item.category_description}</span></NavLink>
                                             <div className="btlc-content">
@@ -280,7 +280,7 @@ function Home() {
 
                                     {filterByDay('bottom_category', 3).map((item, key) => <div key={key} className="nsc-list-single">
                                         <div className="nsc-list-img">
-                                            {Config.randerImage(item)}
+                                            {Config.randerImage(item, null, null, true)}
                                         </div>
                                         <div className="nsc-list-content">
                                             <div className="nsc-list-title">

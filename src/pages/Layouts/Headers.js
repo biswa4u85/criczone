@@ -52,13 +52,13 @@ function Headers() {
 
     return (
         <header className="header-area">
-            {isFetching &&(<Loader />)}
+            {isFetching && (<Loader />)}
             <div className="main-header bg-header">
                 <div className="container container-md">
                     <div className="main-header-wrapper">
                         <div className="header-logo">
                             <NavLink to="/">
-                                {Config.randerImage(homeSettings.site_logo)}
+                                <img src={Config.frappe_url + '/' + homeSettings.site_logo} alt="image" />
                             </NavLink>
                         </div>
                         <div className="navbar-wrapper">

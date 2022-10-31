@@ -5,10 +5,12 @@ export default {
     frappe_url: 'https://news.techwizards.io',
     frappe_custom_app: 'erp_custom_auth',
     token: 'token 8013775618bd3a7:99fa9ff03295aa8',
-    randerImage: (src, height, imgHeight) => {
+    randerImage: (item, height, imgHeight) => {
+        let src = item?.meta_image
         let imageURL = src ? (String(src).includes('https://') ? src : 'https://news.techwizards.io' + src) : noData
-        return <div style={{ textAlign: "center", objectFit: 'cover', height: height }}>
+        return <div style={{ position: 'relative', textAlign: "center", objectFit: 'cover', height: height }}>
             <img style={{ height: (imgHeight ? imgHeight : 'inherit') }} src={imageURL} alt="image" />
+            <div style={{ position: 'absolute', bottom:0 }}>sadfsdf</div>
             {/* <div className="news-vcard-play">
                 <a className="vimo1" href="https://vimeo.com/63729905"><img
                     src={playBtn} alt="image" /></a>
@@ -16,7 +18,8 @@ export default {
         </div>
     },
     trunCate: (str, max, suffix) => {
-        return str.length < max ? str : `${str.substr(0, str.substr(0, max - suffix.length).lastIndexOf(' '))} ${suffix}`
+        // return <span className="trunCate">{str.length < max ? str : `${str.substr(0, str.substr(0, max - suffix.length).lastIndexOf(' '))} ${suffix}`}</span>
+        return <span className={max == 2 ? "trunCate" : "trunCate1"}>{str}</span>
     },
     filterTitle: (title) => {
         let res = title.replaceAll("-", " ")

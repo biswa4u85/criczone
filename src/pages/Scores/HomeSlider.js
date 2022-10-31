@@ -28,9 +28,10 @@ function HomeSlider(props) {
 
     useEffect(() => {
         let date = new Date()
-        let toDate = `${date.getFullYear()}-${date.getMonth() < 9 ? "0" + (Number(date.getMonth()) + 1) : date.getMonth()}-${date.getDate() < 9 ? "0" + date.getDate() : date.getDate()}`
+        let month = Number(date.getMonth()) + 1
+        let toDate = `${date.getFullYear()}-${month < 9 ? "0" + month : month}-${date.getDate() < 9 ? "0" + date.getDate() : date.getDate()}`
         date.setDate(date.getDate() - 1);
-        let fromDate = `${date.getFullYear()}-${date.getMonth() < 9 ? "0" + (Number(date.getMonth()) + 1) : date.getMonth()}-${date.getDate() < 9 ? "0" + date.getDate() : date.getDate()}`
+        let fromDate = `${date.getFullYear()}-${month < 9 ? "0" + month : month}-${date.getDate() < 9 ? "0" + date.getDate() : date.getDate()}`
         dispatch(getHomeFixtures({ filters: [["Live Score Fixtures", "date", "Between", [fromDate, toDate]]] }))
         return () => {
             for (let item of fixtures) {
@@ -63,6 +64,7 @@ function HomeSlider(props) {
         {fixtures.map((item, key) => {
             let score = null
             return <div key={key} id={`live_home_${item.name}`} className='item'>
+
                 {/* <div className="trending_news">
                     <div className="lanka" onClick={() => navigate(`/match-news/${item.name}`)}>
                         <h6>{Config.checkDate(item.date)} At {moment.utc(item.datetime).format('hh:mm A')} . <span> {item.match_subtitle} .</span> {item.status}</h6>
@@ -79,49 +81,47 @@ function HomeSlider(props) {
                         </ul>
                     </div>
                 </div> */}
+
                 <div className="finshed">
                     <div className="lanka">
                         <Row>
                             <Col span={9}>
-                                <h5>FINISHED</h5>
+                                <h5>{item.status}</h5>
                             </Col>
                             <Col span={7} offset={8}>
-                                <h6>Today 07:03 am</h6>
+                                <h6>{Config.checkDate(item.date)} At {moment.utc(item.datetime).format('hh:mm A')}</h6>
                             </Col>
                         </Row>
                         <div className="border-box"></div>
                         <div className="false">
                             <div className="false">
-                                <Image preview={false} src={Flag} />
-                                <h6>NZ</h6>
+                                {checkImg(item?.home?.name)}
+                                <h6>{item?.home?.name}</h6>
                             </div>
-                            <h6><span>(ov 20/20)</span>280/5</h6>
+                            <h6 id="live_home" className="red">{score ? score?.match_summary?.home_scores : ''}</h6>
                         </div>
 
                         <div className="false">
                             <div className="false">
-                                <Image preview={false} src={Flag} />
-                                <h6>BAN</h6>
+                                {checkImg(item?.away?.name)}
+                                <h6>{item?.away?.name}</h6>
                             </div>
-                            <h6><span>(ov 20/20)</span>160/7</h6>
+                            <h6 id="live_home" className="red">{score ? score?.match_summary?.away_scores : ''}</h6>
                         </div>
-                        <h5>New Zealand bate Bangladesh by 48 runs</h5>
+                        <h5 id="live_result">{item.status === 'Complete' ? <p>{item.result} - <span>{moment.utc(item.datetime).format('Do MMM YYYY')}</span></p> : <p>Match starts in <span>{moment.utc(item.date).format('Do MMM YYYY hh:mm A')}</span></p>}</h5>
                     </div>
 
                     <div className="false-zealand">
                         <Row>
                             <Col span={12}>
-                                <h5>View Details</h5>
+                                <h5 onClick={() => navigate(`/match-news/${item.name}`)}>View Details</h5>
                             </Col>
-                            <Col span={12} >
-                                <h6>New Zealand T20 Tri-Series</h6>
+                            <Col span={12}>
+                                <h6>{item.match_subtitle}</h6>
                             </Col>
                         </Row>
                     </div>
-
                 </div>
-
-
             </div>
         })}
     </OwlCarousel>);

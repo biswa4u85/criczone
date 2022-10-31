@@ -88,7 +88,7 @@ function HomeSlider(props) {
                             <Col span={9}>
                                 <h5>{item.status}</h5>
                             </Col>
-                            <Col span={7} offset={8}>
+                            <Col span={7} offset={8} align="right" >
                                 <h6>{Config.checkDate(item.date)} At {moment.utc(item.datetime).format('hh:mm A')}</h6>
                             </Col>
                         </Row>
@@ -116,7 +116,7 @@ function HomeSlider(props) {
                             <Col span={12}>
                                 <h5 onClick={() => navigate(`/match-news/${item.name}`)}>View Details</h5>
                             </Col>
-                            <Col span={12}>
+                            <Col span={12} align="right" >
                                 <h6>{item.match_subtitle}</h6>
                             </Col>
                         </Row>

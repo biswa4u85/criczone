@@ -13,7 +13,10 @@
     background-color: gainsboro !important;
     border-radius: 0 0 10px 10px;
     padding: 10px 10px 0;
+}
 
+.false-zealand h5{
+    cursor: pointer;
 }
 
 .ipsum {

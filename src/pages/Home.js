@@ -43,7 +43,7 @@ function Home() {
     let home2ndNews = newsList.filter(item => item.blog_category === 'match-prediction');
 
     // Home 3rd News
-    let home3rdNews = newsList.filter(item => item.blog_category === 'asia-cup');
+    let home3rdNews = newsList.filter(item => item.blog_category === 'match-review');
 
     // Home 4th News
     let home4thNews = newsList.filter(item => item.blog_category === 't20-world-cup');

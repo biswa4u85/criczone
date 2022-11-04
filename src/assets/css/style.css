@@ -1,4 +1,4 @@
-x* {
+* {
     box-sizing: border-box
 }
 
@@ -1553,6 +1553,7 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
 }
+
 .trunCate1 {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1560,7 +1561,35 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
 }
+.mainImage {
+    position: relative;
+    text-align: "center";
+    object-fit: 'cover'
+}
 
+.imageCaptions {
+    position: absolute;
+    background: #fff;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 2
+}
+.mainTitle {
+    display: none;
+    position: absolute;
+    bottom: 20%;
+    z-index: 9999;
+    background: #fff;
+    left: 10px;
+    right: 10px;
+    font-size: 17px;
+    padding: 5px;
+    border-radius: 5px;
+}
+.mainImage:hover .mainTitle{
+    display: block;
+}
 @media screen and (max-width: 767px) {
     .header-top-area {
         padding: 15px 0px
@@ -1581,6 +1610,10 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
 
     .header-top-area.transparent-top-header .header-wrapper {
         padding: 15px 0px
+    }
+    .mainImage:hover .mainTitle,
+    .mainTitle {
+        display: none;
     }
     .trunCate1,
     .trunCate {
@@ -11732,4 +11765,12 @@ body.demo {
 .owl-theme .owl-dots,
 .owl-theme .owl-nav {
     display: none !important;
+}
+
+[data-aos^=fade][data-aos^=fade] {
+    opacity: 1;
+}
+
+[data-aos=fade-up] {
+    transform: translate3d(0, 0px, 0)
 }

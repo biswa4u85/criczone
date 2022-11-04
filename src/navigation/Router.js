@@ -15,7 +15,6 @@ import LiveScore from "../pages/LiveScore";
 import Search from "../pages/Search";
 import ScoreBoard from "../pages/ScoreBoard";
 
-
 function Routers() {
   return (
     <BrowserRouter>

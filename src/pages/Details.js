@@ -36,6 +36,12 @@ function Details(props) {
         dispatch(getNewsDetails({ token, pId }))
     }, [pId]);
 
+    useEffect(() => {
+        if (!newsDetails) {
+            navigate('/')
+        }
+    }, [newsDetails]);
+
     // Latest News
     let latestNews = newsList.filter(item => item.blog_category === 'news');
     latestNews.length = 5
@@ -44,10 +50,7 @@ function Details(props) {
     let relatedNews = newsList.filter(item => item.blog_category === 'news');
     relatedNews.length = 5
 
-
-
     let comments = newsDetails?._comments ? JSON.parse(newsDetails._comments) : []
-
 
     const onFinish = (values) => {
         dispatch(addComments({ ...values, reference_name: newsDetails.name, comment_by: user.first_name, comment_email: user.email, content: values.message, token: userToken }))

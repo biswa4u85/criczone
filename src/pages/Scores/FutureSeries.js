@@ -8,34 +8,37 @@ import { getHomeFixtures } from "../../store/ScoreRedux";
 function FutureSeries(props) {
     const { type } = props
     const dispatch = useDispatch()
-    const series = useSelector((state) => state.score.series)
     const fixtures = useSelector((state) => state.score.fixtures)
-    const grouped = Config.groupBy(fixtures, 'series_id');
+    const grouped = Config.groupBy(fixtures, 'tournament_id');
 
     useEffect(() => {
         let date = new Date()
         let month = Number(date.getMonth()) + 1
         let fromDate = `${date.getFullYear()}-${month < 9 ? "0" + month : month}-${date.getDate() < 9 ? "0" + date.getDate() : date.getDate()}`
-        dispatch(getHomeFixtures({ filters: [["Flash All Events", "date", ">=", fromDate]] }))
+        dispatch(getHomeFixtures({ filters: [["Flash Events", "date", ">=", fromDate]] }))
     }, [type]);
-
 
     return (<div>
         {Object.keys(grouped).map((name, k) => {
-            let latestNews = series.filter(item => item.series_id === name);
+            let tournaments = grouped[name][0]?.tournament_details
+            let events = grouped[name][0]?.event_details
             return <div key={k}>
                 <div className="tab-bar">
                     <div className="month">
                         <div className="series">
                             <Row>
                                 <Col span={4}>
-                                    <h5>{latestNews[0]?.series_name}</h5>
+                                    <h5>{tournaments?.NAME} <img src={tournaments.TOURNAMENT_IMAGE} className="flagimg" /></h5>
                                 </Col>
                                 <Col span={20}>
                                     {grouped[name].map((item, key) => <div key={key}>
-                                        {item.match_title} {item.match_subtitle}
-                                        <h6>{Config.checkDate(item.date)} {moment.utc(item.date).format('Do MMM YYYY hh:mm A')}</h6>
+                                        {events.HOME_NAME} <img src={events.HOME_IMAGES[0]} className="flagimg" /> VS <img src={events.AWAY_IMAGES[0]} className="flagimg" /> {events.AWAY_NAME}
+                                        <br />
+                                        <br />
+                                        <p>{item.stage_type}, {item.result}</p>
+                                        <h6>{moment.utc(item.start_time).format('hh:mm A')} {moment.utc(item.start_time).format('Do MMM YYYY hh:mm A')}</h6>
                                         <div className="match-border"></div>
+                                        <br />
                                     </div>)}
 
                                 </Col>

@@ -9,7 +9,7 @@ import Live from "./Scores/Live";
 import FutureSeries from "./Scores/FutureSeries";
 import MatchesByDay from "./Scores/MatchesByDay";
 import ArchiveSeries from "./Scores/ArchiveSeries";
-import { getSeries } from "../store/ScoreRedux";
+import { getTournaments, getSeasons } from "../store/ScoreRedux";
 
 function LiveScore(props) {
     let navigate = useNavigate();
@@ -26,7 +26,8 @@ function LiveScore(props) {
     }, []);
 
     useEffect(() => {
-        dispatch(getSeries({ token }))
+        dispatch(getTournaments({ token }))
+        dispatch(getSeasons({ token }))
     }, []);
 
     return (

@@ -13,7 +13,7 @@ import Category from "../pages/Category";
 import Page404 from "../pages/Page404";
 import LiveScore from "../pages/LiveScore";
 import Search from "../pages/Search";
-import ScoreBoard from "../pages/ScoreBoard";
+import ScoreBoard from "../pages/Scores/ScoreBoard";
 
 function Routers() {
   return (

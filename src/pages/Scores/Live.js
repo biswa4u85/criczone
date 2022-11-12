@@ -33,7 +33,7 @@ function Live(props) {
         }
         return () => {
             for (let item of fixtures) {
-                if (item.status === 'Fixture') {
+                if (item.stage_type === 'LIVE') {
                     SocketApis.unSubscribe(item.name)
                 }
             }
@@ -42,7 +42,7 @@ function Live(props) {
 
     useEffect(() => {
         for (let item of fixtures) {
-            if (item.status === 'Fixture' && Config.checkTime(item.datetime)) {
+            if (item.stage_type === 'LIVE' && Config.checkTime(item.start_time)) {
                 SocketApis.subscribe(item.name)
             }
         }
@@ -51,31 +51,33 @@ function Live(props) {
     return (<div>
         {Object.keys(grouped).map((name, k) => {
             let tournaments = grouped[name][0]?.tournament_details
-            let events = grouped[name][0]?.event_details
-            return <div key={k}><h3> {tournaments?.NAME} <img src={tournaments.TOURNAMENT_IMAGE} className="flagimg" /></h3>
-                {grouped[name].map((item, key) => <div key={key} id={`live_inner_${item.name}`}>
-                    <div className="africa">
-                        <h5>{item.match_title}<span> {item.match_subtitle}</span></h5>
-                        <h6>{Config.checkDate(item.start_time)} {moment.utc(item.start_time).format('Do MMM YYYY hh:mm A')} </h6>
-                        {/* at {item.venue} */}
-                    </div>
-                    <div className="match">
-                        <div class="vl">
-                            <h5>{events.HOME_NAME} <img src={events.HOME_IMAGES[0]} className="flagimg" /> <span id="live_home"></span></h5>
-                            <h5>{events.AWAY_NAME} <img src={events.AWAY_IMAGES[0]} className="flagimg" /> <span id="live_away"></span></h5>
-                            <h6 id="live_result">{item.result}</h6>
+            return <div key={k}><h3> {tournaments?.NAME} {tournaments.TOURNAMENT_IMAGE && (<img src={tournaments.TOURNAMENT_IMAGE} className="flagimg" />)}</h3>
+                {grouped[name].map((item, key) => {
+                    let events = item?.event_details
+                    return <div key={key} id={`live_inner_${item.name}`}>
+                        <div className="africa">
+                            <h5>{item.match_title}<span> {item.match_subtitle}</span></h5>
+                            <h6>{Config.checkDate(item.start_time)} {moment.utc(item.start_time).format('Do MMM YYYY hh:mm A')} </h6>
+                            {/* at {item.venue} */}
+                        </div>
+                        <div className="match">
+                            <div class="vl">
+                                <h5>{events.HOME_NAME} {events.HOME_IMAGES && (<img src={events.HOME_IMAGES[0]} className="flagimg" />)} <span id="live_home"></span></h5>
+                                <h5>{events.AWAY_NAME} {events.AWAY_IMAGES && (<img src={events.AWAY_IMAGES[0]} className="flagimg" />)} <span id="live_away"></span></h5>
+                                <h6 id="live_result">{item.result}</h6>
+                            </div>
+                        </div>
+                        <div className="runs">
+                            <h6 onClick={() => navigate(`/match-news/${item.name}`)}>Live Score</h6>
+                            <div class="score-border"></div>
+                            <h6 onClick={() => navigate(`/match-news/${item.name}`)}>Scorecard</h6>
+                            <div class="score-border"></div>
+                            <h6 onClick={() => navigate(`/match-news/${item.name}`)}>Full Commentary</h6>
+                            <div class="score-border"></div>
+                            <h6 onClick={() => navigate(`/category/match-prediction`)}>News</h6>
                         </div>
                     </div>
-                    <div className="runs">
-                        <h6>Live Score</h6>
-                        <div class="score-border"></div>
-                        <h6 style={{ cursor: 'pointer' }} onClick={() => navigate(`/match-news/${item.name}`)}>Scorecard</h6>
-                        <div class="score-border"></div>
-                        <h6>Full Commentary</h6>
-                        <div class="score-border"></div>
-                        <h6>News</h6>
-                    </div>
-                </div>)}
+                })}
             </div>
         })}
     </div>);

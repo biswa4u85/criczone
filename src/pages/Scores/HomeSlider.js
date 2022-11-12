@@ -80,7 +80,7 @@ function HomeSlider(props) {
                                 {checkImg(events?.HOME_IMAGES)}
                                 <h6>{events?.HOME_NAME}</h6>
                             </div>
-                            <h6 id="live_home" className="red">{events?.HOME_SCORE_CURRENT > 0 ? events?.HOME_SCORE_CURRENT + '/' + events?.HOME_SCORE_PART_2_OVERS_OUTS_WICKETS : ''}</h6>
+                            <h6 id="live_home">{events?.HOME_SCORE_CURRENT > 0 ? events?.HOME_SCORE_CURRENT + '/' + events?.HOME_SCORE_PART_2_OVERS_OUTS_WICKETS : ''}</h6>
                         </div>
 
                         <div className="false">
@@ -88,7 +88,7 @@ function HomeSlider(props) {
                                 {checkImg(events?.AWAY_IMAGES)}
                                 <h6>{events?.AWAY_NAME}</h6>
                             </div>
-                            <h6 id="live_away" className="red">{events?.AWAY_SCORE_CURRENT > 0 ? events?.AWAY_SCORE_CURRENT + '/' + events?.AWAY_SCORE_PART_2_OVERS_OUTS_WICKETS : ''}</h6>
+                            <h6 id="live_away">{events?.AWAY_SCORE_CURRENT > 0 ? events?.AWAY_SCORE_CURRENT + '/' + events?.AWAY_SCORE_PART_2_OVERS_OUTS_WICKETS : ''}</h6>
                         </div>
                         <h5 id="live_result">{item.stage_type === 'FINISHED' ? <p>{item.result} - <span>{moment.utc(item.start_time).format('Do MMM YYYY')}</span></p> : <p>Match starts in <span>{moment.utc(item.start_time).format('Do MMM YYYY hh:mm A')}</span></p>}</h5>
                     </div>
@@ -96,7 +96,7 @@ function HomeSlider(props) {
                     <div className="false-zealand">
                         <Row>
                             <Col span={8}>
-                                <h5 onClick={() => navigate(`/match-news/${item.event_id}`)}>View Details</h5>
+                                <h5 onClick={() => navigate(`/match-news/${item.name}`)}>View Details</h5>
                             </Col>
                             <Col span={16} align="right" >
                                 <h6>{tournaments.NAME}</h6>

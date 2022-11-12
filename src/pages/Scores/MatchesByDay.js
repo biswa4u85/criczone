@@ -8,7 +8,6 @@ import { getHomeFixtures } from "../../store/ScoreRedux";
 function MatchesByDay(props) {
     const { type } = props
     const dispatch = useDispatch()
-    const tournaments = useSelector((state) => state.score.tournaments)
     const fixtures = useSelector((state) => state.score.fixtures)
     const grouped = Config.groupBy(fixtures, 'date');
 
@@ -29,13 +28,13 @@ function MatchesByDay(props) {
                     <div className="nepal">
                         {grouped[name].map((item, key) => {
                             let tournaments = grouped[name][0]?.tournament_details
-                            let events = grouped[name][0]?.event_details
+                            let events = item?.event_details
                             return <Row key={key}>
                                 <Col span={7}>
-                                    <h5>{tournaments?.NAME} <img src={tournaments.TOURNAMENT_IMAGE} className="flagimg" /></h5>
+                                    <h5>{tournaments?.NAME} {tournaments.TOURNAMENT_IMAGE && (<img src={tournaments.TOURNAMENT_IMAGE} className="flagimg" />)}</h5>
                                 </Col>
                                 <Col span={7} offset={2}>
-                                    <p>{events.HOME_NAME} <img src={events.HOME_IMAGES[0]} className="flagimg" /> VS <img src={events.AWAY_IMAGES[0]} className="flagimg" /> {events.AWAY_NAME}</p>
+                                    <p>{events.HOME_NAME} {events.HOME_IMAGES && (<img src={events.HOME_IMAGES[0]} className="flagimg" />)} VS {events.AWAY_IMAGES && (<img src={events.AWAY_IMAGES[0]} className="flagimg" />)} {events.AWAY_NAME}</p>
                                 </Col>
                                 <Col span={6} offset={2}>
                                     <h6>{moment.utc(item.start_time).format('hh:mm A')}</h6>

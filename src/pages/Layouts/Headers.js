@@ -23,15 +23,20 @@ function Headers() {
         SocketApis.getSocketData('message', (data) => {
             dispatch(getScorecard(data))
             for (let key in data) {
-                let score = data[key] ? data[key].live_details : null
+                let score = data[key] ? data[key][0] : null
                 if (score) {
-                    $(`#live_home_${key} #live_home`).text(score?.match_summary?.home_scores);
-                    $(`#live_inner_${key} #live_home`).text(score?.match_summary?.home_scores);
-                    $(`#live_home_${key} #live_away`).text(score?.match_summary?.away_scores);
-                    $(`#live_inner_${key} #live_away`).text(score?.match_summary?.away_scores);
-                    $(`#live_home_${key} #live_result`).text(score?.match_summary?.status);
-                    $(`#live_inner_${key} #live_result`).text(score?.match_summary?.status);
+                    $(`#live_home_${key} #live_home`).text(`${score?.HOME_RUNS_FIRST_INNING}/${score?.HOME_WICKETS_FIRST_INNING}`);
+                    $(`#live_inner_${key} #live_home`).text(`${score?.HOME_RUNS_FIRST_INNING}/${score?.HOME_WICKETS_FIRST_INNING}`);
+                    $(`#live_home_${key} #live_away`).text(`${score?.AWAY_RUNS_FIRST_INNING}/${score?.AWAY_WICKETS_FIRST_INNING}`);
+                    $(`#live_inner_${key} #live_away`).text(`${score?.AWAY_RUNS_FIRST_INNING}/${score?.AWAY_WICKETS_FIRST_INNING}`);
+                    // $(`#live_home_${key} #live_result`).text(score?.match_summary?.status);
+                    // $(`#live_inner_${key} #live_result`).text(score?.match_summary?.status);
+                    $(`#live_home_${key} #live_home`).attr("class", 'red');
+                    $(`#live_home_${key} #live_away`).attr("class", 'red');
                     $(`#live_home_${key} #live_result`).attr("class", 'red');
+
+                    $(`#live_inner_${key} #live_home`).attr("class", 'red');
+                    $(`#live_inner_${key} #live_away`).attr("class", 'red');
                     $(`#live_inner_${key} #live_result`).attr("class", 'red');
                 }
             }

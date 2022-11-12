@@ -30,7 +30,7 @@ export default {
         if (today.toDateString() === newDate.toDateString()) {
             return 'Today'
         } else {
-            return moment.utc(newDate).format('Do MMM YYYY')
+            return ''
         }
     },
     checkTime: (date) => {

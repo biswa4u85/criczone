@@ -8,6 +8,7 @@ import { getHighlights } from "../store/ScoreRedux";
 import { ShareAltOutlined } from '@ant-design/icons';
 import ArchiveSeries from "./Scores/ArchiveSeries";
 import Live from "./Scores/Live";
+import SocketApis from '../utility/socket-apis'
 import flag from '../assets/image/flag.png'
 
 function ScoreBoard(props) {
@@ -25,6 +26,7 @@ function ScoreBoard(props) {
     useEffect(() => {
         window.scrollTo(0, 0)
         dispatch(getHighlights({ token, name }))
+        SocketApis.subscribe(name)
     }, [name]);
 
 

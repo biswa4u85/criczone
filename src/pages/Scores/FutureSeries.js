@@ -21,26 +21,27 @@ function FutureSeries(props) {
     return (<div>
         {Object.keys(grouped).map((name, k) => {
             let tournaments = grouped[name][0]?.tournament_details
-            let events = grouped[name][0]?.event_details
             return <div key={k}>
                 <div className="tab-bar">
                     <div className="month">
                         <div className="series">
                             <Row>
                                 <Col span={4}>
-                                    <h5>{tournaments?.NAME} <img src={tournaments.TOURNAMENT_IMAGE} className="flagimg" /></h5>
+                                    <h5>{tournaments?.NAME} {tournaments.TOURNAMENT_IMAGE && (<img src={tournaments.TOURNAMENT_IMAGE} className="flagimg" />)}</h5>
                                 </Col>
                                 <Col span={20}>
-                                    {grouped[name].map((item, key) => <div key={key}>
-                                        {events.HOME_NAME} <img src={events.HOME_IMAGES[0]} className="flagimg" /> VS <img src={events.AWAY_IMAGES[0]} className="flagimg" /> {events.AWAY_NAME}
-                                        <br />
-                                        <br />
-                                        <p>{item.stage_type}, {item.result}</p>
-                                        <h6>{moment.utc(item.start_time).format('hh:mm A')} {moment.utc(item.start_time).format('Do MMM YYYY hh:mm A')}</h6>
-                                        <div className="match-border"></div>
-                                        <br />
-                                    </div>)}
-
+                                    {grouped[name].map((item, key) => {
+                                        let events = item?.event_details
+                                        return <div key={key}>
+                                            {events.HOME_NAME} {events.HOME_IMAGES && (<img src={events.HOME_IMAGES[0]} className="flagimg" />)} VS {events.AWAY_IMAGES && (<img src={events.AWAY_IMAGES[0]} className="flagimg" />)} {events.AWAY_NAME}
+                                            <br />
+                                            <br />
+                                            <p>{item.stage_type}, {item.result}</p>
+                                            <h6>{moment.utc(item.start_time).format('Do MMM YYYY hh:mm A')}</h6>
+                                            <div className="match-border"></div>
+                                            <br />
+                                        </div>
+                                    })}
                                 </Col>
                             </Row>
                         </div>

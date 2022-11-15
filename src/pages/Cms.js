@@ -29,14 +29,14 @@ function Cms(props) {
             <Helmet>
                 <meta charSet="utf-8" />
                 <title>{cms?.meta_title}</title>
-                <link rel="canonical" href="#" />
+                <meta name="description" content={cms?.meta_description} />
             </Helmet>
             <section className="single-post-area">
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-12">
                             <div className="single-post-content">
-                                <h2>{cms?.title}</h2>
+                                <h1>{cms?.title}</h1>
                                 <div dangerouslySetInnerHTML={{ __html: cms?.main_section_html ? cms?.main_section_html : cms?.main_section }}></div>
                             </div>
                         </div>

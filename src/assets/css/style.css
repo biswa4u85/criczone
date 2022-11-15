@@ -3093,6 +3093,11 @@ span.ui-slider-handle.ui-state-default.ui-corner-all {
     margin-bottom: 20px;
     background: #010203;
 }
+.nvbanner-area h1{
+    font-size: 30px;
+    text-align: center;
+    color: var(--white);
+}
 
 .bnr-lft {
     height: 100%
@@ -9571,6 +9576,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control:before {
     margin-right: 25px
 }
 
+.single-post-content h1,
 .single-post-content h2 {
     font-size: 32px;
     margin-bottom: 20px

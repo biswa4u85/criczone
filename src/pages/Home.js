@@ -74,6 +74,7 @@ function Home() {
                 <meta name="description" content={homeSettings?.meta_description} />
             </Helmet>
             <div className="nvbanner-area">
+                <h1>{Config?.title}</h1>
                 <HomeSlider navigate={navigate} />
                 <div className="viewAllMatch"><button onClick={() => navigate('/live-score')}>View all Matches</button></div>
             </div>
@@ -94,26 +95,6 @@ function Home() {
                             </div>
                             <div className="bnr-lft-cnt">
                                 <div className="row">
-                                    {/* <div className="col-md-7" data-aos="fade-up" data-aos-delay="50">
-                                        {home1stNews[0] && (<div className="btl-simple-card">
-                                            {Config.randerImage(home1stNews[0], 600, 740)}
-                                            <div className="btlc-content-wrapper">
-                                                <NavLink to={`/category/${home1stNews[0].blog_category}`}><span className="btn">{home1stNews[0].category_description}</span></NavLink>
-                                                <div className="btlc-marking">
-                                                    <span className="icofont-star"></span>
-                                                </div>
-                                                <div className="btlc-content">
-                                                    <div className="btcl-content-status">
-                                                        <span>{moment.utc(home1stNews[0].published_time).format('hh:mm A')}</span>
-                                                        <span>{moment.utc(home1stNews[0].published_on).format('Do MMM YYYY')}</span>
-                                                        <span>{home1stNews[0].blogger}</span>
-                                                    </div>
-                                                    <h3><NavLink to={`/news/${home1stNews[0].route}`}>{Config.trunCate(home1stNews[0].title, 40, '. . .')}</NavLink></h3>
-
-                                                </div>
-                                            </div>
-                                        </div>)}
-                                    </div> */}
                                     <div className="col-md-6">
                                         <div className="bnr-lft-cnt-rgt">
                                             {home1stNews[0] && (<div className="btl-simple-card" data-aos="fade-up"

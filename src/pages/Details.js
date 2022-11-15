@@ -71,7 +71,7 @@ function Details(props) {
             <Helmet>
                 <meta charSet="utf-8" />
                 <title>{newsDetails?.meta_title}</title>
-                <link rel="canonical" href="#" />
+                <meta name="description" content={newsDetails?.meta_description} />
             </Helmet>
             <section className="single-post-area">
                 <div className="container">
@@ -87,7 +87,7 @@ function Details(props) {
                                     <span>{moment.utc(newsDetails?.published_on).format('Do MMM YYYY')}</span>
                                     <span>{newsDetails?.blogger}</span>
                                 </div>
-                                <h2>{newsDetails?.title}</h2>
+                                <h1>{newsDetails?.title}</h1>
                                 <div dangerouslySetInnerHTML={{ __html: newsDetails?.content_html ? newsDetails?.content_html : newsDetails?.content }}></div>
                                 <div className="details_tags"><Tags data={newsDetails?._user_tags ? newsDetails?._user_tags : ''} /></div>
                                 {/* <div className="reaction">

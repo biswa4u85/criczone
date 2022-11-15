@@ -10,10 +10,10 @@ import { getHomeFixtures } from "../../store/ScoreRedux";
 
 const responsive = {
     0: {
-        items: 1.5,
+        items: 1,
     },
     480: {
-        items: 1.5,
+        items: 1,
     },
     768: {
         items: 3,
@@ -66,7 +66,7 @@ function HomeSlider(props) {
             return <div key={key} id={`live_home_${item.name}`} className='item'>
                 <div className="finshed">
                     <div className="lanka">
-                        <Row>
+                        <Row className="header">
                             <Col span={5}>
                                 <h5>{item.stage_type}</h5>
                             </Col>
@@ -94,7 +94,7 @@ function HomeSlider(props) {
                     </div>
 
                     <div className="false-zealand">
-                        <Row>
+                        <Row className="header">
                             <Col span={8}>
                                 <h5 onClick={() => navigate(`/match-news/${events.EVENT_ID}`)}>View Details</h5>
                             </Col>

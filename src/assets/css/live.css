@@ -370,14 +370,33 @@
     color: red !important;
 }
 
-
 /* papu */
-
+.seriesBox h1{
+    font-size: 20px;
+}
+.seriesBox a {
+    font-weight: bold!important;
+}
+.seriesBox p{
+    margin: 0;
+    padding: 10px;
+    border-bottom: solid 1px #e0dede;
+}
+.seriesBox .select{
+   float: right;
+   margin-top: -5px;
+}
+.seriesBox .select .ant-select{
+    width: 100px;
+    margin-left: 10px;
+}   
+.seriesBox .ant-tabs-nav-list{
+    margin-left: 30px;
+}   
 .tab-sec .ant-tabs>.ant-tabs-nav,
 .ant-tabs>div>.ant-tabs-nav {
-    /* background-color: #FFFFFF; */
-    border-radius: 10px;
-    padding: 20px;
+    background-color: #FFFFFF;
+    padding: 0px;
 }
 
 .trending_news h6 {
@@ -481,9 +500,9 @@
 /* demo */
 
 .tab {
-    margin: 18px;
+    margin: 5px;
     background-color: white;
-    padding: 10px 20px;
+    padding: 0px 10px;
 }
 
 .tab-btn {
@@ -594,9 +613,10 @@
 }
 
 .month {
-    background: #ecebeb;
-    padding: 4px 17px;
-    margin-top: 22px;
+    background: #f8f8f8;
+    padding: 5px 10px;
+    border: solid 1px #e1dfdf;
+    margin-top: 10px;
 }
 
 .series {

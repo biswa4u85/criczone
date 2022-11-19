@@ -1,13 +1,13 @@
 import noData from "../assets/img/nodata.jpg";
-import moment from "moment";
 export default {
-    hostUrl: 'https://www.criczone.co',
+    hostUrl: 'https://criczone.co',
     twitter: 'CriczoneN',
     apiSocketUrl: 'https://score.techwizards.io:4000',
     frappe_url: 'https://news.techwizards.io',
     frappe_custom_app: 'erp_custom_auth',
     token: 'token 8013775618bd3a7:99fa9ff03295aa8',
     title: 'Get Latest and Breaking Cricket News | Daily Cricket News',
+    groups:['international', 'league', 'domestic', 'women'],
     randerImage: (item, height, imgHeight, type) => {
         let src = item?.meta_image
         let imageURL = src ? (String(src).includes('https://') ? src : 'https://news.techwizards.io' + src) : noData

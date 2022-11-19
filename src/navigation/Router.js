@@ -11,8 +11,9 @@ import Details from "../pages/Details";
 import Cms from "../pages/Cms";
 import Category from "../pages/Category";
 import Page404 from "../pages/Page404";
-import LiveScore from "../pages/LiveScore";
+import LiveScore from "../pages/Scores/LiveScore";
 import Search from "../pages/Search";
+import MatchesBySerie from "../pages/Scores/MatchesBySerie";
 import ScoreBoard from "../pages/Scores/ScoreBoard";
 
 function Routers() {
@@ -27,6 +28,7 @@ function Routers() {
           <Route path="/live-score" element={<LiveScore />} />
           <Route path="*" element={<Page404 />} />
           <Route path="/search/:name" element={<Search />} />
+          <Route path="/series/:name" element={<MatchesBySerie />} />
           <Route path="/match-news/:name" element={<ScoreBoard />} />
         </Route>
       </Routes>

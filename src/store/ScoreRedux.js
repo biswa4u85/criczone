@@ -12,6 +12,7 @@ const initialState = {
   matcheslistByDay: [],
   matcheslistByFilter: [],
   matcheslistBySerie: [],
+  highlights: {},
 }
 
 
@@ -117,6 +118,21 @@ export const getMatchesBySeries = createAsyncThunk(
       item.venue = item.venue ? JSON.parse(item.venue) : {}
       item.score = item.score ? JSON.parse(item.score) : {}
     }
+    return response
+  }
+)
+
+export const getHighlights = createAsyncThunk(
+  'score/getHighlights',
+  async (params, { rejectWithValue }) => {
+    const response = await getScoreDataApi({ path: 'getHighlights', query: params })
+    if (response.status === 'error') {
+      return rejectWithValue(response.data)
+    }
+    // for (let item of response) {
+    //   item.venue = item.venue ? JSON.parse(item.venue) : {}
+    //   item.score = item.score ? JSON.parse(item.score) : {}
+    // }
     return response
   }
 )
@@ -235,6 +251,21 @@ export const counterSlice = createSlice({
       state.isFetching = false
       state.error = null
       state.matcheslistBySerie = action.payload
+    },
+    // Matches By Series
+    [getHighlights.pending]: (state, action) => {
+      state.isFetching = true
+      state.error = null
+      state.highlights = {}
+    },
+    [getHighlights.rejected]: (state, action) => {
+      state.isFetching = false
+      state.error = action.payload
+    },
+    [getHighlights.fulfilled]: (state, action) => {
+      state.isFetching = false
+      state.error = null
+      state.highlights = action.payload
     },
   }
 

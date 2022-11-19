@@ -370,6 +370,13 @@
     color: red !important;
 }
 
+.ellipsis1 {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
 /* papu */
 .seriesBox h1{
     font-size: 20px;

@@ -56,7 +56,7 @@ function HomeSlider(props) {
         return <img src={name ? (Config.frappe_url + name) : Flags['NoImg']} className="flagimg" />
     }
 
-    if (homeslider.length === 0) {
+    if (homeslider.length == 0) {
         return null
     }
 
@@ -91,7 +91,7 @@ function HomeSlider(props) {
                             </div>
                             <h6 id="live_away">{team2Score && (`${team2Score?.runs ? team2Score?.runs : 0}/${team2Score?.wickets ? team2Score?.wickets : 0} - ${team2Score?.overs ? team2Score?.overs : 0}`)}</h6>
                         </div>
-                        <h5 id="live_result">{item.result ? <p>{item.result} - <span>{moment.utc(item.startdt).format('Do MMM YYYY')}</span></p> : <p>Match starts in <span>{moment.utc(item.startdt).format('Do MMM YYYY hh:mm A')}</span></p>}</h5>
+                        <h5 id="live_result" className="ellipsis1">{item.result ? <p>{item.result} - <span>{moment.utc(item.startdt).format('Do MMM YYYY')}</span></p> : <p>Match starts in <span>{moment.utc(item.startdt).format('Do MMM YYYY hh:mm A')}</span></p>}</h5>
                     </div>
 
                     <div className="false-zealand">
@@ -99,8 +99,7 @@ function HomeSlider(props) {
                             <Col span={8}>
                                 <h5 onClick={() => navigate(`/match-news/${item.name}`)}>View Details</h5>
                             </Col>
-                            <Col span={16} align="right" >
-                                <h6>{item.series_name}</h6>
+                            <Col span={16} align="right"><h6 className="ellipsis1">{item.series_name}</h6>
                             </Col>
                         </Row>
                     </div>

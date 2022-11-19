@@ -5,7 +5,7 @@ import moment from "moment";
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-// import { getHighlights } from "../../store/ScoreRedux";
+import { getHighlights } from "../../store/ScoreRedux";
 import { ShareAltOutlined } from '@ant-design/icons';
 import ArchiveSeries from "./ArchiveSeries";
 import Live from "./Live";
@@ -24,13 +24,15 @@ function ScoreBoard(props) {
 
     useEffect(() => {
         window.scrollTo(0, 0)
-        // dispatch(getHighlights({ token, name }))
+        dispatch(getHighlights(name))
         SocketApis.subscribe(name)
     }, [name]);
 
     const onChange = (key) => {
         console.log(key);
     }
+
+    console.log(highlights)
 
     const columns = [
         {

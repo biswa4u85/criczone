@@ -24,8 +24,9 @@ function ScoreBoard(props) {
     const { TabPane } = Tabs;
 
     let commentary = highlights.commentary ? highlights.commentary : {}
-    // let scorecard = highlights.scorecard ? highlights.scorecard : {}
-
+    // let highlight = highlights.highlights ? highlights.highlights : {}
+    
+    console.log(commentary)
     useEffect(() => {
         window.scrollTo(0, 0)
         dispatch(getHighlights(name))
@@ -36,7 +37,7 @@ function ScoreBoard(props) {
         console.log(key);
     }
 
-    console.log(commentary)
+    
 
     const columns = [
         {
@@ -441,64 +442,64 @@ function ScoreBoard(props) {
                                         <div className="score"></div>
 
                                         <div className="comprehensive">
-                                            <p>Another comprehensive win for Australia as they seal the series with a game to spare. England were right in it for a large part of their chase, but then just collapsed in a heap. So that's all we have from this one. Until next time, it's goodbye!</p>
-                                            <p><span>Hazlewood:</span> It looks easy to bat on when a partnership is going. But only a wicket away from causing a collapse on such a pitch. Very happy with 280. It's good fun having captaincy. WIll obviously hand it back to Pat for the last game. Will see what Melbourne dishes out. He said he's back (Smith). Summer looks good for him.</p>
-                                            <p><span>Moeen Ali:</span> Were in a good position with the bat but we lost wickets. Rash bowled well in the middle phase. We pulled it back nicely. The wicket actually got easier to bat on but we lost wickets. It's just one of those things. They bowled well in that phase. Pressure got to us. If you lose wickets regularly, not going to win many games. Will just try to win (in the third ODI), and get on the flight on a positive note.</p>
-                                            <p><span>Mitchell Starc -</span> (On Josh Hazlewood) We saw through the first innings, the wicket was slow, we needed to be accurate, he is one of the best in this format and he showed as to why he's so highly regarded. (On Adam Zampa) He's so clinical in pressure situations, brings up back into the game time and again, it was nice for him to snare 4 wickets, he's been so wonderful for us.</p>
-                                            <p><span>21:38 Local Time, 10:38 GMT, 16:08 IST:</span> Quite a collapse from England, losing 7 for 52. They seemed to be cruising with Vince and Billings out there - both on fifties. But a poor slog from Vince sent the whole innings into a death spiral. Zampa bowled beautifully from thereon, finishing with four wickets as the game turned on its head. Starc started the damage with a double-strike in a brutal first over, and he came back to wrap things up with two more. It wasn't the easiest pitch for strokeplay today. Australia got to 280 after a workmanlike innings from Smith along with fifties from Labuschagne and Marsh. It seemed to be a good score but Billings and Vince had the hosts worried for a while, only for England to implode later on..</p>
+                                            <p>{commentary?.commentaryList?.[0]?.commText}</p>
+                                            <p><span>{commentary?.commentaryList?.[1]?.batTeamName}</span> {commentary?.commentaryList?.[1]?.commText}</p>
+                                            <p><span>Moeen Ali:</span> {commentary?.commentaryList?.[2]?.commText}</p>
+                                            <p><span>Mitchell Starc -</span> {commentary?.commentaryList?.[3]?.commText}</p>
+                                            <p><span>21:38 Local Time, 10:38 GMT, 16:08 IST:</span> {commentary?.commentaryList?.[4]?.commText}</p>
 
                                             <Row>
                                                 <Col span={2}>
-                                                    <h5>38.5</h5>
+                                                    <h5>{commentary?.commentaryList?.[5]?.overNumber}</h5>
                                                 </Col>
                                                 <Col span={20}>
-                                                    Zampa to Dawson, <span>out Lbw!</span>! Dawson misses a full toss and is hit right in front of middle. <span>That's the game and the series for Australia.</span>  There's a review from Dawson but ball-tracking shows it's clipping leg stump. <span>Dawson lbw b Zampa 20(21) [4s-1 6s-1]</span>
+                                                    {commentary?.commentaryList?.[5]?.commText}
                                                 </Col>
                                             </Row>
-                                            Zampa to Dawson, <span>THATS OUT!! Lbw!!</span>
+                                            {commentary?.commentaryList?.[6]?.commText}
 
                                             <Row>
                                                 <Col span={2}>
-                                                    <h5>38.4</h5>
+                                                    <h5>{commentary?.commentaryList?.[7]?.overNumber}</h5>
                                                 </Col>
                                                 <Col span={20}>
-                                                    Zampa to Dawson, no run, 93.5kph full delivery on off, Dawson defends in front of point
+                                                    {commentary?.commentaryList?.[7]?.commText}
                                                 </Col>
                                             </Row>
 
                                             <Row>
                                                 <Col span={2}>
-                                                    <h5>38.3</h5>
-                                                </Col>
-                                                <Col span={20} >
-                                                    Zampa to Dawson, no run, floated up on off, Dawson drives to cover
-                                                </Col>
-                                            </Row>
-
-                                            <Row>
-                                                <Col span={2}>
-                                                    <h5>38.2</h5>
+                                                    <h5>{commentary?.commentaryList?.[8]?.overNumber}</h5>
                                                 </Col>
                                                 <Col span={20}>
-                                                    Zampa to Dawson, no run, flat length ball turning away outside off, steered to backward point
+                                                    {commentary?.commentaryList?.[8]?.commText}
                                                 </Col>
                                             </Row>
 
                                             <Row>
                                                 <Col span={2}>
-                                                    <h5>38.2</h5>
+                                                    <h5>{commentary?.commentaryList?.[9]?.overNumber}</h5>
                                                 </Col>
-                                                <Col span={20} >
-                                                    Zampa to Dawson, <span>3 wides,</span> drifting down leg, Dawson misses the sweep and Carey fumbles as well
+                                                <Col span={20}>
+                                                    {commentary?.commentaryList?.[9]?.commText}
                                                 </Col>
                                             </Row>
 
                                             <Row>
                                                 <Col span={2}>
-                                                    <h5>38.1</h5>
+                                                    <h5>{commentary?.commentaryList?.[10]?.overNumber}</h5>
                                                 </Col>
-                                                <Col span={20} >
-                                                    Zampa to Dawson, 2 runs, tossed up and turning away outside off, Dawson goes reverse and paddles it past short third
+                                                <Col span={20}>
+                                                    {commentary?.commentaryList?.[10]?.commText}
+                                                </Col>
+                                            </Row>
+
+                                            <Row>
+                                                <Col span={2}>
+                                                    <h5>{commentary?.commentaryList?.[11]?.overNumber}</h5>
+                                                </Col>
+                                                <Col span={20}>
+                                                    {commentary?.commentaryList?.[11]?.commText}
                                                 </Col>
                                             </Row>
                                         </div>
@@ -541,56 +542,56 @@ function ScoreBoard(props) {
                                         </div>
                                         <div className="comprehensive">
                                             <Row>
-                                                <Col span={2}>
-                                                    <h5>38.5</h5>
+                                            <Col span={2}>
+                                                    <h5>{commentary?.commentaryList?.[12]?.overNumber}</h5>
                                                 </Col>
-                                                <Col span={20} >
-                                                    Zampa to Dawson, <span>out Lbw!</span>! Dawson misses a full toss and is hit right in front of middle. <span>That's the game and the series for Australia.</span>  There's a review from Dawson but ball-tracking shows it's clipping leg stump. <span>Dawson lbw b Zampa 20(21) [4s-1 6s-1]</span>
-                                                </Col>
-                                            </Row>
-
-                                            <Row>
-                                                <Col span={2}>
-                                                    <h5>38.4</h5>
-                                                </Col>
-                                                <Col span={20} >
-                                                    Zampa to Dawson, no run, 93.5kph full delivery on off, Dawson defends in front of point
+                                                <Col span={20}>
+                                                    {commentary?.commentaryList?.[12]?.commText}
                                                 </Col>
                                             </Row>
 
                                             <Row>
-                                                <Col span={2}>
-                                                    <h5>38.3</h5>
+                                            <Col span={2}>
+                                                    <h5>{commentary?.commentaryList?.[13]?.overNumber}</h5>
                                                 </Col>
-                                                <Col span={20} >
-                                                    Zampa to Dawson, no run, floated up on off, Dawson drives to cover
-                                                </Col>
-                                            </Row>
-
-                                            <Row>
-                                                <Col span={2}>
-                                                    <h5>38.2</h5>
-                                                </Col>
-                                                <Col span={20} >
-                                                    Zampa to Dawson, no run, flat length ball turning away outside off, steered to backward point
+                                                <Col span={20}>
+                                                    {commentary?.commentaryList?.[13]?.commText}
                                                 </Col>
                                             </Row>
 
                                             <Row>
-                                                <Col span={2}>
-                                                    <h5>38.2</h5>
+                                            <Col span={2}>
+                                                    <h5>{commentary?.commentaryList?.[14]?.overNumber}</h5>
                                                 </Col>
-                                                <Col span={20} >
-                                                    Zampa to Dawson, <span>3 wides,</span> drifting down leg, Dawson misses the sweep and Carey fumbles as well
+                                                <Col span={20}>
+                                                    {commentary?.commentaryList?.[14]?.commText}
                                                 </Col>
                                             </Row>
 
                                             <Row>
-                                                <Col span={2}>
-                                                    <h5>38.1</h5>
+                                            <Col span={2}>
+                                                    <h5>{commentary?.commentaryList?.[15]?.overNumber}</h5>
                                                 </Col>
-                                                <Col span={20} >
-                                                    Zampa to Dawson, 2 runs, tossed up and turning away outside off, Dawson goes reverse and paddles it past short third
+                                                <Col span={20}>
+                                                    {commentary?.commentaryList?.[15]?.commText}
+                                                </Col>
+                                            </Row>
+
+                                            <Row>
+                                            <Col span={2}>
+                                                    <h5>{commentary?.commentaryList?.[16]?.overNumber}</h5>
+                                                </Col>
+                                                <Col span={20}>
+                                                    {commentary?.commentaryList?.[16]?.commText}
+                                                </Col>
+                                            </Row>
+
+                                            <Row>
+                                            <Col span={2}>
+                                                    <h5>{commentary?.commentaryList?.[17]?.overNumber}</h5>
+                                                </Col>
+                                                <Col span={20}>
+                                                    {commentary?.commentaryList?.[17]?.commText}
                                                 </Col>
                                             </Row>
                                         </div>
@@ -633,20 +634,20 @@ function ScoreBoard(props) {
                                         <div className="comprehensive">
 
                                             <Row>
-                                                <Col span={2}>
-                                                    <h5>38.2</h5>
+                                            <Col span={2}>
+                                                    <h5>{commentary?.commentaryList?.[18]?.overNumber}</h5>
                                                 </Col>
-                                                <Col span={20} >
-                                                    Zampa to Dawson, <span>3 wides,</span> drifting down leg, Dawson misses the sweep and Carey fumbles as well
+                                                <Col span={20}>
+                                                    {commentary?.commentaryList?.[18]?.commText}
                                                 </Col>
                                             </Row>
 
                                             <Row>
-                                                <Col span={2}>
-                                                    <h5>38.1</h5>
+                                            <Col span={2}>
+                                                    <h5>{commentary?.commentaryList?.[19]?.overNumber}</h5>
                                                 </Col>
-                                                <Col span={20} >
-                                                    Zampa to Dawson, 2 runs, tossed up and turning away outside off, Dawson goes reverse and paddles it past short third
+                                                <Col span={20}>
+                                                    {commentary?.commentaryList?.[19]?.commText}
                                                 </Col>
                                             </Row>
                                         </div>
@@ -917,7 +918,6 @@ function ScoreBoard(props) {
                             <TabPane tab=" Live Blog" key="5">
                                 There is no live blog for this match.
                             </TabPane>
-
 
                             {/* Match Facts */}
                             <TabPane tab="Match Facts" key="6">

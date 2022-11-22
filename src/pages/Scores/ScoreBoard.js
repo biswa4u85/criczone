@@ -418,31 +418,23 @@ function ScoreBoard(props) {
                     </Row>
                     <div className="score"></div>
                     <div className="wickets">
-                    
-
-                        <h5>{commentary?.matchHeader?.team1?.name} vs  {commentary?.matchHeader?.team2?.name}, 2nd ODI - Live Cricket Score, Commentary</h5>
+                
+                        <h5>{commentary?.matchHeader?.team1?.name} vs  {commentary?.matchHeader?.team2?.name}, 2nd ODI - Live Cricket Score, {commentary?.page}</h5>
                         <span>Series: <a href="#">{commentary?.matchHeader?.seriesName} </a></span>
                         <span>Venue:  <a href="#">Sydney Cricket Ground, Sydney </a></span>
                         <span>Date & Time: <a href="#">Nov 19, 02:20 PM LOCAL </a></span>
 
                         <Tabs defaultActiveKey="1" onChange={setTab} >
-
-                            {/* Live */}
-                            {/* <TabPane tab="Live" key="1">
-                                <Table pagination={false} columns={columns} dataSource={highlights?.live_details?.scorecard?.[0]?.batting} />
-
-                            </TabPane> */}
-
-
                             {/* Commentary */}
                             <TabPane tab="Commentary" key="1">
                                 <Tabs defaultActiveKey="1" onChange={setTab} >
                                     <TabPane tab={highlights?.live_details?.scorecard?.[0]?.title} key="1">
-                                        <h5 className="tem-scro">AUS 280/8 (50)</h5>
-                                        <h5>ENG 208 (38.5)</h5>
-                                        <p className="australia-tem">Australia won by 72 runs</p>
+                                        <h5 className="tem-scro">{commentary?.miniscore?.matchScoreDetails?.inningsScoreList?.[1]?.batTeamName} /{commentary?.miniscore?.matchScoreDetails?.inningsScoreList?.[1]?.wickets} (50)</h5>
+                                        <h5>{commentary?.miniscore?.matchScoreDetails?.inningsScoreList?.[0]?.batTeamName} {commentary?.miniscore?.matchScoreDetails?.inningsScoreList?.[0]?.score} {commentary?.miniscore?.matchScoreDetails?.inningsScoreList?.[0]?.overs}</h5>
+
+                                        <p className="australia-tem">{commentary?.miniscore?.status}</p>
                                         <p>PLAYER OF THE MATCH</p>
-                                        <span><a href="#" color="black">Mitchell Starc </a></span>
+                                        <span><a href="#" color="black">{commentary?.matchHeader?.playersOfTheMatch?.[0]?.fullName} </a></span>
                                         <div className="score"></div>
                                         <p className="closer"><a href="#">Stay closer to Cricket, always! Get the cricbuzz app for your mobile</a></p>
                                         <div className="score"></div>
@@ -694,7 +686,6 @@ function ScoreBoard(props) {
                                             </div>
 
                                             <div>
-
                                                 <p>{highlights?.live_details?.scorecard?.[1]?.fow}</p>
                                             </div>
                                             <Table pagination={false} columns={bolingwomencolumns} dataSource={highlights?.live_details?.scorecard?.[1]?.bowling} size="middle" />
@@ -745,13 +736,11 @@ function ScoreBoard(props) {
 
                             </TabPane>
 
-
                             {/*  Highlights */}
                             <TabPane tab=" Highlights" key="3">
                                 <Tabs defaultActiveKey="3" onChange={setTab} >
                                     <Tabs.TabPane tab="AUS 1st Inns" key="1"></Tabs.TabPane>
                                     <Tabs.TabPane tab="ENG 1st Inns" key="2"></Tabs.TabPane>
-
 
                                     <TabPane tab={highlights?.live_details?.scorecard?.[0]?.title} key="1">
                                         <Row>
@@ -759,7 +748,7 @@ function ScoreBoard(props) {
                                                 <h5>49.1</h5>
                                             </Col>
                                             <Col span={20} offset={1}>
-                                                Sam Curran to Agar,<span>SIX,</span>wow he's nailed this! Full into the pads, and Agar smokes it over midwicket. Goes deep into the stands
+                                                <p>Sam Curran to Agar,<span>SIX,</span>wow he's nailed this! Full into the pads, and Agar smokes it over midwicket. Goes deep into the stands</p>
                                             </Col>
                                         </Row>
                                         <br />
@@ -789,30 +778,6 @@ function ScoreBoard(props) {
                                                 Sam Curran to Agar,<span>SIX,</span>wow he's nailed this! Full into the pads, and Agar smokes it over midwicket. Goes deep into the stands
                                             </Col>
                                         </Row>
-
-                                        <Row>
-                                            <Col sspan={2}>
-                                                <h5>49.1</h5>
-                                            </Col>
-                                            <Col span={20} offset={1}>
-                                                Sam Curran to Agar,<span>SIX,</span>wow he's nailed this! Full into the pads, and Agar smokes it over midwicket. Goes deep into the stands
-                                            </Col>
-                                        </Row>
-
-                                        <Row>
-                                            <Col sspan={2}>
-                                                <h5>49.1</h5>
-                                            </Col>
-                                            <Col span={20} offset={1}>
-                                                Sam Curran to Agar,<span>SIX,</span>wow he's nailed this! Full into the pads, and Agar smokes it over midwicket. Goes deep into the stands
-                                            </Col>
-                                        </Row>
-
-                                        <div className="match-btn">
-                                            <Button block>
-                                                Lode
-                                            </Button>
-                                        </div>
                                     </TabPane>
                                 </Tabs>
 

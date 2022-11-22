@@ -537,68 +537,101 @@
     font-weight: 600;
 }
 
-.wickets span a{
+.wickets span a {
     border: none !important;
     color: gray !important;
     text-decoration: none !important;
 }
 
-.wickets span a:hover{
-    text-decoration: underline !important; 
+.wickets span a:hover {
+    text-decoration: underline !important;
 }
 
-.tem-scro{
+.tem-scro {
     color: gray;
-    margin-bottom: 10px ;
+    margin-bottom: 10px;
 }
 
-.australia-tem{
+.australia-tem {
     margin: 30px 0 !important;
     color: #3b8aff !important;
 }
 
-.australia-tem a{
+.australia-tem a {
     text-decoration: none !important;
 }
 
-.closer a{
+.closer a {
     text-decoration: none !important;
-  
+
 }
 
 .closer {
     margin: 15px 0 !important;
 }
 
-.closer a:hover{
-    text-decoration: underline !important; 
+.closer a:hover {
+    text-decoration: underline !important;
 }
 
-.comprehensive span{
+.comprehensive span {
     color: black;
     margin: 0;
 }
 
-.cost{
-    background-color: rgb(194, 192, 192);
+.cost {
+    background-color: #dee2e6;
 }
 
-.cost p{
+.cost p {
     color: #1866db !important;
     margin: 0 !important;
+    padding: 6px 0;
 }
 
-.cost span{
-color: black;
-margin-left: 20px;
+.cost span {
+    color: black;
+    margin-left: 20px;
 }
 
-.match-btn .ant-btn{
+.match-btn .ant-btn {
     margin: 10px 0 !important;
 }
 
-.match-btn .ant-btn a:hover{
-   background: #4a4b4b !important;
+.match-btn .ant-btn a:hover {
+    background: #4a4b4b !important;
+}
+
+.comprehensive .ant-row {
+    margin: 15px 0;
+}
+
+.maych-info h5 {
+    background: #000000c9;
+    padding: 10px;
+    color: #FFF;
+}
+
+.maych-info p {
+    margin: 0 !important;
+}
+
+.change{
+    border: 0.5px solid #dddddd;
+    margin: 7px 0;
+}
+
+.maych-info .ant-row{
+    margin: 10px 0;
+}
+
+.maych-info h6{
+ font-size: 14px;
+ font-weight: 600;
+}
+
+.centuries a{
+    color: #000000 !important;
 }
 
 /* demo */

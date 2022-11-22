@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Tabs, Row, Col, Table, Button } from 'antd';
+import { Tabs, Row, Col, Table, Button, Image } from 'antd';
 import Config from "../../common/Config";
 import moment from "moment";
 import { useSelector, useDispatch } from 'react-redux'
@@ -11,6 +11,7 @@ import ArchiveSeries from "./ArchiveSeries";
 import Live from "./Live";
 import SocketApis from '../../utility/socket-apis'
 import flag from '../../assets/image/flag.png'
+import cricketer from '../../assets/image/cricketer.png'
 
 function ScoreBoard(props) {
     let navigate = useNavigate();
@@ -418,7 +419,7 @@ function ScoreBoard(props) {
                     </Row>
                     <div className="score"></div>
                     <div className="wickets">
-                
+
                         <h5>{commentary?.matchHeader?.team1?.name} vs  {commentary?.matchHeader?.team2?.name}, 2nd ODI - Live Cricket Score, {commentary?.page}</h5>
                         <span>Series: <a href="#">{commentary?.matchHeader?.seriesName} </a></span>
                         <span>Venue:  <a href="#">Sydney Cricket Ground, Sydney </a></span>
@@ -447,55 +448,56 @@ function ScoreBoard(props) {
                                             <p><span>21:38 Local Time, 10:38 GMT, 16:08 IST:</span> Quite a collapse from England, losing 7 for 52. They seemed to be cruising with Vince and Billings out there - both on fifties. But a poor slog from Vince sent the whole innings into a death spiral. Zampa bowled beautifully from thereon, finishing with four wickets as the game turned on its head. Starc started the damage with a double-strike in a brutal first over, and he came back to wrap things up with two more. It wasn't the easiest pitch for strokeplay today. Australia got to 280 after a workmanlike innings from Smith along with fifties from Labuschagne and Marsh. It seemed to be a good score but Billings and Vince had the hosts worried for a while, only for England to implode later on..</p>
 
                                             <Row>
-                                                <Col sspan={2}>
+                                                <Col span={2}>
                                                     <h5>38.5</h5>
                                                 </Col>
-                                                <Col span={20} offset={1}>
+                                                <Col span={20}>
                                                     Zampa to Dawson, <span>out Lbw!</span>! Dawson misses a full toss and is hit right in front of middle. <span>That's the game and the series for Australia.</span>  There's a review from Dawson but ball-tracking shows it's clipping leg stump. <span>Dawson lbw b Zampa 20(21) [4s-1 6s-1]</span>
                                                 </Col>
                                             </Row>
                                             Zampa to Dawson, <span>THATS OUT!! Lbw!!</span>
+
                                             <Row>
-                                                <Col sspan={2}>
+                                                <Col span={2}>
                                                     <h5>38.4</h5>
                                                 </Col>
-                                                <Col span={20} offset={1}>
+                                                <Col span={20}>
                                                     Zampa to Dawson, no run, 93.5kph full delivery on off, Dawson defends in front of point
                                                 </Col>
                                             </Row>
-                                            <br />
+
                                             <Row>
-                                                <Col sspan={2}>
+                                                <Col span={2}>
                                                     <h5>38.3</h5>
                                                 </Col>
-                                                <Col span={20} offset={1}>
+                                                <Col span={20} >
                                                     Zampa to Dawson, no run, floated up on off, Dawson drives to cover
                                                 </Col>
                                             </Row>
-                                            <br />
+
                                             <Row>
-                                                <Col sspan={2}>
+                                                <Col span={2}>
                                                     <h5>38.2</h5>
                                                 </Col>
-                                                <Col span={20} offset={1}>
+                                                <Col span={20}>
                                                     Zampa to Dawson, no run, flat length ball turning away outside off, steered to backward point
                                                 </Col>
                                             </Row>
 
                                             <Row>
-                                                <Col sspan={2}>
+                                                <Col span={2}>
                                                     <h5>38.2</h5>
                                                 </Col>
-                                                <Col span={20} offset={1}>
+                                                <Col span={20} >
                                                     Zampa to Dawson, <span>3 wides,</span> drifting down leg, Dawson misses the sweep and Carey fumbles as well
                                                 </Col>
                                             </Row>
 
                                             <Row>
-                                                <Col sspan={2}>
+                                                <Col span={2}>
                                                     <h5>38.1</h5>
                                                 </Col>
-                                                <Col span={20} offset={1}>
+                                                <Col span={20} >
                                                     Zampa to Dawson, 2 runs, tossed up and turning away outside off, Dawson goes reverse and paddles it past short third
                                                 </Col>
                                             </Row>
@@ -512,7 +514,7 @@ function ScoreBoard(props) {
                                             </Row>
                                             <div className="score"></div>
                                             <Row>
-                                                <Col sspan={2}>
+                                                <Col span={2}>
                                                     <h5>38.1</h5>
                                                 </Col>
                                                 <div className="score"></div>
@@ -537,61 +539,61 @@ function ScoreBoard(props) {
                                                 </Col>
                                             </Row>
                                         </div>
+                                        <div className="comprehensive">
+                                            <Row>
+                                                <Col span={2}>
+                                                    <h5>38.5</h5>
+                                                </Col>
+                                                <Col span={20} >
+                                                    Zampa to Dawson, <span>out Lbw!</span>! Dawson misses a full toss and is hit right in front of middle. <span>That's the game and the series for Australia.</span>  There's a review from Dawson but ball-tracking shows it's clipping leg stump. <span>Dawson lbw b Zampa 20(21) [4s-1 6s-1]</span>
+                                                </Col>
+                                            </Row>
 
-                                        <Row>
-                                            <Col sspan={2}>
-                                                <h5>38.5</h5>
-                                            </Col>
-                                            <Col span={20} offset={1}>
-                                                Zampa to Dawson, <span>out Lbw!</span>! Dawson misses a full toss and is hit right in front of middle. <span>That's the game and the series for Australia.</span>  There's a review from Dawson but ball-tracking shows it's clipping leg stump. <span>Dawson lbw b Zampa 20(21) [4s-1 6s-1]</span>
-                                            </Col>
-                                        </Row>
-                                        <br />
-                                        <Row>
-                                            <Col sspan={2}>
-                                                <h5>38.4</h5>
-                                            </Col>
-                                            <Col span={20} offset={1}>
-                                                Zampa to Dawson, no run, 93.5kph full delivery on off, Dawson defends in front of point
-                                            </Col>
-                                        </Row>
-                                        <br />
-                                        <Row>
-                                            <Col sspan={2}>
-                                                <h5>38.3</h5>
-                                            </Col>
-                                            <Col span={20} offset={1}>
-                                                Zampa to Dawson, no run, floated up on off, Dawson drives to cover
-                                            </Col>
-                                        </Row>
-                                        <br />
-                                        <Row>
-                                            <Col sspan={2}>
-                                                <h5>38.2</h5>
-                                            </Col>
-                                            <Col span={20} offset={1}>
-                                                Zampa to Dawson, no run, flat length ball turning away outside off, steered to backward point
-                                            </Col>
-                                        </Row>
-                                        <br />
-                                        <Row>
-                                            <Col sspan={2}>
-                                                <h5>38.2</h5>
-                                            </Col>
-                                            <Col span={20} offset={1}>
-                                                Zampa to Dawson, <span>3 wides,</span> drifting down leg, Dawson misses the sweep and Carey fumbles as well
-                                            </Col>
-                                        </Row>
-                                        <br />
-                                        <Row>
-                                            <Col sspan={2}>
-                                                <h5>38.1</h5>
-                                            </Col>
-                                            <Col span={20} offset={1}>
-                                                Zampa to Dawson, 2 runs, tossed up and turning away outside off, Dawson goes reverse and paddles it past short third
-                                            </Col>
-                                        </Row>
+                                            <Row>
+                                                <Col span={2}>
+                                                    <h5>38.4</h5>
+                                                </Col>
+                                                <Col span={20} >
+                                                    Zampa to Dawson, no run, 93.5kph full delivery on off, Dawson defends in front of point
+                                                </Col>
+                                            </Row>
 
+                                            <Row>
+                                                <Col span={2}>
+                                                    <h5>38.3</h5>
+                                                </Col>
+                                                <Col span={20} >
+                                                    Zampa to Dawson, no run, floated up on off, Dawson drives to cover
+                                                </Col>
+                                            </Row>
+
+                                            <Row>
+                                                <Col span={2}>
+                                                    <h5>38.2</h5>
+                                                </Col>
+                                                <Col span={20} >
+                                                    Zampa to Dawson, no run, flat length ball turning away outside off, steered to backward point
+                                                </Col>
+                                            </Row>
+
+                                            <Row>
+                                                <Col span={2}>
+                                                    <h5>38.2</h5>
+                                                </Col>
+                                                <Col span={20} >
+                                                    Zampa to Dawson, <span>3 wides,</span> drifting down leg, Dawson misses the sweep and Carey fumbles as well
+                                                </Col>
+                                            </Row>
+
+                                            <Row>
+                                                <Col span={2}>
+                                                    <h5>38.1</h5>
+                                                </Col>
+                                                <Col span={20} >
+                                                    Zampa to Dawson, 2 runs, tossed up and turning away outside off, Dawson goes reverse and paddles it past short third
+                                                </Col>
+                                            </Row>
+                                        </div>
                                         <div className="cost">
                                             <Row >
                                                 <Col span={20} >
@@ -603,7 +605,7 @@ function ScoreBoard(props) {
                                             </Row>
                                             <div className="score"></div>
                                             <Row>
-                                                <Col sspan={2}>
+                                                <Col span={2}>
                                                     <h5>38.1</h5>
                                                 </Col>
                                                 <div className="score"></div>
@@ -628,24 +630,26 @@ function ScoreBoard(props) {
                                                 </Col>
                                             </Row>
                                         </div>
+                                        <div className="comprehensive">
 
-                                        <Row>
-                                            <Col sspan={2}>
-                                                <h5>38.2</h5>
-                                            </Col>
-                                            <Col span={20} offset={1}>
-                                                Zampa to Dawson, <span>3 wides,</span> drifting down leg, Dawson misses the sweep and Carey fumbles as well
-                                            </Col>
-                                        </Row>
-                                        <br />
-                                        <Row>
-                                            <Col sspan={2}>
-                                                <h5>38.1</h5>
-                                            </Col>
-                                            <Col span={20} offset={1}>
-                                                Zampa to Dawson, 2 runs, tossed up and turning away outside off, Dawson goes reverse and paddles it past short third
-                                            </Col>
-                                        </Row>
+                                            <Row>
+                                                <Col span={2}>
+                                                    <h5>38.2</h5>
+                                                </Col>
+                                                <Col span={20} >
+                                                    Zampa to Dawson, <span>3 wides,</span> drifting down leg, Dawson misses the sweep and Carey fumbles as well
+                                                </Col>
+                                            </Row>
+
+                                            <Row>
+                                                <Col span={2}>
+                                                    <h5>38.1</h5>
+                                                </Col>
+                                                <Col span={20} >
+                                                    Zampa to Dawson, 2 runs, tossed up and turning away outside off, Dawson goes reverse and paddles it past short third
+                                                </Col>
+                                            </Row>
+                                        </div>
                                         <div className="match-btn">
                                             <Button block>
                                                 Lode
@@ -662,7 +666,7 @@ function ScoreBoard(props) {
                                 <Tabs defaultActiveKey="1" onChange={setTab} >
                                     <TabPane tab={highlights?.live_details?.scorecard?.[0]?.title} key="1">
                                         <div className="scorecard-tab">
-                                            <h5>{highlights?.live_details?.scorecard?.[0]?.title}</h5>
+                                            {/* <h5>{highlights?.live_details?.scorecard?.[0]?.title}</h5> */}
                                             <Table pagination={false} columns={battingcolumns} dataSource={highlights?.live_details?.scorecard?.[0]?.batting} size="middle" />
                                             <div className="total-scre">
                                                 <h6>TOTAL</h6>
@@ -739,51 +743,412 @@ function ScoreBoard(props) {
                             {/*  Highlights */}
                             <TabPane tab=" Highlights" key="3">
                                 <Tabs defaultActiveKey="3" onChange={setTab} >
-                                    <Tabs.TabPane tab="AUS 1st Inns" key="1"></Tabs.TabPane>
+                                    <Tabs.TabPane tab="AUS 1st Inns" key="1">
+                                        <div className="comprehensive">
+                                            <Row>
+                                                <Col span={2}>
+                                                    <h5>49.1</h5>
+                                                </Col>
+                                                <Col span={22}>
+                                                    Sam Curran to Agar, <span>SIX,</span> wow he's nailed this! Full into the pads, and Agar smokes it over midwicket. Goes deep into the stands
+                                                </Col>
+                                            </Row>
+
+                                            <Row>
+                                                <Col span={2}>
+                                                    <h5>49</h5>
+                                                </Col>
+                                                <Col span={20}>
+                                                    Willey to Starc, <span>out</span> Caught by Woakes!! Short of length into the hip, Starc pulls it crisply in the air but it's straight to deep backward square. Australia not getting the flourish they're looking for towards the end. Wickets are tumbling instead. <span>Starc c Woakes b Willey 0(1)</span>
+                                                </Col>
+                                            </Row>
+
+                                            <Row>
+                                                <Col span={2}>
+                                                    <h5>48.2</h5>
+                                                </Col>
+                                                <Col span={20} >
+                                                    Willey to Mitchell Marsh, 1 run, steps across the stumps and drives this wide yorker to deep cover. That brings up his <span>fifty</span>
+                                                </Col>
+                                            </Row>
+
+                                            <Row>
+                                                <Col span={2}>
+                                                    <h5>47.1</h5>
+                                                </Col>
+                                                <Col span={20}>
+                                                    Woakes to Stoinis, <span>out</span> Bowled!! Big swing from Stoinis but this slower ball stays a touch low. It scratches the toe-end of his bat before hitting middle stump less than halfway up. Good bit of deception from Woakes, holding it back in his fingers while floating it up. <span>Stoinis b Woakes 13(14) [6s-1]</span>
+                                                </Col>
+                                            </Row>
+
+                                            <Row>
+                                                <Col span={2}>
+                                                    <h5>46.1</h5>
+                                                </Col>
+                                                <Col span={20} >
+                                                    Willey to Stoinis, <span>SIX,</span> crunched over long-on! In the slot from Willey, and Stoinis clears the front leg for a clean swing
+                                                </Col>
+                                            </Row>
+
+                                            <Row>
+                                                <Col span={2}>
+                                                    <h5>44.4</h5>
+                                                </Col>
+                                                <Col span={20} >
+                                                    Sam Curran to Mitchell Marsh, <span>SIX, just about clears the ropes!</span> It's a full delivery on middle, Marsh swipes across the line, doesn't really middle it, but it's not the longest boundary there
+                                                </Col>
+                                            </Row>
+                                        </div>
+                                    </Tabs.TabPane>
                                     <Tabs.TabPane tab="ENG 1st Inns" key="2"></Tabs.TabPane>
-
-                                    <TabPane tab={highlights?.live_details?.scorecard?.[0]?.title} key="1">
-                                        <Row>
-                                            <Col sspan={2}>
-                                                <h5>49.1</h5>
-                                            </Col>
-                                            <Col span={20} offset={1}>
-                                                <p>Sam Curran to Agar,<span>SIX,</span>wow he's nailed this! Full into the pads, and Agar smokes it over midwicket. Goes deep into the stands</p>
-                                            </Col>
-                                        </Row>
-                                        <br />
-                                        <Row>
-                                            <Col sspan={2}>
-                                                <h5>49</h5>
-                                            </Col>
-                                            <Col span={20} offset={1}>
-                                                Willey to Starc, <span>out</span> Caught by Woakes!! Short of length into the hip, Starc pulls it crisply in the air but it's straight to deep backward square. Australia not getting the flourish they're looking for towards the end. Wickets are tumbling instead. <span>Starc c Woakes b Willey 0(1)</span>
-                                            </Col>
-                                        </Row>
-                                        <br />
-                                        <Row>
-                                            <Col sspan={2}>
-                                                <h5>48.5</h5>
-                                            </Col>
-                                            <Col span={20} offset={1}>
-                                                Willey to Mitchell Marsh, <span>out</span> Caught by James Vince!! Full and wide, Marsh fetches it and tonks it down the ground but doesn't clear long-on! Vince takes it calmly over his head while standing just in front of the boundary. <span>Mitchell Marsh c James Vince b Willey 50(59) [4s-2 6s-2]</span>
-                                            </Col>
-                                        </Row>
-                                        <br />
-                                        <Row>
-                                            <Col sspan={2}>
-                                                <h5>49.1</h5>
-                                            </Col>
-                                            <Col span={20} offset={1}>
-                                                Sam Curran to Agar,<span>SIX,</span>wow he's nailed this! Full into the pads, and Agar smokes it over midwicket. Goes deep into the stands
-                                            </Col>
-                                        </Row>
-                                    </TabPane>
                                 </Tabs>
-
-
                             </TabPane>
 
+                            {/*  Full Commentary */}
+                            <TabPane tab="Full Commentary" key="4">
+                                <Tabs defaultActiveKey="4" onChange={setTab} >
+                                    <Tabs.TabPane tab="Preview" key="1">
+                                        <div className="maych-info">
+                                            <Row>
+                                                <Col span={4}>
+                                                    <h5>MATCH INFO</h5>
+                                                </Col>
+                                                <Col span={19} offset={1}>
+                                                    The players are out in the middle - Woakes is back and he'll take the new ball for England. Two slips in place..
+                                                </Col>
+                                            </Row>
+
+                                            <Row>
+                                                <Col span={4}>
+                                                    <Row>
+                                                        <Col span={2}>
+                                                            <h6>Match</h6>
+                                                        </Col>
+                                                        <Col span={15} offset={7}>
+                                                            <p>AUS v ENG,</p>
+                                                            <p>England tour of</p>
+                                                            <p>Australia, 2022</p>
+                                                        </Col>
+                                                    </Row>
+                                                    <div className="change"></div>
+                                                </Col>
+                                                <Col span={19} offset={1}>
+                                                    One change for Australia with Pat Cummins being rested, the surprise though is that Josh Hazlewood has been handed over the captaincy duties. England have brought back their big guns - Moeen Ali, Sam Curran, Chris Woakes and Adil Rashid are all back. Moeen is leading today with Jos Buttler rested
+                                                </Col>
+                                            </Row>
+
+                                            <Row>
+                                                <Col span={4}>
+                                                    <Row>
+                                                        <Col span={1}>
+                                                            <h6>Date</h6>
+                                                        </Col>
+                                                        <Col span={15} offset={7}>
+                                                            <p>Nov 19, 2022</p>
+                                                        </Col>
+                                                    </Row>
+                                                    <div className="change"></div>
+                                                </Col>
+                                                <Col span={19} offset={1}>
+                                                    <h4>Teams:</h4>
+                                                </Col>
+                                            </Row>
+
+                                            <Row>
+                                                <Col span={4}>
+                                                    <Row>
+                                                        <Col span={1}>
+                                                            <h6>Toss</h6>
+                                                        </Col>
+                                                        <Col span={15} offset={7}>
+                                                            <p>Australia (Batting)</p>
+                                                        </Col>
+                                                    </Row>
+                                                    <div className="change"></div>
+                                                </Col>
+                                                <Col span={19} offset={1}>
+                                                    <p><span>England</span> (Playing XI): Jason Roy, Philip Salt, Dawid Malan, James Vince, Sam Billings(w), Moeen Ali(c), Chris Woakes, Sam Curran, Liam Dawson, David Willey, Adil Rashid</p>
+                                                </Col>
+                                            </Row>
+
+                                            <Row>
+                                                <Col span={4}>
+                                                    <Row>
+                                                        <Col span={1}>
+                                                            <h6>Time</h6>
+                                                        </Col>
+                                                        <Col span={15} offset={7}>
+                                                            <p>8:50 AM GMT</p>
+                                                        </Col>
+                                                    </Row>
+                                                    <div className="change"></div>
+                                                </Col>
+                                                <Col span={19} offset={1}>
+
+                                                </Col>
+                                            </Row>
+
+                                            <Row>
+                                                <Col span={4}>
+                                                    <Row>
+                                                        <Col span={1}>
+                                                            <h6>Venue</h6>
+                                                        </Col>
+                                                        <Col span={15} offset={7}>
+                                                            <p>Sydney Cricket</p>
+                                                            <p>Ground,Sydney</p>
+                                                        </Col>
+                                                    </Row>
+                                                    <div className="change"></div>
+                                                </Col>
+                                                <Col span={19} offset={1}>
+
+                                                </Col>
+                                            </Row>
+
+                                        </div>
+                                    </Tabs.TabPane>
+                                    <Tabs.TabPane tab="AUS Inns" key="2"></Tabs.TabPane>
+                                    <Tabs.TabPane tab="ENG Inns" key="3"></Tabs.TabPane>
+                                </Tabs>
+                            </TabPane>
+
+                            {/*  Live Blog */}
+                            <TabPane tab=" Live Blog" key="5">
+                                There is no live blog for this match.
+                            </TabPane>
+
+
+                            {/* Match Facts */}
+                            <TabPane tab="Match Facts" key="6">
+
+                                <div className="maych-info">
+                                    <h5>Match Info</h5>
+                                    <Row>
+                                        <Col span={4}>
+                                            <h6>Match: INFO</h6>
+                                        </Col>
+                                        <Col span={20} >
+                                            The players are out in the middle - Woakes is back and he'll take the new ball for England. Two slips in place..
+                                        </Col>
+                                    </Row>
+
+                                    <Row>
+                                        <Col span={4}>
+                                            <h6>Date:</h6>
+                                        </Col>
+                                        <Col span={20} >
+                                            Saturday, November 19, 2022
+                                        </Col>
+                                    </Row>
+
+                                    <Row>
+                                        <Col span={4}>
+                                            <h6>2022Toss:</h6>
+                                        </Col>
+                                        <Col span={20} >
+                                            Australia won the toss and opt to bat
+                                        </Col>
+                                    </Row>
+
+                                    <Row>
+                                        <Col span={4}>
+                                            <h6>Time:</h6>
+                                        </Col>
+                                        <Col span={20} >
+                                            8:50 AM
+                                        </Col>
+                                    </Row>
+
+                                    <Row>
+                                        <Col span={4}>
+                                            <h6>Venue:</h6>
+                                        </Col>
+                                        <Col span={20} >
+                                            Sydney Cricket Ground, Sydney
+                                        </Col>
+                                    </Row>
+
+                                    <Row>
+                                        <Col span={4}>
+                                            <h6>Umpires:</h6>
+                                        </Col>
+                                        <Col span={20} >
+                                            Rod Tucker, Sam Nogajski
+                                        </Col>
+                                    </Row>
+
+                                    <Row>
+                                        <Col span={4}>
+                                            <h6>Third Umpire:</h6>
+                                        </Col>
+                                        <Col span={20} >
+                                            Paul Reiffel
+                                        </Col>
+                                    </Row>
+
+                                    <Row>
+                                        <Col span={4}>
+                                            <h6>Match Referee:</h6>
+                                        </Col>
+                                        <Col span={20} >
+                                            David Boon
+                                        </Col>
+                                    </Row>
+
+                                    <Row>
+                                        <Col span={4}>
+                                            <h6>Australia Squad:</h6>
+                                        </Col>
+                                        <Col span={20} ></Col>
+                                    </Row>
+
+                                    <Row>
+                                        <Col span={4}>
+                                            <h6>Playing:</h6>
+                                        </Col>
+                                        <Col span={20} >
+                                            <span><a href="#">David Warner, Travis Head, Steven Smith, Marnus Labuschagne, Alex Carey (wk), Mitchell Marsh, Marcus Stoinis, Ashton Agar, Mitchell Starc, Adam Zampa, Josh Hazlewood (c) </a></span>
+                                        </Col>
+                                    </Row>
+
+                                    <Row>
+                                        <Col span={4}>
+                                            <h6>Bench:</h6>
+                                        </Col>
+                                        <Col span={20} >
+                                            <span><a href="#">Sean Abbott, Pat Cummins, Josh Inglis</a></span>
+                                        </Col>
+                                    </Row>
+
+                                    <Row>
+                                        <Col span={4}>
+                                            <h6>England Squad:</h6>
+                                        </Col>
+                                        <Col span={20} ></Col>
+                                    </Row>
+
+                                    <Row>
+                                        <Col span={4}>
+                                            <h6>Playing:</h6>
+                                        </Col>
+                                        <Col span={20} >
+                                            <span><a href="#">Jason Roy, Philip Salt, Dawid Malan, James Vince, Sam Billings (wk), Moeen Ali (c), Chris Woakes, Sam Curran, Liam Dawson, David Willey, Adil Rashid</a></span>
+                                        </Col>
+                                    </Row>
+
+                                    <Row>
+                                        <Col span={4}>
+                                            <h6>Bench:</h6>
+                                        </Col>
+                                        <Col span={20} >
+                                            <span><a href="#">Jos Buttler, Chris Jordan, Luke Wood, Olly Stone</a></span>
+                                        </Col>
+                                    </Row>
+
+                                </div>
+
+                                <div className="maych-info">
+                                    <h5>Venue Guide</h5>
+                                    <Row>
+                                        <Col span={4}>
+                                            <h6>Stadium:</h6>
+                                        </Col>
+                                        <Col span={20} >
+                                            Sydney Cricket Ground
+                                        </Col>
+                                    </Row>
+
+                                    <Row>
+                                        <Col span={4}>
+                                            <h6>City:</h6>
+                                        </Col>
+                                        <Col span={20} >
+                                            Sydney
+                                        </Col>
+                                    </Row>
+
+                                    <Row>
+                                        <Col span={4}>
+                                            <h6>Capacity:</h6>
+                                        </Col>
+                                        <Col span={20} >
+                                            48,000
+                                        </Col>
+                                    </Row>
+
+                                    <Row>
+                                        <Col span={4}>
+                                            <h6>Measures:</h6>
+                                        </Col>
+                                        <Col span={20} >
+                                            154m square, 156m straight
+                                        </Col>
+                                    </Row>
+                                    <Row>
+                                        <Col span={4}>
+                                            <h6>Ends:</h6>
+                                        </Col>
+                                        <Col span={20} >
+                                            Paddington End, Randwick End
+                                        </Col>
+                                    </Row>
+                                    <Row>
+                                        <Col span={4}>
+                                            <h6>Hosts to:</h6>
+                                        </Col>
+                                        <Col span={20} >
+                                            New South Wales, Sydney Sixers
+                                        </Col>
+                                    </Row>
+                                    <Row>
+                                        <Col span={4}>
+                                            <h6>Also Hosts:</h6>
+                                        </Col>
+                                        <Col span={20} >
+                                            Australian Rules Football (Sydney Swans)
+                                        </Col>
+                                    </Row>
+                                </div>
+                            </TabPane>
+
+                            {/*  News*/}
+                            <TabPane tab=" News" key="7">
+                                <Row>
+                                    <Col span={5}>
+                                        <Image preview={false}
+                                            width={200}
+                                            src={cricketer}
+                                        />
+                                    </Col>
+                                    <Col span={19} >
+                                        <p>ENGLAND TOUR OF AUSTRALIA 2022</p>
+                                        <span><a href="#">Australia secure series win with commanding all-round display</a></span>
+                                        <p>Half centuries by Sam Billings and James Vince went in vain as Australia won the second ODI by 72 runs</p>
+                                        <p>2d ago</p>
+                                    </Col>
+                                </Row>
+                                <br />
+                                <Row>
+                                    <Col span={5}>
+                                        <Image preview={false}
+                                            width={200}
+                                            src={cricketer}
+                                        />
+                                    </Col>
+                                    <Col span={19} >
+                                        <p>ENGLAND TOUR OF AUSTRALIA, 2022</p>
+                                        <span><a href="#">Middle order stands tall as Australia post 280</a></span>
+                                        <p>While Steve Smith missed his century by six runs, Marnus Labuschagne and Mitchell Marsh hit fifties</p>
+                                        <p>Nov 19 2022</p>
+                                    </Col>
+                                </Row>
+                            </TabPane>
+
+                            {/* Photos */}
+                            <TabPane tab="  Photos" key="8">
+                                There is no live blog for this match.
+                            </TabPane>
 
 
 

@@ -38,7 +38,7 @@
     font-size: 13px;
 }
 
-.owl-carousel .owl-item img{
+.owl-carousel .owl-item img {
     box-shadow: 1px 1px #ccc;
     border: 1px #ccc solid;
     margin: -1px 3px 5px 5px;
@@ -375,31 +375,37 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
+}
 
 /* papu */
-.seriesBox h1{
+.seriesBox h1 {
     font-size: 20px;
 }
+
 .seriesBox a {
-    font-weight: bold!important;
+    font-weight: bold !important;
 }
-.seriesBox p{
+
+.seriesBox p {
     margin: 0;
     padding: 10px;
     border-bottom: solid 1px #e0dede;
 }
-.seriesBox .select{
-   float: right;
-   margin-top: -5px;
+
+.seriesBox .select {
+    float: right;
+    margin-top: -5px;
 }
-.seriesBox .select .ant-select{
+
+.seriesBox .select .ant-select {
     width: 100px;
     margin-left: 10px;
-}   
-.seriesBox .ant-tabs-nav-list{
+}
+
+.seriesBox .ant-tabs-nav-list {
     margin-left: 30px;
-}   
+}
+
 .tab-sec .ant-tabs>.ant-tabs-nav,
 .ant-tabs>div>.ant-tabs-nav {
     background-color: #FFFFFF;
@@ -504,6 +510,97 @@
     padding-right: 20px;
 }
 
+.series-game {
+    color: black;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.match-scro h6 {
+    background: #4c4c4c;
+    padding: 10px;
+    color: #FFF;
+
+}
+
+.match-scro p {
+    margin: 0;
+}
+
+.australia-mach {
+    margin: 10px 0;
+}
+
+.wickets span {
+    margin: 0 18px 0 0;
+    color: gray;
+    font-weight: 600;
+}
+
+.wickets span a{
+    border: none !important;
+    color: gray !important;
+    text-decoration: none !important;
+}
+
+.wickets span a:hover{
+    text-decoration: underline !important; 
+}
+
+.tem-scro{
+    color: gray;
+    margin-bottom: 10px ;
+}
+
+.australia-tem{
+    margin: 30px 0 !important;
+    color: #3b8aff !important;
+}
+
+.australia-tem a{
+    text-decoration: none !important;
+}
+
+.closer a{
+    text-decoration: none !important;
+  
+}
+
+.closer {
+    margin: 15px 0 !important;
+}
+
+.closer a:hover{
+    text-decoration: underline !important; 
+}
+
+.comprehensive span{
+    color: black;
+    margin: 0;
+}
+
+.cost{
+    background-color: rgb(194, 192, 192);
+}
+
+.cost p{
+    color: #1866db !important;
+    margin: 0 !important;
+}
+
+.cost span{
+color: black;
+margin-left: 20px;
+}
+
+.match-btn .ant-btn{
+    margin: 10px 0 !important;
+}
+
+.match-btn .ant-btn a:hover{
+   background: #4a4b4b !important;
+}
+
 /* demo */
 
 .tab {
@@ -542,6 +639,7 @@
     color: #0b0a0a;
     font-size: 17px;
     font-weight: 600;
+    margin: 10px 0;
 }
 
 .africa h6 {
@@ -562,6 +660,7 @@
 .match {
     background-color: #dadada;
     width: 30%;
+    margin: 15px 0;
 }
 
 .match h5 {
@@ -889,7 +988,7 @@
 }
 
 .score-board h5 {
-    font-size: 18px;
+    font-size: 15px;
     font-weight: bold;
 }
 
@@ -897,6 +996,7 @@
     color: #525050;
     font-size: 15px;
     font-weight: 400;
+    /* margin: 0; */
 
 }
 

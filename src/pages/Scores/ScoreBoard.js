@@ -23,10 +23,11 @@ function ScoreBoard(props) {
     const [subtab, setSubTab] = useState(1)
     const { TabPane } = Tabs;
 
-    let commentary = highlights.commentary ? highlights.commentary : {}
-    // let highlight = highlights.highlights ? highlights.highlights : {}
-    
-    console.log(commentary)
+    let commentary = highlights?.commentary ? highlights.commentary : {}
+    let scorebord = highlights?.scorecard ? highlights.scorecard : {}
+    let highlight = highlights?.highlights ?.highlights ? highlights.highlights : {}
+
+
     useEffect(() => {
         window.scrollTo(0, 0)
         dispatch(getHighlights(name))
@@ -36,81 +37,81 @@ function ScoreBoard(props) {
     const onChange = (key) => {
         console.log(key);
     }
-
-    
-
-    const columns = [
-        {
-            title: 'BATTERS',
-            dataIndex: 'player_name',
-            key: 'name',
-            width: 100
-
-        },
-        {
-            title: 'R',
-            dataIndex: 'runs',
-            width: 30
-        },
-        {
-            title: 'B',
-            dataIndex: 'balls',
-            width: 30
-        },
-        {
-            title: '4s',
-            dataIndex: 'fours',
-            width: 30
-        },
-        {
-            title: '6s',
-            dataIndex: 'sixes',
-            width: 30
-        },
-        {
-            title: 'SR',
-            dataIndex: 'strike_rate',
-            width: 30
-        },
-        // {
-        //     title: 'This Bowler',
-        //     dataIndex: 'Bowler',
-        //     width: 30
-        // },
-        // {
-        //     title: 'Last 5 Balls',
-        //     dataIndex: 'Balls',
-        //     width: 30
-        // },
-        {
-            title: 'Mat',
-            dataIndex: 'minutes',
-            width: 30
-        },
-        // {
-        //     title: 'Runs',
-        //     dataIndex: 'Runs',
-        //     width: 30
-        // },
-        // {
-        //     title: 'HS	',
-        //     dataIndex: 'HS',
-        //     width: 30
-        // },
-        // {
-        //     title: 'Ave	',
-        //     dataIndex: 'Ave',
-        //     width: 30
-        // },
+    console.log(highlights)
 
 
+    // const columns = [
+    //     {
+    //         title: 'BATTERS',
+    //         dataIndex: 'player_name',
+    //         key: 'name',
+    //         width: 100
 
-    ];
+    //     },
+    //     {
+    //         title: 'R',
+    //         dataIndex: 'runs',
+    //         width: 30
+    //     },
+    //     {
+    //         title: 'B',
+    //         dataIndex: 'balls',
+    //         width: 30
+    //     },
+    //     {
+    //         title: '4s',
+    //         dataIndex: 'fours',
+    //         width: 30
+    //     },
+    //     {
+    //         title: '6s',
+    //         dataIndex: 'sixes',
+    //         width: 30
+    //     },
+    //     {
+    //         title: 'SR',
+    //         dataIndex: 'strike_rate',
+    //         width: 30
+    //     },
+    //     // {
+    //     //     title: 'This Bowler',
+    //     //     dataIndex: 'Bowler',
+    //     //     width: 30
+    //     // },
+    //     // {
+    //     //     title: 'Last 5 Balls',
+    //     //     dataIndex: 'Balls',
+    //     //     width: 30
+    //     // },
+    //     {
+    //         title: 'Mat',
+    //         dataIndex: 'minutes',
+    //         width: 30
+    //     },
+    //     // {
+    //     //     title: 'Runs',
+    //     //     dataIndex: 'Runs',
+    //     //     width: 30
+    //     // },
+    //     // {
+    //     //     title: 'HS	',
+    //     //     dataIndex: 'HS',
+    //     //     width: 30
+    //     // },
+    //     // {
+    //     //     title: 'Ave	',
+    //     //     dataIndex: 'Ave',
+    //     //     width: 30
+    //     // },
+
+
+
+    // ];
 
     const battingcolumns = [
         {
-            title: 'BATTING',
-            dataIndex: 'player_name',
+            title: 'Batter',
+            dataIndex: 'bat1Name',
             key: 'name',
             width: 400
 
@@ -118,10 +119,9 @@ function ScoreBoard(props) {
 
         {
             title: '',
-            dataIndex: 'how_out',
+            dataIndex: 'outDesc',
             key: 'name',
             width: 400,
-
         },
 
         {
@@ -141,24 +141,20 @@ function ScoreBoard(props) {
         },
         {
             title: '6s',
-            dataIndex: 'sixes',
+            dataIndex: 'sixers',
             width: 30
         },
         {
             title: 'SR',
-            dataIndex: 'strike_rate',
+            dataIndex: 'strikeRate',
             width: 30
         },
-
-
-
-
     ];
 
     const bolingcolumns = [
         {
-            title: 'BOWLING',
-            dataIndex: 'player_name',
+            title: 'Bowler',
+            dataIndex: 'bowlName',
             key: 'name',
             width: 400
 
@@ -178,7 +174,7 @@ function ScoreBoard(props) {
 
         {
             title: 'R',
-            dataIndex: 'runs_conceded',
+            dataIndex: 'runs',
             width: 30
         },
         {
@@ -186,31 +182,26 @@ function ScoreBoard(props) {
             dataIndex: 'wickets',
             width: 30
         },
+
         {
-            title: 'ECON',
+            title: 'NB',
+            dataIndex: 'no_balls',
+            width: 30
+        },
+
+
+        {
+            title: 'WD',
+            dataIndex: 'wides',
+            width: 30
+        },
+
+        {
+            title: 'ECO',
             dataIndex: 'economy',
             width: 30
         },
-        {
-            title: '0s',
-            dataIndex: 'dot_balls',
-            width: 30
-        },
-        {
-            title: '4s',
-            dataIndex: 'fours',
-            width: 30
-        },
-        {
-            title: '6s',
-            dataIndex: 'sixes',
-            width: 30
-        },
-        {
-            title: 'EX',
-            dataIndex: 'extras',
-            width: 30
-        },
+
 
 
 
@@ -421,18 +412,18 @@ function ScoreBoard(props) {
                     <div className="score"></div>
                     <div className="wickets">
 
-                        <h5>{commentary?.matchHeader?.team1?.name} vs  {commentary?.matchHeader?.team2?.name}, 2nd ODI - Live Cricket Score, {commentary?.page}</h5>
+                        <h5>{commentary?.matchHeader?.team1?.name} vs  {commentary?.matchHeader?.team2?.name}, {commentary?.matchHeader?.matchDescription}- Live Cricket Score, {commentary?.page}</h5>
                         <span>Series: <a href="#">{commentary?.matchHeader?.seriesName} </a></span>
                         <span>Venue:  <a href="#">Sydney Cricket Ground, Sydney </a></span>
                         <span>Date & Time: <a href="#">Nov 19, 02:20 PM LOCAL </a></span>
 
-                        <Tabs defaultActiveKey="1" onChange={setTab} >
+                        <Tabs defaultActiveKey="1" onChange={setTab}>
                             {/* Commentary */}
                             <TabPane tab="Commentary" key="1">
                                 <Tabs defaultActiveKey="1" onChange={setTab} >
                                     <TabPane tab={highlights?.live_details?.scorecard?.[0]?.title} key="1">
-                                        <h5 className="tem-scro">{commentary?.miniscore?.matchScoreDetails?.inningsScoreList?.[1]?.batTeamName} /{commentary?.miniscore?.matchScoreDetails?.inningsScoreList?.[1]?.wickets} (50)</h5>
-                                        <h5>{commentary?.miniscore?.matchScoreDetails?.inningsScoreList?.[0]?.batTeamName} {commentary?.miniscore?.matchScoreDetails?.inningsScoreList?.[0]?.score} {commentary?.miniscore?.matchScoreDetails?.inningsScoreList?.[0]?.overs}</h5>
+                                        <h5 className="tem-scro">{commentary?.miniscore?.matchScoreDetails?.inningsScoreList?.[0]?.batTeamName} /{commentary?.miniscore?.matchScoreDetails?.inningsScoreList?.[1]?.wickets} (50)</h5>
+                                        <h5>{commentary?.miniscore?.matchScoreDetails?.inningsScoreList?.[1]?.batTeamName} {commentary?.miniscore?.matchScoreDetails?.inningsScoreList?.[0]?.score} {commentary?.miniscore?.matchScoreDetails?.inningsScoreList?.[0]?.overs}</h5>
 
                                         <p className="australia-tem">{commentary?.miniscore?.status}</p>
                                         <p>PLAYER OF THE MATCH</p>
@@ -542,7 +533,7 @@ function ScoreBoard(props) {
                                         </div>
                                         <div className="comprehensive">
                                             <Row>
-                                            <Col span={2}>
+                                                <Col span={2}>
                                                     <h5>{commentary?.commentaryList?.[12]?.overNumber}</h5>
                                                 </Col>
                                                 <Col span={20}>
@@ -551,7 +542,7 @@ function ScoreBoard(props) {
                                             </Row>
 
                                             <Row>
-                                            <Col span={2}>
+                                                <Col span={2}>
                                                     <h5>{commentary?.commentaryList?.[13]?.overNumber}</h5>
                                                 </Col>
                                                 <Col span={20}>
@@ -560,7 +551,7 @@ function ScoreBoard(props) {
                                             </Row>
 
                                             <Row>
-                                            <Col span={2}>
+                                                <Col span={2}>
                                                     <h5>{commentary?.commentaryList?.[14]?.overNumber}</h5>
                                                 </Col>
                                                 <Col span={20}>
@@ -569,7 +560,7 @@ function ScoreBoard(props) {
                                             </Row>
 
                                             <Row>
-                                            <Col span={2}>
+                                                <Col span={2}>
                                                     <h5>{commentary?.commentaryList?.[15]?.overNumber}</h5>
                                                 </Col>
                                                 <Col span={20}>
@@ -578,7 +569,7 @@ function ScoreBoard(props) {
                                             </Row>
 
                                             <Row>
-                                            <Col span={2}>
+                                                <Col span={2}>
                                                     <h5>{commentary?.commentaryList?.[16]?.overNumber}</h5>
                                                 </Col>
                                                 <Col span={20}>
@@ -587,7 +578,7 @@ function ScoreBoard(props) {
                                             </Row>
 
                                             <Row>
-                                            <Col span={2}>
+                                                <Col span={2}>
                                                     <h5>{commentary?.commentaryList?.[17]?.overNumber}</h5>
                                                 </Col>
                                                 <Col span={20}>
@@ -634,7 +625,7 @@ function ScoreBoard(props) {
                                         <div className="comprehensive">
 
                                             <Row>
-                                            <Col span={2}>
+                                                <Col span={2}>
                                                     <h5>{commentary?.commentaryList?.[18]?.overNumber}</h5>
                                                 </Col>
                                                 <Col span={20}>
@@ -643,7 +634,7 @@ function ScoreBoard(props) {
                                             </Row>
 
                                             <Row>
-                                            <Col span={2}>
+                                                <Col span={2}>
                                                     <h5>{commentary?.commentaryList?.[19]?.overNumber}</h5>
                                                 </Col>
                                                 <Col span={20}>
@@ -658,30 +649,34 @@ function ScoreBoard(props) {
                                         </div>
                                     </TabPane>
                                 </Tabs>
-
-
                             </TabPane>
 
                             {/* Scorecard */}
                             <TabPane tab="Scorecard" key="2">
-                                <Tabs defaultActiveKey="1" onChange={setTab} >
-                                    <TabPane tab={highlights?.live_details?.scorecard?.[0]?.title} key="1">
-                                        <div className="scorecard-tab">
-                                            {/* <h5>{highlights?.live_details?.scorecard?.[0]?.title}</h5> */}
-                                            <Table pagination={false} columns={battingcolumns} dataSource={highlights?.live_details?.scorecard?.[0]?.batting} size="middle" />
+                                <Tabs defaultActiveKey="1" onChange={setTab}>
+                                    <TabPane>
+                                        {scorebord.scoreCard && scorebord.scoreCard.map((item, key)=>{
+                                            // let batTeamDetails = item.batTeamDetails
+                                            console.log(item)
+                                            return  <div className="scorecard-tab" key={key}>
+                                            <h5>{item.batTeamDetails.batTeamName} Innings<span>280-8 (50 Ov)</span></h5>
+                                            {/* <Table pagination={false} columns={battingcolumns} dataSource={item?.batTeamDetails?.batsmenData} size="middle" /> */}
+
                                             <div className="total-scre">
                                                 <h6>TOTAL</h6>
-                                                <spcn>{highlights?.live_details?.match_summary?.home_scores}</spcn>
+                                                <span>{highlights?.live_details?.match_summary?.home_scores}</span>
                                                 <h6>{highlights?.live_details?.match_summary?.away_scores}</h6>
                                             </div>
                                             <div>
                                                 <h6>{still_to_bat_ins1.map((item, key) => <a key={key} href="#">{item.player_name}</a>)}</h6>
                                                 <p>{highlights?.live_details?.scorecard?.[0]?.fow}</p>
                                             </div>
-                                            <Table pagination={false} columns={bolingcolumns} dataSource={highlights?.live_details?.scorecard?.[0]?.bowling} size="middle" />
+                                            {/* <Table pagination={false} columns={bolingcolumns} dataSource={item?.batTeamDetails?.batsmenData?.bowlTeamDetails} size="middle" /> */}
                                         </div>
+                                        })}
+                                       
 
-                                        <div className="scorecard-tab">
+                                        {/* <div className="scorecard-tab">
                                             <h5>{highlights?.live_details?.scorecard?.[0]?.title}</h5>
                                             <Table pagination={false} columns={womencolumns} dataSource={highlights?.live_details?.scorecard?.[1]?.batting} size="middle" />
                                             <div className="total-scre">
@@ -694,10 +689,10 @@ function ScoreBoard(props) {
                                                 <p>{highlights?.live_details?.scorecard?.[1]?.fow}</p>
                                             </div>
                                             <Table pagination={false} columns={bolingwomencolumns} dataSource={highlights?.live_details?.scorecard?.[1]?.bowling} size="middle" />
-                                        </div>
+                                        </div> */}
                                     </TabPane>
 
-                                    <TabPane tab={highlights?.live_details?.scorecard?.[1]?.title}>
+                                    {/* <TabPane tab={highlights?.live_details?.scorecard?.[1]?.title}>
                                         <div className="scorecard-tab">
                                             <h5>{highlights?.live_details?.scorecard?.[1]?.title}</h5>
                                             <Table pagination={false} columns={battingcolumns} dataSource={highlights?.live_details?.scorecard?.[1]?.batting} size="middle" />
@@ -729,16 +724,8 @@ function ScoreBoard(props) {
                                             <Table pagination={false} columns={bolingwomencolumns} dataSource={highlights?.live_details?.scorecard?.[1]?.bowling} size="middle" />
                                         </div>
 
-                                    </TabPane>
-
-                                    <TabPane tab="Match Details" key="3">
-                                        <h5>MATCH DETAILS</h5>
-                                        <Table pagination={false} columns={matchcolumns} dataSource={data} size="small" />
-
-                                    </TabPane>
+                                    </TabPane> */}
                                 </Tabs>
-
-
                             </TabPane>
 
                             {/*  Highlights */}
@@ -1128,7 +1115,8 @@ function ScoreBoard(props) {
                                         <p>2d ago</p>
                                     </Col>
                                 </Row>
-                                <br />
+                                <div className="change"></div>
+                                {/* <br /> */}
                                 <Row>
                                     <Col span={5}>
                                         <Image preview={false}
@@ -1143,6 +1131,7 @@ function ScoreBoard(props) {
                                         <p>Nov 19 2022</p>
                                     </Col>
                                 </Row>
+                                <div className="change"></div>
                             </TabPane>
 
                             {/* Photos */}

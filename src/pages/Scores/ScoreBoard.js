@@ -25,8 +25,17 @@ function ScoreBoard(props) {
 
     let commentary = highlights?.commentary ? highlights.commentary : {}
     let scorebord = highlights?.scorecard ? highlights.scorecard : {}
-    let highlight = highlights?.highlights ?.highlights ? highlights.highlights : {}
+    let highlight = highlights?.highlights ? highlights : {}
+    let matches = highlights?.matches ? { ...highlights.matches, venue: (highlights?.matches?.venue ? JSON.parse(highlights.matches.venue) : {}) } : {}
+    let facts = highlights?.facts ? highlights.facts : {}
 
+
+    let still_to_bat_ins1 = highlights?.live_details?.scorecard[0]?.still_to_bat ? highlights?.live_details?.scorecard[0]?.still_to_bat : []
+    // let still_to_bat_ins2 = highlights?.live_details?.scorecard[1]?.still_to_bat ? highlights?.live_details?.scorecard[1]?.still_to_bat : []
+    // let tournaments = highlights?.tournaments ? highlights.tournaments : {}
+    // let events = highlights?.events ? highlights.events : {}
+
+    // console.log(scorebord)
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -37,93 +46,85 @@ function ScoreBoard(props) {
     const onChange = (key) => {
         console.log(key);
     }
-    console.log(highlights)
 
 
-    // const columns = [
-    //     {
-    //         title: 'BATTERS',
-    //         dataIndex: 'player_name',
-    //         key: 'name',
-    //         width: 100
+    const columns = [
+        {
+            title: 'BATTERS',
+            dataIndex: 'player_name',
+            key: 'name',
+            width: 100
 
-    //     },
-    //     {
-    //         title: 'R',
-    //         dataIndex: 'runs',
-    //         width: 30
-    //     },
-    //     {
-    //         title: 'B',
-    //         dataIndex: 'balls',
-    //         width: 30
-    //     },
-    //     {
-    //         title: '4s',
-    //         dataIndex: 'fours',
-    //         width: 30
-    //     },
-    //     {
-    //         title: '6s',
-    //         dataIndex: 'sixes',
-    //         width: 30
-    //     },
-    //     {
-    //         title: 'SR',
-    //         dataIndex: 'strike_rate',
-    //         width: 30
-    //     },
-    //     // {
-    //     //     title: 'This Bowler',
-    //     //     dataIndex: 'Bowler',
-    //     //     width: 30
-    //     // },
-    //     // {
-    //     //     title: 'Last 5 Balls',
-    //     //     dataIndex: 'Balls',
-    //     //     width: 30
-    //     // },
-    //     {
-    //         title: 'Mat',
-    //         dataIndex: 'minutes',
-    //         width: 30
-    //     },
-    //     // {
-    //     //     title: 'Runs',
-    //     //     dataIndex: 'Runs',
-    //     //     width: 30
-    //     // },
-    //     // {
-    //     //     title: 'HS	',
-    //     //     dataIndex: 'HS',
-    //     //     width: 30
-    //     // },
-    //     // {
-    //     //     title: 'Ave	',
-    //     //     dataIndex: 'Ave',
-    //     //     width: 30
-    //     // },
+        },
+        {
+            title: 'R',
+            dataIndex: 'runs',
+            width: 30
+        },
+        {
+            title: 'B',
+            dataIndex: 'balls',
+            width: 30
+        },
+        {
+            title: '4s',
+            dataIndex: 'fours',
+            width: 30
+        },
+        {
+            title: '6s',
+            dataIndex: 'sixes',
+            width: 30
+        },
+        {
+            title: 'SR',
+            dataIndex: 'strike_rate',
+            width: 30
+        },
+        {
+            title: 'This Bowler',
+            dataIndex: 'Bowler',
+            width: 30
+        },
+        {
+            title: 'Last 5 Balls',
+            dataIndex: 'Balls',
+            width: 30
+        },
+        {
+            title: 'Mat',
+            dataIndex: 'minutes',
+            width: 30
+        },
+        {
+            title: 'Runs',
+            dataIndex: 'Runs',
+            width: 30
+        },
+        {
+            title: 'HS	',
+            dataIndex: 'HS',
+            width: 30
+        },
+        {
+            title: 'Ave	',
+            dataIndex: 'Ave',
+            width: 30
+        },
 
 
 
-    // ];
+    ];
 
     const battingcolumns = [
         {
             title: 'Batter',
-            dataIndex: 'bat1Name',
-            key: 'name',
-            width: 400
-
+            dataIndex: 'batName',
         },
-
         {
             title: '',
             dataIndex: 'outDesc',
-            key: 'name',
-            width: 400,
         },
-
         {
             title: 'R',
             dataIndex: 'runs',
@@ -155,9 +156,7 @@ function ScoreBoard(props) {
         {
             title: 'Bowler',
             dataIndex: 'bowlName',
-            key: 'name',
             width: 400
-
         },
 
         {
@@ -352,70 +351,18 @@ function ScoreBoard(props) {
         },
     ];
 
-    // console.log(highlights)
-
-    let still_to_bat_ins1 = highlights?.live_details?.scorecard[0]?.still_to_bat ? highlights?.live_details?.scorecard[0]?.still_to_bat : []
-    let still_to_bat_ins2 = highlights?.live_details?.scorecard[1]?.still_to_bat ? highlights?.live_details?.scorecard[1]?.still_to_bat : []
-    let tournaments = highlights?.tournaments ? highlights.tournaments : {}
-    let events = highlights?.events ? highlights.events : {}
 
     return (
         <>
             <div class="container">
                 <div className="score-board">
 
-                    <Row className="scores">
-                        <Col span={20} >
-                            <h5>RESULT</h5>
-                            <h6>{moment.unix(events.START_TIME).format('Do MMM YYYY hh:mm A')}, {tournaments.NAME} {tournaments.TOURNAMENT_IMAGE && (<img src={tournaments.TOURNAMENT_IMAGE} className="flagimg" />)}</h6>
-                            <p>{events.CRICKET_LIVE_SENTENCE}</p>
-                        </Col>
-                        <Col span={4}>
-                            <ShareAltOutlined className="shree" />
-                        </Col>
-                    </Row>
-                    <div className="score"></div>
-
-                    <Row>
-                        <Col span={16} >
-                            <div className="wickets">
-                                <div className="match-board">
-                                    <div>
-                                        {events.HOME_IMAGES && (<img src={events.HOME_IMAGES[0]} className="flagimg" />)}
-                                        <a href="">{events.HOME_NAME}</a>
-                                    </div>
-                                    <div className="score-number">
-                                        <h6>{`${events?.HOME_SCORE_CURRENT}/${events?.HOME_SCORE_PART_2_OVERS_OUTS_WICKETS}`}</h6>
-                                    </div>
-                                </div>
-                                <div className="match-board">
-                                    <div>
-                                        {events.AWAY_IMAGES && (<img src={events.AWAY_IMAGES[0]} className="flagimg" />)}
-                                        <a href="">{events.AWAY_NAME}</a>
-                                    </div>
-                                    <div className="score-number">
-                                        <h6>{`${events?.AWAY_SCORE_CURRENT}/${events?.AWAY_SCORE_PART_2_OVERS_OUTS_WICKETS}`}</h6>
-                                    </div>
-                                </div>
-                                <p >{events?.CRICKET_SENTENCE ? (events?.CRICKET_SENTENCE).replaceAll(';', ', ') : ''}</p>
-                            </div>
-                        </Col>
-
-                        <div class="vl"></div>
-                        <Col span={7}>
-                            <div className="match-player">
-                                <p>PLAYER OF THE MATCH</p>
-                                <a href="#">Natthakan Chantham </a><span>, THI-W 61 (51)</span>
-                            </div>
-                        </Col>
-                    </Row>
-                    <div className="score"></div>
                     <div className="wickets">
 
-                        <h5>{commentary?.matchHeader?.team1?.name} vs  {commentary?.matchHeader?.team2?.name}, {commentary?.matchHeader?.matchDescription}- Live Cricket Score, {commentary?.page}</h5>
-                        <span>Series: <a href="#">{commentary?.matchHeader?.seriesName} </a></span>
-                        <span>Venue:  <a href="#">Sydney Cricket Ground, Sydney </a></span>
-                        <span>Date & Time: <a href="#">Nov 19, 02:20 PM LOCAL </a></span>
+                        <h5>{commentary?.matchHeader?.team1?.name} vs  {commentary?.matchHeader?.team2?.name}, {commentary?.matchHeader?.matchDescription}</h5>
+                        <span>Series: <a href="#">{commentary?.matchHeader?.seriesName}</a></span>
+                        <span>Venue:  <a href="#">{matches?.venue?.ground}, {matches?.venue?.city}</a></span>
+                        <span>Date & Time: <a href="#">{moment.utc(matches?.startdt).format('Do MMM YYYY hh:mm A')}</a></span>
 
                         <Tabs defaultActiveKey="1" onChange={setTab}>
                             {/* Commentary */}
@@ -426,6 +373,7 @@ function ScoreBoard(props) {
                                         <h5>{commentary?.miniscore?.matchScoreDetails?.inningsScoreList?.[1]?.batTeamName} {commentary?.miniscore?.matchScoreDetails?.inningsScoreList?.[0]?.score} {commentary?.miniscore?.matchScoreDetails?.inningsScoreList?.[0]?.overs}</h5>
 
                                         <p className="australia-tem">{commentary?.miniscore?.status}</p>
+
                                         <p>PLAYER OF THE MATCH</p>
                                         <span><a href="#" color="black">{commentary?.matchHeader?.playersOfTheMatch?.[0]?.fullName} </a></span>
                                         <div className="score"></div>
@@ -433,66 +381,13 @@ function ScoreBoard(props) {
                                         <div className="score"></div>
 
                                         <div className="comprehensive">
-                                            <p>{commentary?.commentaryList?.[0]?.commText}</p>
-                                            <p><span>{commentary?.commentaryList?.[1]?.batTeamName}</span> {commentary?.commentaryList?.[1]?.commText}</p>
-                                            <p><span>Moeen Ali:</span> {commentary?.commentaryList?.[2]?.commText}</p>
-                                            <p><span>Mitchell Starc -</span> {commentary?.commentaryList?.[3]?.commText}</p>
-                                            <p><span>21:38 Local Time, 10:38 GMT, 16:08 IST:</span> {commentary?.commentaryList?.[4]?.commText}</p>
 
-                                            <Row>
-                                                <Col span={2}>
-                                                    <h5>{commentary?.commentaryList?.[5]?.overNumber}</h5>
-                                                </Col>
-                                                <Col span={20}>
-                                                    {commentary?.commentaryList?.[5]?.commText}
-                                                </Col>
-                                            </Row>
-                                            {commentary?.commentaryList?.[6]?.commText}
+                                            {commentary?.commentaryList ? (commentary?.commentaryList.map((item, key) => <Row key={key}>
+                                                <Col span={2}><h5>{item?.overNumber}</h5></Col>
+                                                <Col span={20}>{item?.commText}</Col>
+                                            </Row>)) : null}
 
-                                            <Row>
-                                                <Col span={2}>
-                                                    <h5>{commentary?.commentaryList?.[7]?.overNumber}</h5>
-                                                </Col>
-                                                <Col span={20}>
-                                                    {commentary?.commentaryList?.[7]?.commText}
-                                                </Col>
-                                            </Row>
 
-                                            <Row>
-                                                <Col span={2}>
-                                                    <h5>{commentary?.commentaryList?.[8]?.overNumber}</h5>
-                                                </Col>
-                                                <Col span={20}>
-                                                    {commentary?.commentaryList?.[8]?.commText}
-                                                </Col>
-                                            </Row>
-
-                                            <Row>
-                                                <Col span={2}>
-                                                    <h5>{commentary?.commentaryList?.[9]?.overNumber}</h5>
-                                                </Col>
-                                                <Col span={20}>
-                                                    {commentary?.commentaryList?.[9]?.commText}
-                                                </Col>
-                                            </Row>
-
-                                            <Row>
-                                                <Col span={2}>
-                                                    <h5>{commentary?.commentaryList?.[10]?.overNumber}</h5>
-                                                </Col>
-                                                <Col span={20}>
-                                                    {commentary?.commentaryList?.[10]?.commText}
-                                                </Col>
-                                            </Row>
-
-                                            <Row>
-                                                <Col span={2}>
-                                                    <h5>{commentary?.commentaryList?.[11]?.overNumber}</h5>
-                                                </Col>
-                                                <Col span={20}>
-                                                    {commentary?.commentaryList?.[11]?.commText}
-                                                </Col>
-                                            </Row>
                                         </div>
 
                                         <div className="cost">
@@ -642,11 +537,11 @@ function ScoreBoard(props) {
                                                 </Col>
                                             </Row>
                                         </div>
-                                        <div className="match-btn">
+                                        {/* <div className="match-btn">
                                             <Button block>
                                                 Lode
                                             </Button>
-                                        </div>
+                                        </div> */}
                                     </TabPane>
                                 </Tabs>
                             </TabPane>
@@ -655,26 +550,31 @@ function ScoreBoard(props) {
                             <TabPane tab="Scorecard" key="2">
                                 <Tabs defaultActiveKey="1" onChange={setTab}>
                                     <TabPane>
-                                        {scorebord.scoreCard && scorebord.scoreCard.map((item, key)=>{
-                                            // let batTeamDetails = item.batTeamDetails
-                                            console.log(item)
-                                            return  <div className="scorecard-tab" key={key}>
-                                            <h5>{item.batTeamDetails.batTeamName} Innings<span>280-8 (50 Ov)</span></h5>
-                                            {/* <Table pagination={false} columns={battingcolumns} dataSource={item?.batTeamDetails?.batsmenData} size="middle" /> */}
+                                        {scorebord.scoreCard && scorebord.scoreCard.map((item, key) => {
+                                            let batsmenData = item?.batTeamDetails?.batsmenData ? item.batTeamDetails.batsmenData : {}
+                                            let batsmenDataArray = Object.values(batsmenData);
 
-                                            <div className="total-scre">
-                                                <h6>TOTAL</h6>
-                                                <span>{highlights?.live_details?.match_summary?.home_scores}</span>
-                                                <h6>{highlights?.live_details?.match_summary?.away_scores}</h6>
+                                            let bowlersData = item?.bowlTeamDetails?.bowlersData ? item.bowlTeamDetails.bowlersData : {}
+                                            let bowlersDataArray = Object.values(bowlersData);
+
+                                            // console.log(item)
+                                            return <div className="scorecard-tab" key={key}>
+                                                <h5>{item.batTeamDetails.batTeamName} Innings<span>280-8 (50 Ov)</span></h5>
+                                                <Table pagination={false} columns={battingcolumns} dataSource={batsmenDataArray} size="middle" />
+
+                                                <div className="total-scre">
+                                                    <h6>TOTAL</h6>
+                                                    <span>{highlights?.live_details?.match_summary?.home_scores}</span>
+                                                    <h6>{highlights?.live_details?.match_summary?.away_scores}</h6>
+                                                </div>
+                                                <div>
+                                                    <h6>{still_to_bat_ins1.map((item, key) => <a key={key} href="#">{item.player_name}</a>)}</h6>
+                                                    <p>{highlights?.live_details?.scorecard?.[0]?.fow}</p>
+                                                </div>
+                                                <Table pagination={false} columns={bolingcolumns} dataSource={bowlersDataArray} size="middle" />
                                             </div>
-                                            <div>
-                                                <h6>{still_to_bat_ins1.map((item, key) => <a key={key} href="#">{item.player_name}</a>)}</h6>
-                                                <p>{highlights?.live_details?.scorecard?.[0]?.fow}</p>
-                                            </div>
-                                            {/* <Table pagination={false} columns={bolingcolumns} dataSource={item?.batTeamDetails?.batsmenData?.bowlTeamDetails} size="middle" /> */}
-                                        </div>
                                         })}
-                                       
+
 
                                         {/* <div className="scorecard-tab">
                                             <h5>{highlights?.live_details?.scorecard?.[0]?.title}</h5>
@@ -690,6 +590,7 @@ function ScoreBoard(props) {
                                             </div>
                                             <Table pagination={false} columns={bolingwomencolumns} dataSource={highlights?.live_details?.scorecard?.[1]?.bowling} size="middle" />
                                         </div> */}
+
                                     </TabPane>
 
                                     {/* <TabPane tab={highlights?.live_details?.scorecard?.[1]?.title}>
@@ -793,7 +694,7 @@ function ScoreBoard(props) {
                             </TabPane>
 
                             {/*  Full Commentary */}
-                            <TabPane tab="Full Commentary" key="4">
+                            {/* <TabPane tab="Full Commentary" key="4">
                                 <Tabs defaultActiveKey="4" onChange={setTab} >
                                     <Tabs.TabPane tab="Preview" key="1">
                                         <div className="maych-info">
@@ -899,15 +800,10 @@ function ScoreBoard(props) {
                                     <Tabs.TabPane tab="AUS Inns" key="2"></Tabs.TabPane>
                                     <Tabs.TabPane tab="ENG Inns" key="3"></Tabs.TabPane>
                                 </Tabs>
-                            </TabPane>
-
-                            {/*  Live Blog */}
-                            <TabPane tab=" Live Blog" key="5">
-                                There is no live blog for this match.
-                            </TabPane>
+                            </TabPane> */}
 
                             {/* Match Facts */}
-                            <TabPane tab="Match Facts" key="6">
+                            <TabPane tab="Match Facts" key="4">
 
                                 <div className="maych-info">
                                     <h5>Match Info</h5>
@@ -1098,49 +994,6 @@ function ScoreBoard(props) {
                                     </Row>
                                 </div>
                             </TabPane>
-
-                            {/*  News*/}
-                            <TabPane tab=" News" key="7">
-                                <Row>
-                                    <Col span={5}>
-                                        <Image preview={false}
-                                            width={200}
-                                            src={cricketer}
-                                        />
-                                    </Col>
-                                    <Col span={19} >
-                                        <p>ENGLAND TOUR OF AUSTRALIA 2022</p>
-                                        <span><a href="#">Australia secure series win with commanding all-round display</a></span>
-                                        <p>Half centuries by Sam Billings and James Vince went in vain as Australia won the second ODI by 72 runs</p>
-                                        <p>2d ago</p>
-                                    </Col>
-                                </Row>
-                                <div className="change"></div>
-                                {/* <br /> */}
-                                <Row>
-                                    <Col span={5}>
-                                        <Image preview={false}
-                                            width={200}
-                                            src={cricketer}
-                                        />
-                                    </Col>
-                                    <Col span={19} >
-                                        <p>ENGLAND TOUR OF AUSTRALIA, 2022</p>
-                                        <span><a href="#">Middle order stands tall as Australia post 280</a></span>
-                                        <p>While Steve Smith missed his century by six runs, Marnus Labuschagne and Mitchell Marsh hit fifties</p>
-                                        <p>Nov 19 2022</p>
-                                    </Col>
-                                </Row>
-                                <div className="change"></div>
-                            </TabPane>
-
-                            {/* Photos */}
-                            <TabPane tab="  Photos" key="8">
-                                There is no live blog for this match.
-                            </TabPane>
-
-
-
 
 
                         </Tabs>
